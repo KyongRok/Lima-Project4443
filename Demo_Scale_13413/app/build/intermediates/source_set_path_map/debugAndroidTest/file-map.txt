@@ -1,5 +1,0 @@
-ca.yorku.eecs.mack.demoscale13413.test.app-androidTest-0 /Users/kyongrokkim/Desktop/EECS4443/Demo_Scale_13413/app/build/generated/res/resValues/androidTest/debug
-ca.yorku.eecs.mack.demoscale13413.test.app-androidTest-1 /Users/kyongrokkim/Desktop/EECS4443/Demo_Scale_13413/app/build/generated/res/rs/androidTest/debug
-ca.yorku.eecs.mack.demoscale13413.test.app-mergeDebugAndroidTestResources-2 /Users/kyongrokkim/Desktop/EECS4443/Demo_Scale_13413/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
-ca.yorku.eecs.mack.demoscale13413.test.app-mergeDebugAndroidTestResources-3 /Users/kyongrokkim/Desktop/EECS4443/Demo_Scale_13413/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
-ca.yorku.eecs.mack.demoscale13413.test.app-merged_res-4 /Users/kyongrokkim/Desktop/EECS4443/Demo_Scale_13413/app/build/intermediates/merged_res/debugAndroidTest
