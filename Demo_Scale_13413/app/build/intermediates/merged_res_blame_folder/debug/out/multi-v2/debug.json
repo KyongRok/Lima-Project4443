@@ -1,0 +1,80 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/kyongrokkim/.gradle/daemon/7.5/ca.yorku.eecs.mack.demoscale13413.app-merged_res-5:/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/kyongrokkim/Desktop/EECS4443/Demo_Scale_13413/app/src/main/res/values/ic_launcher_background.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "56",
+                        "endOffsets": "109"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "56",
+                        "endOffsets": "107"
+                    }
+                },
+                {
+                    "source": "/Users/kyongrokkim/Desktop/EECS4443/Demo_Scale_13413/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "4,3,6,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "161,56,268,215",
+                        "endColumns": "53,104,49,52",
+                        "endOffsets": "210,156,313,263"
+                    },
+                    "to": {
+                        "startLines": "3,4,5,6",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "112,166,271,321",
+                        "endColumns": "53,104,49,52",
+                        "endOffsets": "161,266,316,369"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "ca.yorku.eecs.mack.demoscale13413.app-merged_res-5:/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/kyongrokkim/Desktop/EECS4443/Demo_Scale_13413/app/src/main/res/values/ic_launcher_background.xml",
+                    "from": {
+                        "startLines": "-1",
+                        "startColumns": "-1",
+                        "startOffsets": "-1"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "56",
+                        "endOffsets": "107"
+                    }
+                },
+                {
+                    "source": "/Users/kyongrokkim/Desktop/EECS4443/Demo_Scale_13413/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "-1,-1,7,-1,8,-1",
+                        "startColumns": "-1,-1,4,-1,4,-1",
+                        "startOffsets": "-1,-1,318,-1,363,-1",
+                        "endColumns": "-1,-1,44,-1,46,-1",
+                        "endOffsets": "-1,-1,358,-1,405,-1"
+                    },
+                    "to": {
+                        "startLines": "3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "112,166,271,315,365,411",
+                        "endColumns": "53,104,43,49,45,52",
+                        "endOffsets": "161,266,310,360,406,459"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "ca.yorku.eecs.mack.demoandroid_215813413.app-merged_res-5:/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/kyongrokkim/Desktop/EECS4443/Demo_Android_215813413/app/src/main/res/values/ic_launcher_background.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "56",
+                        "endOffsets": "109"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "56",
+                        "endOffsets": "107"
+                    }
+                },
+                {
+                    "source": "/Users/kyongrokkim/Desktop/EECS4443/Demo_Android_215813413/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "7,3,5,8,4,2,6",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "308,124,221,368,168,55,269",
+                        "endColumns": "59,43,47,37,47,68,38",
+                        "endOffsets": "363,163,264,401,211,119,303"
+                    },
+                    "to": {
+                        "startLines": "3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "112,172,216,264,302,350,419",
+                        "endColumns": "59,43,47,37,47,68,38",
+                        "endOffsets": "167,211,259,297,345,414,453"
+                    }
+                }
+            ]
+        }
+    ]
+}

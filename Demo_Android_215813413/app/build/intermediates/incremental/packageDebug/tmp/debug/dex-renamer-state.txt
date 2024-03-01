@@ -1,0 +1,4 @@
+#Fri Feb 02 15:06:34 EST 2024
+base.0=/Users/kyongrokkim/Desktop/EECS4443/Demo_Android_215813413/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

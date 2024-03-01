@@ -1,0 +1,112 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/kyongrokkim/.gradle/daemon/7.5/ca.yorku.eecs.mack.demobuttons215813413.app-mergeDebugResources-3:/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/kyongrokkim/Desktop/EECS4443/Demo_Buttons_215813413/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "166,226,282,320,369,423,474,518,567,607,658,723,759,793,829,876,935",
+                        "endColumns": "59,55,37,48,53,50,43,48,39,50,64,35,33,35,46,58,47",
+                        "endOffsets": "221,277,315,364,418,469,513,562,602,653,718,754,788,824,871,930,978"
+                    }
+                },
+                {
+                    "source": "/Users/kyongrokkim/Desktop/EECS4443/Demo_Buttons_215813413/app/src/main/res/values/icon_background.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "51",
+                        "endOffsets": "104"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "114",
+                        "endColumns": "51",
+                        "endOffsets": "161"
+                    }
+                },
+                {
+                    "source": "/Users/kyongrokkim/Desktop/EECS4443/Demo_Buttons_215813413/app/src/main/res/values/ic_launcher_background.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "58",
+                        "endOffsets": "111"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "58",
+                        "endOffsets": "109"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "ca.yorku.eecs.mack.demobuttons215813413.app-mergeDebugResources-3:/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/kyongrokkim/Desktop/EECS4443/Demo_Buttons_215813413/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "162,222,278,316,365,419,470,514,563,603,654,719,755,789,825,872,931",
+                        "endColumns": "59,55,37,48,53,50,43,48,39,50,64,35,33,35,46,58,47",
+                        "endOffsets": "217,273,311,360,414,465,509,558,598,649,714,750,784,820,867,926,974"
+                    }
+                },
+                {
+                    "source": "/Users/kyongrokkim/Desktop/EECS4443/Demo_Buttons_215813413/app/src/main/res/values/icon_background.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "49",
+                        "endOffsets": "102"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "112",
+                        "endColumns": "49",
+                        "endOffsets": "157"
+                    }
+                },
+                {
+                    "source": "/Users/kyongrokkim/Desktop/EECS4443/Demo_Buttons_215813413/app/src/main/res/values/ic_launcher_background.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "56",
+                        "endOffsets": "109"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "56",
+                        "endOffsets": "107"
+                    }
+                }
+            ]
+        }
+    ]
+}
