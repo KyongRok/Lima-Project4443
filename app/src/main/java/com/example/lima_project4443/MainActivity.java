@@ -8,6 +8,7 @@ Group Members:
 KyongRok Kim, 215813413
 Brian Nguyen, 217233966
 Seong Su Kim, 215481575
+Alexis Estropia, 217146473
  */
 public class MainActivity extends AppCompatActivity {
 
