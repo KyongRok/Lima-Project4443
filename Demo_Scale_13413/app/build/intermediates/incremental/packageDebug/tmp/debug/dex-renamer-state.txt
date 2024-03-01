@@ -1,4 +1,0 @@
-#Sun Feb 25 18:21:22 EST 2024
-base.0=/Users/kyongrokkim/Desktop/EECS4443/Demo_Scale_13413/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
