@@ -1,8 +1,0 @@
-ca.yorku.eecs.mack.demoandroid_215813413.app-pngs-0 /Users/kyongrokkim/Desktop/EECS4443/Demo_Android_215813413/app/build/generated/res/pngs/debug
-ca.yorku.eecs.mack.demoandroid_215813413.app-resValues-1 /Users/kyongrokkim/Desktop/EECS4443/Demo_Android_215813413/app/build/generated/res/resValues/debug
-ca.yorku.eecs.mack.demoandroid_215813413.app-rs-2 /Users/kyongrokkim/Desktop/EECS4443/Demo_Android_215813413/app/build/generated/res/rs/debug
-ca.yorku.eecs.mack.demoandroid_215813413.app-mergeDebugResources-3 /Users/kyongrokkim/Desktop/EECS4443/Demo_Android_215813413/app/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
-ca.yorku.eecs.mack.demoandroid_215813413.app-mergeDebugResources-4 /Users/kyongrokkim/Desktop/EECS4443/Demo_Android_215813413/app/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
-ca.yorku.eecs.mack.demoandroid_215813413.app-merged_res-5 /Users/kyongrokkim/Desktop/EECS4443/Demo_Android_215813413/app/build/intermediates/merged_res/debug
-ca.yorku.eecs.mack.demoandroid_215813413.app-debug-6 /Users/kyongrokkim/Desktop/EECS4443/Demo_Android_215813413/app/src/debug/res
-ca.yorku.eecs.mack.demoandroid_215813413.app-main-7 /Users/kyongrokkim/Desktop/EECS4443/Demo_Android_215813413/app/src/main/res
