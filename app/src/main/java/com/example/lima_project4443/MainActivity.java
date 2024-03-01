@@ -7,7 +7,7 @@ import android.os.Bundle;
 Group Members:
 KyongRok Kim, 215813413
 Brian Nguyen, 217233966
-Alexis Estropia, 217146473
+Seong Su Kim, 215481575
  */
 public class MainActivity extends AppCompatActivity {
 
