@@ -8,6 +8,7 @@ public class Login_Model {
 
     public Login_Model(){
 
+
     }
 
     public void setAge(int age){
