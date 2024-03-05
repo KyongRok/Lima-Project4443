@@ -1,5 +1,6 @@
 package com.example.lima_project4443;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
                     // Correct username and password
                     // Here you can start the next activity or perform other actions
                     Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
                 } else {
                     // Incorrect username or password
                     Toast.makeText(LoginActivity.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
