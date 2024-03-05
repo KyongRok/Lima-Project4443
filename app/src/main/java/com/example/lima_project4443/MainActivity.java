@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         hoursofUsage = findViewById(R.id.editTextHours);
         submitButton = findViewById(R.id.buttonSubmit);
         DataBaseParticipantsHelper dbHelper = new DataBaseParticipantsHelper(MainActivity.this);
-
+    //db works
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
