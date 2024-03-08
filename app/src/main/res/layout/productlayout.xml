@@ -9,17 +9,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Shoes 4 Sale"
-            android:textSize="24sp"
-            android:gravity="center"
-        />
-
 
         <!-- Home Button -->
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:src="@drawable/title" />
+
         <ImageButton
             android:id="@+id/btn_home"
             android:layout_width="53dp"
@@ -44,14 +42,14 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="508dp"
-            android:layout_marginBottom="46dp"
-            android:layout_weight="1" />
-
-
-
+            android:layout_height="match_parent"
+            android:layout_marginBottom="48dp"
+            android:layout_marginTop="8dp"
+             />
     </LinearLayout>
-    <!-- RecyclerView to display shoes -->
+
+
+
 
     <!-- Bottom Bar -->
     <LinearLayout
