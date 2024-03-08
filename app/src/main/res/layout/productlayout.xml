@@ -9,24 +9,24 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Shoes 4 Sale"
+            android:textSize="24sp"
+            android:gravity="center"
+        />
+
+
         <!-- Home Button -->
         <ImageButton
             android:id="@+id/btn_home"
             android:layout_width="53dp"
             android:layout_height="52dp"
-            android:src= "@drawable/home"
+            android:src= "@drawable/menu"
             android:contentDescription="Home Button?"
-
             android:padding="12dp" />
-
-        <SearchView
-            android:id="@+id/search_view"
-            android:layout_width="match_parent"
-            android:text="Search for Shoe"
-            android:layout_height="wrap_content"/>
-
-
-
 
         <TextView
             android:id="@+id/textView2"
@@ -34,11 +34,20 @@
             android:layout_height="wrap_content"
             android:text=" Welcome Back, Guest" />
 
+
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:text="Search for Shoe" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="508dp"
+            android:layout_marginBottom="46dp"
             android:layout_weight="1" />
+
 
 
     </LinearLayout>
@@ -61,6 +70,14 @@
             android:src="@drawable/home"
             android:layout_weight="1"
             android:contentDescription="Home Button" />
+        <!-- Favourite Button -->
+        <ImageButton
+            android:id="@+id/btn_fav"
+            android:src="@drawable/like"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="Cart Button" />
 
         <!-- Cart Button -->
         <ImageButton
@@ -74,6 +91,7 @@
         <!-- Profile Button -->
         <ImageButton
             android:id="@+id/btn_profile"
+            android:src="@drawable/person"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

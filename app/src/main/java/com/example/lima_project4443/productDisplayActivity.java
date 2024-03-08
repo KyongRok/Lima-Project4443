@@ -17,11 +17,13 @@ Brian Nguyen, 217233966
 Seong Su Kim, 215481575
 Alexis Estropia, 217146473
  */
-public class productDisplayActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
+public class productDisplayActivity extends AppCompatActivity{
 
     private RecyclerView recyclerView;
     private MyAdapter adapter;
     private List<Shoe> shoeList; //List of shoes added to the Recycler View
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +37,16 @@ public class productDisplayActivity extends AppCompatActivity implements SearchV
 
         // Initialize shoeList (populate it with your data)
         shoeList = new ArrayList<>();
-        shoeList.add(new Shoe("Nike Panda Dunks", R.drawable.pandadunks));
-        shoeList.add(new Shoe("Nike", R.drawable.pandadunks));
-        shoeList.add(new Shoe("Nike", R.drawable.pandadunks));
-        shoeList.add(new Shoe("Nike", R.drawable.pandadunks));
+        shoeList.add(new Shoe("Nike Air Max", "$200", R.drawable.pandadunks));
+        shoeList.add(new Shoe("Adidas UltraBoost", "$180", R.drawable.pandadunks));
+        shoeList.add(new Shoe("Puma RS-X", "$160", R.drawable.pandadunks));
+        shoeList.add(new Shoe("New Balance 574", "$130", R.drawable.pandadunks));
+
+        shoeList.add(new Shoe("Reebok Classic", "$150", R.drawable.pandadunks));
+        shoeList.add(new Shoe("Under Armour Curry", "$170", R.drawable.pandadunks));
+        shoeList.add(new Shoe("Vans Old Skool", "$90", R.drawable.pandadunks));
+        shoeList.add(new Shoe("Converse Chuck Taylor", "$80", R.drawable.pandadunks));
+
 
 
         // Initialize adapter with the shoeList
@@ -48,19 +56,25 @@ public class productDisplayActivity extends AppCompatActivity implements SearchV
         recyclerView.setAdapter(adapter);
 
         SearchView searchView = findViewById(R.id.search_view);
-        searchView.setOnQueryTextListener(this);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.filter(newText);
+                return false;
+            }
+        });
+
+
 
 
     }
 
 
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
 
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        return false;
-    }
 }
