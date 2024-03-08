@@ -1,107 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Content Area with ScrollView -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <!-- Content Area -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Home Button -->
-                <ImageButton
-                    android:id="@+id/btn_home"
-                    android:layout_width="53dp"
-                    android:layout_height="52dp"
-                    android:contentDescription="Home Button?"
-                    android:src="@drawable/home"
-                    android:padding="12dp" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=" Welcome Back, Guest" />
-
-                <GridLayout
-                    android:id="@+id/product_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:columnCount="2"
-                    android:orientation="horizontal"
-                    android:padding="0dp"
-                    android:rowCount="2">
-
-                    <!-- Shoe 1 -->
-                    <include layout="@layout/shoe" />
-
-                    <!-- Shoe 2 -->
-                    <include layout="@layout/shoe" />
-
-                    <!-- Shoe 3 -->
-                    <include layout="@layout/shoe" />
-
-                    <!-- Shoe 4 -->
-                    <include layout="@layout/shoe" />
-
-                    <!-- Shoe 5 -->
-                    <include layout="@layout/shoe" />
-
-                    <!-- Shoe 6 -->
-                    <include layout="@layout/shoe" />
-
-                </GridLayout>
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-    </ScrollView>
-
-    <!-- Bottom Bar -->
+    <!-- Content Area -->
     <LinearLayout
-        android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:background="@color/black">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <!-- Home Button -->
         <ImageButton
-            android:id="@+id/btn_home_bottom"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/home"
-            android:layout_weight="1"
-            android:contentDescription="Home Button" />
+            android:id="@+id/btn_home"
+            android:layout_width="53dp"
+            android:layout_height="52dp"
+            android:contentDescription="Home Button?"
+            android:padding="12dp" />
 
-        <!-- Cart Button -->
-        <ImageButton
-            android:id="@+id/btn_cart"
-            android:src="@drawable/cart"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="Cart Button" />
+            android:text=" Welcome Back, Guest" />
 
-        <!-- Profile Button -->
-        <ImageButton
-            android:id="@+id/btn_profile"
-            android:layout_width="0dp"
+        <!-- RecyclerView to display shoes -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="Profile Button" />
+            android:layout_weight="1" />
 
+        <!-- Bottom Bar -->
+        <LinearLayout
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:background="@color/black">
+
+            <!-- Home Button -->
+            <ImageButton
+                android:id="@+id/btn_home_bottom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/home"
+                android:layout_weight="1"
+                android:contentDescription="Home Button" />
+
+            <!-- Cart Button -->
+            <ImageButton
+                android:id="@+id/btn_cart"
+                android:src="@drawable/cart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="Cart Button" />
+
+            <!-- Profile Button -->
+            <ImageButton
+                android:id="@+id/btn_profile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="Profile Button" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
