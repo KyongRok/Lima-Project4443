@@ -20,7 +20,7 @@ Alexis Estropia, 217146473
 public class productDisplayActivity extends AppCompatActivity{
 
     private RecyclerView recyclerView;
-    private MyAdapter adapter;
+    private productDisplayAdapter adapter;
     private List<Shoe> shoeList; //List of shoes added to the Recycler View
 
 
@@ -50,7 +50,7 @@ public class productDisplayActivity extends AppCompatActivity{
 
 
         // Initialize adapter with the shoeList
-        adapter = new MyAdapter(shoeList);
+        adapter = new productDisplayAdapter(shoeList);
 
         // Set adapter to RecyclerView
         recyclerView.setAdapter(adapter);

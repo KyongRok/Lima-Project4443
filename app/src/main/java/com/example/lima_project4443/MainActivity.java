@@ -44,26 +44,26 @@ public class MainActivity extends AppCompatActivity {
         hoursofUsage = findViewById(R.id.editTextHours);
         submitButton = findViewById(R.id.buttonSubmit);
         DataBaseParticipantsHelper dbHelper = new DataBaseParticipantsHelper(MainActivity.this);
-    //db works
+        //db works
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //if(!editTextAge.getText().equals("")){
-                  try{
-                      Login_Model loginmodel = new Login_Model();
-                      loginmodel.setAge(Integer.parseInt(editTextAge.getText().toString()));
-                      int genderId = radioGroupGender.getCheckedRadioButtonId();
-                      int gender = (genderId == R.id.radioButtonMale) ? 1 : 2;
-                      loginmodel.setGender(gender);
-                      loginmodel.setHours_Phone(Integer.parseInt(hoursofUsage.getText().toString()));
-                      dbHelper.addParticipants(loginmodel);
-                      Toast.makeText(MainActivity.this, loginmodel.toString(), Toast.LENGTH_LONG).show();
-                  }
-                  catch(Exception e){
-                      Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                try{
+                    Login_Model loginmodel = new Login_Model();
+                    loginmodel.setAge(Integer.parseInt(editTextAge.getText().toString()));
+                    int genderId = radioGroupGender.getCheckedRadioButtonId();
+                    int gender = (genderId == R.id.radioButtonMale) ? 1 : 2;
+                    loginmodel.setGender(gender);
+                    loginmodel.setHours_Phone(Integer.parseInt(hoursofUsage.getText().toString()));
+                    dbHelper.addParticipants(loginmodel);
+                    Toast.makeText(MainActivity.this, loginmodel.toString(), Toast.LENGTH_LONG).show();
+                }
+                catch(Exception e){
+                    Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
 
 
-                  }
+                }
 
 
                 //}
