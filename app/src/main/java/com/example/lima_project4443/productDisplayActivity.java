@@ -5,7 +5,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,7 +45,7 @@ public class productDisplayActivity extends AppCompatActivity {
         setContentView(R.layout.productlayout);
 
 
-
+        /** Attempted to do the
         Shoe pandaShoes = new Shoe("Nike", R.drawable.pandadunks);
 
         ConstraintLayout itemShoeLayout = (ConstraintLayout) getLayoutInflater().inflate(R.layout.shoe, null);
@@ -56,8 +59,47 @@ public class productDisplayActivity extends AppCompatActivity {
         ViewGroup mainLayout = findViewById(R.id.product_layout);
         mainLayout.addView(itemShoeLayout);
         Log.d("MainActivity", "Main layout ID: " + mainLayout);
+        **/
+
+        //Bottom Buttons
+        ImageButton btnHome = findViewById(R.id.btn_home_bottom);
+        ImageButton btnCart = findViewById(R.id.btn_cart);
+        ImageButton btnProfile = findViewById(R.id.btn_profile);
+
+        //Buttons from shoe.xml
+        Button addToCart = findViewById(R.id.addToCart);
+
+        // Set OnClickListener for all buttons
+        View.OnClickListener buttonClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v.getId() == R.id.btn_home_bottom) {
+                    // Handle Home button click
+                    Log.d("productDisplayActivity", "Home button clicked");
+                } else if (v.getId() == R.id.btn_cart) {
+                    // Handle Cart button click
+                    Log.d("productDisplayActivity", "Cart button clicked");
+                } else if (v.getId() == R.id.btn_profile) {
+                    // Handle Profile button click
+                    Log.d("productDisplayActivity", "Profile button clicked");
+                } else if (v.getId() == R.id.addToCart) {
+                    // Handle Add to Cart button click
+                    Log.d("productDisplayActivity", "Add to Cart button clicked");
+                }
+            }
+        };
+
+        // Assign the click listener to all buttons
+        btnHome.setOnClickListener(buttonClickListener);
+        btnCart.setOnClickListener(buttonClickListener);
+        btnProfile.setOnClickListener(buttonClickListener);
+        addToCart.setOnClickListener(buttonClickListener);
+    }
+
+
+
+
 
     }
 
 
-}

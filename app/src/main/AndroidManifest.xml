@@ -27,8 +27,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".productDisplayActivity"
             android:exported="true"></activity>
+
     </application>
 
 </manifest>
