@@ -1,6 +1,7 @@
 package com.example.lima_project4443;
 
 import android.os.Bundle;
+import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -16,7 +17,7 @@ Brian Nguyen, 217233966
 Seong Su Kim, 215481575
 Alexis Estropia, 217146473
  */
-public class productDisplayActivity extends AppCompatActivity {
+public class productDisplayActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
     private RecyclerView recyclerView;
     private MyAdapter adapter;
@@ -46,8 +47,20 @@ public class productDisplayActivity extends AppCompatActivity {
         // Set adapter to RecyclerView
         recyclerView.setAdapter(adapter);
 
+        SearchView searchView = findViewById(R.id.search_view);
+        searchView.setOnQueryTextListener(this);
+
 
     }
 
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
+    }
 }

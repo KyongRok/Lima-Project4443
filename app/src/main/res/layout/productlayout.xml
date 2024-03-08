@@ -14,8 +14,19 @@
             android:id="@+id/btn_home"
             android:layout_width="53dp"
             android:layout_height="52dp"
+            android:src= "@drawable/home"
             android:contentDescription="Home Button?"
+
             android:padding="12dp" />
+
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:text="Search for Shoe"
+            android:layout_height="wrap_content"/>
+
+
+
 
         <TextView
             android:id="@+id/textView2"
@@ -23,49 +34,51 @@
             android:layout_height="wrap_content"
             android:text=" Welcome Back, Guest" />
 
-        <!-- RecyclerView to display shoes -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <!-- Bottom Bar -->
-        <LinearLayout
-            android:id="@+id/bottom_bar"
-            android:layout_width="match_parent"
+
+    </LinearLayout>
+    <!-- RecyclerView to display shoes -->
+
+    <!-- Bottom Bar -->
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@color/black">
+
+        <!-- Home Button -->
+        <ImageButton
+            android:id="@+id/btn_home_bottom"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            android:background="@color/black">
+            android:src="@drawable/home"
+            android:layout_weight="1"
+            android:contentDescription="Home Button" />
 
-            <!-- Home Button -->
-            <ImageButton
-                android:id="@+id/btn_home_bottom"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/home"
-                android:layout_weight="1"
-                android:contentDescription="Home Button" />
+        <!-- Cart Button -->
+        <ImageButton
+            android:id="@+id/btn_cart"
+            android:src="@drawable/cart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="Cart Button" />
 
-            <!-- Cart Button -->
-            <ImageButton
-                android:id="@+id/btn_cart"
-                android:src="@drawable/cart"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="Cart Button" />
+        <!-- Profile Button -->
+        <ImageButton
+            android:id="@+id/btn_profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="Profile Button" />
 
-            <!-- Profile Button -->
-            <ImageButton
-                android:id="@+id/btn_profile"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="Profile Button" />
-
-        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
