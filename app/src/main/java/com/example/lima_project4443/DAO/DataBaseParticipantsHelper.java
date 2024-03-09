@@ -1,8 +1,10 @@
 package com.example.lima_project4443.DAO;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -19,10 +21,11 @@ public class DataBaseParticipantsHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CreateTableStatement = "CREATE TABLE PARTICIPANT_TABLE (" +
-                "ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                 "AGE INTEGER, " +
                 "PHONE_USE INTEGER, " +
-                "GENDER)";
+                "GENDER INTEGER, " +
+                "COMPLETION_TIME REAL)";
 
         db.execSQL(CreateTableStatement);
     }
@@ -37,12 +40,40 @@ public class DataBaseParticipantsHelper extends SQLiteOpenHelper {
     public boolean addParticipants(Login_Model login_model){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+        //inserts into database
         cv.put("AGE",login_model.getAge());
         cv.put("PHONE_USE", login_model.getHours_phone());
         cv.put("gender", login_model.getGender());
         long participantTable = db.insert("PARTICIPANT_TABLE", null, cv);
-
+        getParticipantsId(login_model);
+        db.close();
         return participantTable == 1;
-
     }
+
+    public void getParticipantsId(Login_Model login_model){
+        //ID of the participants are required for shopping cart, wishlist and later adding
+        //result of the experiment into the participants data,
+        //sets the id of the participants by getting the auto incremented id of the participants
+        SQLiteDatabase db = this.getWritableDatabase();
+        String Query = "SELECT LAST_INSERT_ROWID();";
+        Cursor cursor = db.rawQuery(Query,null);
+        if(cursor != null){
+            cursor.moveToFirst();
+            long id = cursor.getInt(0);
+            login_model.setId(id);
+            cursor.close();
+        }
+    }
+
+    public void setParticipantCompletionTime(double time, Login_Model login_model){
+        //used to insert completion time for the participants
+        login_model.setCompletion_time(time);
+        SQLiteDatabase db = this.getWritableDatabase();
+        String Query = "UPDATE PARTICIPANT_TABLE" +
+                "SET COMPLETION TIME = '" + time + "'" +
+                "WHERE ID = '" + login_model.getId() + "'";
+        db.execSQL(Query);
+        db.close();
+    }
+
 }

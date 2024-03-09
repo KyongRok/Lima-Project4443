@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
                     loginmodel.setGender(gender);
                     loginmodel.setHours_Phone(Integer.parseInt(hoursofUsage.getText().toString()));
                     dbHelper.addParticipants(loginmodel);
-                    Toast.makeText(MainActivity.this, loginmodel.toString(), Toast.LENGTH_LONG).show();
+                   // Toast.makeText(MainActivity.this, loginmodel.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, Long.toString(loginmodel.getId()),Toast.LENGTH_LONG).show();
                 }
                 catch(Exception e){
                     Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
