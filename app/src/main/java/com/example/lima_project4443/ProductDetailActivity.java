@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
-    private TextView productName, price;
+    private TextView productName, price, desc;
     private RatingBar rating;
     private ImageButton addcartButton, addwishlistButton;
     private Spinner size;
@@ -30,6 +30,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         setContentView(R.layout.productdetailpage);
         productImage = findViewById(R.id.image_shoe);
         productImage.setImageResource(R.drawable.pandadunks);
+        //addcartButton.setImageResource(R.drawable.addcart);
 
 
 
