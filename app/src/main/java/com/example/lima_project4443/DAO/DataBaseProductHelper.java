@@ -108,7 +108,9 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
 
                 result.add(p);
             }
+            cursor.close();
         }
+
         db.close();
         return result;
     }
