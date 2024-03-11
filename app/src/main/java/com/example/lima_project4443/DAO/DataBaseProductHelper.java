@@ -28,7 +28,8 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
                 "PRICE REAL, " +
                 "RATING REAL, " +
                 "COLOR TEXT, " +
-                "BRAND TEXT)";
+                "BRAND TEXT, " +
+                "IMAGEID INTEGER)";
 
         db.execSQL(CreateTableStatement);
     }
@@ -47,7 +48,10 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
         cv.put("RATING" , product.getRating());
         cv.put("COLOR" , product.getColor());
         cv.put("BRAND" , product.getBrand());
+        cv.put("IMAGEID" , product.getImageResourceId());
         long productTable = db.insert("PRODUCT_TABLE", null, cv);
+        //this fucntion has to be called here because SQLITE LAST_INSERT_ROWID()
+        //gets the row that was last edited in the same db connection, so before db close
         getProductId(product);
         db.close();
         return productTable == 1;
@@ -100,11 +104,12 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
                 p.setRating(cursor.getFloat(3));
                 p.setColor(cursor.getString(4));
                 p.setBrand(cursor.getString(5));
+                p.setImageResourceId(cursor.getInt(6));
 
                 result.add(p);
             }
         }
-
+        db.close();
         return result;
     }
 

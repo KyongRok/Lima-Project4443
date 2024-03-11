@@ -7,6 +7,7 @@ public class Product_Model {
     private String color;
     private long productId;
     private String brand;
+    private int imageResourceId;
     public Product_Model(){
 
     }
@@ -17,6 +18,7 @@ public class Product_Model {
     public void setProductName(String name){
         this.productName = name;
     }
+    public void setImageResourceId(int id){this.imageResourceId = id;}
 
     public void setPrice(float price){
         this.price = price;
@@ -35,6 +37,7 @@ public class Product_Model {
     public long getProductId(){
         return this.productId;
     }
+    public int getImageResourceId(){return this.imageResourceId;}
     public String getProductName(){
         return this.productName;
     }
