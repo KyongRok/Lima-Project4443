@@ -1,58 +1,46 @@
 package com.example.lima_project4443;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lima_project4443.Model.Product_Model;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-Group Members:
-KyongRok Kim, 215813413
-Brian Nguyen, 217233966
-Seong Su Kim, 215481575
-Alexis Estropia, 217146473
- */
-public class productDisplayActivity extends AppCompatActivity{
+public class productDisplayActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private productDisplayAdapter adapter;
-    private List<Shoe> shoeList; //List of shoes added to the Recycler View
-
-
+    private List<Product_Model> productList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.productlayout);
 
-        // Initialize RecyclerView
         recyclerView = findViewById(R.id.recycler_view);
-        int numberOfColumns = 2; // Change this number as needed
-        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        // Initialize shoeList (populate it with your data)
-        shoeList = new ArrayList<>();
-        shoeList.add(new Shoe("Nike Air Max", "$200", R.drawable.pandadunks));
-        shoeList.add(new Shoe("Adidas UltraBoost", "$180", R.drawable.pandadunks));
-        shoeList.add(new Shoe("Puma RS-X", "$160", R.drawable.pandadunks));
-        shoeList.add(new Shoe("New Balance 574", "$130", R.drawable.pandadunks));
+        productList = new ArrayList<>();
+        productList.add(new Product_Model("Nike Air Max", 200, R.drawable.pandadunks));
+        productList.add(new Product_Model("Adidas UltraBoost", 180, R.drawable.pandadunks));
+        productList.add(new Product_Model("Puma RS-X", 160, R.drawable.pandadunks));
+        productList.add(new Product_Model("New Balance 574", 130, R.drawable.pandadunks));
 
-        shoeList.add(new Shoe("Reebok Classic", "$150", R.drawable.pandadunks));
-        shoeList.add(new Shoe("Under Armour Curry", "$170", R.drawable.pandadunks));
-        shoeList.add(new Shoe("Vans Old Skool", "$90", R.drawable.pandadunks));
-        shoeList.add(new Shoe("Converse Chuck Taylor", "$80", R.drawable.pandadunks));
+        productList.add(new Product_Model("Reebok Classic", 150, R.drawable.pandadunks));
+        productList.add(new Product_Model("Under Armour Curry", 170, R.drawable.pandadunks));
+        productList.add(new Product_Model("Vans Old Skool", 90, R.drawable.pandadunks));
+        productList.add(new Product_Model("Converse Chuck Taylor", 80, R.drawable.pandadunks));
 
-
-
-        // Initialize adapter with the shoeList
-        adapter = new productDisplayAdapter(shoeList);
-
-        // Set adapter to RecyclerView
+        adapter = new productDisplayAdapter(productList);
         recyclerView.setAdapter(adapter);
 
         SearchView searchView = findViewById(R.id.search_view);
@@ -70,11 +58,17 @@ public class productDisplayActivity extends AppCompatActivity{
             }
         });
 
-
-
-
+        ImageButton wishListButton = findViewById(R.id.btn_fav);
+        wishListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("TEST", "Hello");
+                openWishlistActivity();
+            }
+        });
     }
 
-
-
+    public void openWishlistActivity() {
+        // Implement opening WishlistActivity here
+    }
 }

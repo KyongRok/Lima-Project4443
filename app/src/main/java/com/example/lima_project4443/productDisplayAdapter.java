@@ -13,15 +13,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lima_project4443.Model.Product_Model;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAdapter.ViewHolder> {
 
-    private static List<Shoe> shoeList;
-    private final ArrayList<Shoe> filteredShoeList; // Add a filtered list to store filtered items
-    private final ArrayList<Shoe> favouriteShoeList;
-    public productDisplayAdapter(List<Shoe> shoeList) {
+    private static List<Product_Model> shoeList;
+    private final ArrayList<Product_Model> filteredShoeList; // Add a filtered list to store filtered items
+    private final ArrayList<Product_Model> favouriteShoeList;
+    public productDisplayAdapter(List<Product_Model> shoeList) {
 
         this.shoeList = shoeList;
         this.filteredShoeList = new ArrayList<>(shoeList);
@@ -36,8 +38,8 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
         }
         else{
             q = q.toLowerCase();
-            for (Shoe shoe: shoeList){
-                if (shoe.getName().toLowerCase().contains(q)){
+            for (Product_Model shoe: shoeList){
+                if (shoe.getProductName().toLowerCase().contains(q)){
                     filteredShoeList.add(shoe);
                 }
             }
@@ -61,10 +63,10 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Shoe shoe = filteredShoeList.get(position);
-        holder.imageView.setImageResource(shoe.getImageResourceId());
-        holder.textViewName.setText(shoe.getName());
-        holder.priceViewName.setText(shoe.getPrice());
+        Product_Model shoe = filteredShoeList.get(position);
+        holder.imageView.setImageResource(shoe.getImageID());
+        holder.textViewName.setText(shoe.getProductName());
+        holder.priceViewName.setText((int) shoe.getPrice());
     }
 
 
@@ -89,7 +91,7 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
                 public void onClick(View v) {
                     int position = getAdapterPosition(); //Based off of which shoe we are interacting with (Shoe 1 = Position 0)
                     Log.d("TEST","AddToCartButton");
-                    Shoe selectedShoe = shoeList.get(position);
+                    Product_Model selectedShoe = shoeList.get(position);
                     addToCart(selectedShoe);
                 }
             }
@@ -101,7 +103,7 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
                     int position = getAdapterPosition();
                     Log.d("TEST","AddToWishListButton");
                     if(position != RecyclerView.NO_POSITION){
-                        Shoe selectedShoe = shoeList.get(position);
+                        Product_Model selectedShoe = shoeList.get(position);
                         addToWishList(selectedShoe);
                     }
 
@@ -111,9 +113,9 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
         }
 
 
-        private void addToCart(Shoe selectedShoe) {
+        private void addToCart(Product_Model selectedShoe) {
         }
-        private void addToWishList(Shoe selectedShoe) {
+        private void addToWishList(Product_Model selectedShoe) {
         }
 
 
