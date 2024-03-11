@@ -121,9 +121,9 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
         ArrayList<Product_Model> result = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         String Query = "SELECT * FROM PRODUCT_TALBE " +
-                "WHERE PRODUCT_NAME LIKE '%" + target +"' OR " +
-                "COLOR LIKE '%" + target + "' OR " +
-                "BRAND LIKE '%" + target + "'";
+                "WHERE PRODUCT_NAME LIKE '%" + target +"%' OR " +
+                "COLOR LIKE '%" + target + "%' OR " +
+                "BRAND LIKE '%" + target + "%'";
         Cursor cursor = db.rawQuery(Query, null);
         if (cursor != null) {
             cursor.moveToFirst();
