@@ -9,17 +9,19 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:elevation="4dp"
         android:background="@android:color/white"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:padding= "4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/backarrow" />
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/backarrow" />
+
         <TextView
             android:id="@+id/gobacktext"
             android:layout_width="match_parent"
@@ -31,6 +33,7 @@
             android:textSize="16sp" />
 
     </androidx.appcompat.widget.Toolbar>
+
     <TextView
         android:id="@+id/textViewProductName"
         android:layout_width="match_parent"
@@ -71,12 +74,12 @@
 
     <ImageButton
         android:id="@+id/buttoncart"
-        android:layout_width="80dp"
-        android:layout_height="77dp"
+        android:layout_width="71dp"
+        android:layout_height="63dp"
         android:layout_below="@id/image_shoe"
         android:layout_alignStart="@+id/textViewProductName"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="243dp"
+        android:layout_marginTop="9dp"
         android:background="@android:color/transparent"
         android:scaleType="centerCrop"
         android:src="@drawable/addtocart" />
@@ -99,4 +102,27 @@
         android:padding="16dp"
         android:text="Product Description"
         android:textSize="16sp" />
+
+    <ImageButton
+        android:id="@+id/wishlistButton"
+        android:layout_width="152dp"
+        android:layout_height="32dp"
+        android:layout_below="@+id/spinner"
+        android:layout_marginTop="29dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/addtowishlistfinal" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="106dp"
+        android:layout_height="26dp"
+        android:layout_below="@+id/buttoncart"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="57dp"
+        android:textStyle="bold"
+        android:layout_toEndOf="@+id/wishlistButton"
+        android:text="Add to Cart" />
 </RelativeLayout>

@@ -14,11 +14,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ProductDetailActivity extends AppCompatActivity {
+public class ProductDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView productName, price, desc;
     private RatingBar rating;
-    private ImageButton addcartButton, addwishlistButton;
+    private ImageButton addcartButton, addwishlistButton, backButton;
     private Spinner size;
     private ImageView productImage;
     private int productId;
@@ -30,12 +30,15 @@ public class ProductDetailActivity extends AppCompatActivity {
         setContentView(R.layout.productdetailpage);
         productImage = findViewById(R.id.image_shoe);
         productImage.setImageResource(R.drawable.pandadunks);
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(this);
         //addcartButton.setImageResource(R.drawable.addcart);
 
 
 
 
     }
+    @Override
     public void onClick (View v){
         if (v == addcartButton) {
             Toast.makeText(ProductDetailActivity.this, "Added to your shopping cart", Toast.LENGTH_LONG).show();
@@ -44,8 +47,13 @@ public class ProductDetailActivity extends AppCompatActivity {
             //Also, check if the product is already in these lists
             Toast.makeText(ProductDetailActivity.this, "Added to your wishlist", Toast.LENGTH_LONG).show();
 
+        }
+        else if(v == backButton ){
+            //Toast.makeText(ProductDetailActivity.this, "Going back", Toast.LENGTH_LONG).show();
 
-        } else {
+            startActivity(new Intent(ProductDetailActivity.this,productDisplayActivity.class));
+
+        }else {
             Toast.makeText(ProductDetailActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
 
 
