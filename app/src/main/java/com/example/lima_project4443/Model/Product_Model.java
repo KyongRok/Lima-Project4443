@@ -3,13 +3,22 @@ package com.example.lima_project4443.Model;
 public class Product_Model {
     private String productName;
     private float price;
-    private float rating;
+    private double rating;
     private String color;
     private long productId;
     private String brand;
     private int imageResourceId;
     public Product_Model(){
 
+    }
+
+    public Product_Model(String name, float price, double rating, String color, String brand, int image){
+        this.productName = name;
+        this.price = price;
+        this.rating = rating;
+        this.color = color;
+        this.brand = brand;
+        this.imageResourceId = image;
     }
 
     public void setProductId(long productId) {
@@ -44,7 +53,7 @@ public class Product_Model {
     public float getPrice(){
         return this.price;
     }
-    public float getRating(){
+    public double getRating(){
         return this.rating;
     }
     public String getColor(){

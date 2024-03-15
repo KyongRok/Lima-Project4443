@@ -8,8 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.lima_project4443.Model.Login_Model;
 import com.example.lima_project4443.Model.Product_Model;
+import com.example.lima_project4443.R;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,42 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertNewProduct(Product_Model product){
+    public boolean databasePopulated(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String Query = "SELECT * FROM PRODUCT_TABLE ";
+        Cursor cursor = db.rawQuery(Query, null);
+
+        if(cursor.getCount() > 0){
+            cursor.close();
+            return true;
+        }else{
+            cursor.close();
+            return false;
+        }
+    }
+
+    public void populateInitialDatabase(){
+        Product_Model Nike_air_max = new Product_Model("Nike Air Max", 200, 4.5, "Black" , "Nike" , R.drawable.pandadunks);
+        Product_Model UltraBoost = new Product_Model("Adidas UltraBoost", 180, 4.2, "White" , "Adidas" , R.drawable.pandadunks);
+        Product_Model Puma_RSX = new Product_Model("Puma RS-X", 160, 4.0, "White" , "Puma" , R.drawable.pandadunks);
+        Product_Model NewBalance574 = new Product_Model("New Balance 574", 130, 4.8, "Khaki" , "New Balance" , R.drawable.pandadunks);
+        Product_Model Reebok_classic = new Product_Model("Reebok Classic", 150, 4.2, "White" , "Reebok" , R.drawable.pandadunks);
+        Product_Model UA_Curry = new Product_Model("Under Armour Curry", 170, 4.6, "Yellow" , "Under Armour" , R.drawable.pandadunks);
+        Product_Model Vans_oldSkool = new Product_Model("Vans Old Skool", 90, 4.9, "Black" , "Vans" , R.drawable.pandadunks);
+        Product_Model Converse_Chuck = new Product_Model("Converse Chuck Taylor", 80, 4.8, "Black" , "Converse" , R.drawable.pandadunks);
+
+        insertNewProduct(Nike_air_max);
+        insertNewProduct(UltraBoost);
+        insertNewProduct(Puma_RSX);
+        insertNewProduct(NewBalance574);
+        insertNewProduct(Reebok_classic);
+        insertNewProduct(UA_Curry);
+        insertNewProduct(Vans_oldSkool);
+        insertNewProduct(Converse_Chuck);
+    }
+
+
+    public void insertNewProduct(Product_Model product){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         //inserts into database
@@ -54,7 +89,6 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
         //gets the row that was last edited in the same db connection, so before db close
         getProductId(product);
         db.close();
-        return productTable == 1;
     }
 
     public void getProductId(Product_Model product){
@@ -89,7 +123,7 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
             }
         }
         SQLiteDatabase db = this.getWritableDatabase();
-        String Query = "SELECT * FROM PRODUCT_TALBE " +
+        String Query = "SELECT * FROM PRODUCT_TABLE " +
                 "WHERE PRODUCT_NAME IN (" + target + ") OR " +
                 "BRAND IN (" + target + ") OR " +
                 "COLOR IN (" + target + ")";
@@ -120,7 +154,7 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
         //shows up anything related to target string, could be name, brand, ect...
         ArrayList<Product_Model> result = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
-        String Query = "SELECT * FROM PRODUCT_TALBE " +
+        String Query = "SELECT * FROM PRODUCT_TABLE " +
                 "WHERE PRODUCT_NAME LIKE '%" + target +"%' OR " +
                 "COLOR LIKE '%" + target + "%' OR " +
                 "BRAND LIKE '%" + target + "%'";
@@ -143,9 +177,31 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
         }
 
         db.close();
+        return result;
+    }
 
+    public ArrayList<Product_Model> searchAll(){
+        ArrayList<Product_Model> result = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String Query = "SELECT * FROM PRODUCT_TABLE ";
+        Cursor cursor = db.rawQuery(Query, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            while (cursor.moveToNext()) {
+                Product_Model p = new Product_Model();
+                p.setProductId(cursor.getInt(0));
+                p.setProductName(cursor.getString(1));
+                p.setPrice(cursor.getFloat(2));
+                p.setRating(cursor.getFloat(3));
+                p.setColor(cursor.getString(4));
+                p.setBrand(cursor.getString(5));
+                p.setImageResourceId(cursor.getInt(6));
 
-
+                result.add(p);
+            }
+            cursor.close();
+        }
+        db.close();
         return result;
     }
 
