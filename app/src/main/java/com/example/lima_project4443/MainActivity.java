@@ -4,12 +4,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lima_project4443.DAO.DataBaseParticipantsHelper;
@@ -28,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup radioGroupGender;
     private RadioButton radioButtonMale, radioButtonFemale;
     private Button submitButton;
+    private Switch switchToggle;
+    private TextView selectedOption;
+    private String selectedVersion;
+
 
     //public DataBaseHelper(@Nullable Context context){
 
@@ -43,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
         radioButtonFemale = findViewById(R.id.radioButtonFemale);
         hoursofUsage = findViewById(R.id.editTextHours);
         submitButton = findViewById(R.id.buttonSubmit);
+        Switch switchToggle = findViewById(R.id.typeToggle);
+        selectedOption = findViewById(R.id.selectedOption);
+        switchToggle.setChecked(false);
+        selectedOption.setText("Selected Option: A");
+        selectedVersion = "A";
+
+        //@@@@@@DELETE LATER!!
+        boolean dontmakedata = true;
+
         DataBaseParticipantsHelper dbHelper = new DataBaseParticipantsHelper(MainActivity.this);
         //db works
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -56,9 +73,17 @@ public class MainActivity extends AppCompatActivity {
                     int gender = (genderId == R.id.radioButtonMale) ? 1 : 2;
                     loginmodel.setGender(gender);
                     loginmodel.setHours_Phone(Integer.parseInt(hoursofUsage.getText().toString()));
-                    dbHelper.addParticipants(loginmodel);
-                   // Toast.makeText(MainActivity.this, loginmodel.toString(), Toast.LENGTH_LONG).show();
+                    if(dontmakedata == false) {
+                        dbHelper.addParticipants(loginmodel);
+                    }
                     Toast.makeText(MainActivity.this, Long.toString(loginmodel.getId()),Toast.LENGTH_LONG).show();
+                    Bundle b = new Bundle();
+                    b.putString("type",selectedVersion);
+                    // might need participant name as well... b.putString("participant")
+                    Intent i = new Intent(MainActivity.this,LoginActivity.class);
+                    i.putExtras(b);
+                    startActivity(i);
+
                 }
                 catch(Exception e){
                     Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
@@ -71,5 +96,25 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        /**
+         * A listener for toggle that determines which version will be tested
+         */
+        switchToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // Switch is in the "B" position
+                    selectedOption.setText("Selected Option: B");
+                    selectedVersion = "B";
+                    Toast.makeText(MainActivity.this, "Switch is in B position", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Switch is in the "A" position
+                    selectedOption.setText("Selected Option: A");
+                    selectedVersion = "A";
+                    Toast.makeText(MainActivity.this, "Switch is in A position", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
-}
+    }

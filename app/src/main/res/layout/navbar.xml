@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottom_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:orientation="horizontal"
+    android:background="@color/black">
+
+    <!-- Home Button -->
+    <ImageButton
+        android:id="@+id/btn_home_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home"
+        android:layout_weight="1"
+        android:contentDescription="Home Button" />
+
+    <!-- Favourite Button -->
+    <ImageButton
+        android:id="@+id/btn_fav"
+        android:src="@drawable/like"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="Cart Button" />
+
+    <!-- Cart Button -->
+    <ImageButton
+        android:id="@+id/btn_cart"
+        android:src="@drawable/cart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="Cart Button" />
+
+    <!-- Profile Button -->
+    <ImageButton
+        android:id="@+id/btn_profile"
+        android:src="@drawable/person"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="Profile Button" />
+</LinearLayout>
