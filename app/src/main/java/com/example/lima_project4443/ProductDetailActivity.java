@@ -30,6 +30,8 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         //pick up the product info from previous activity (Shoe object)
         Intent intent = getIntent();
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.productdetailpage);
 
@@ -40,6 +42,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         addwishlistButton = findViewById(R.id.wishlistButton);
         sleekwishButton = findViewById(R.id.wishButtonB);
         addcartButton = findViewById(R.id.buttoncart);
+        size = findViewById(R.id.spinner);
         homeButton.setOnClickListener(this);
         backButton.setOnClickListener(this);
         addwishlistButton.setOnClickListener(this);
@@ -64,6 +67,9 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick (View v){
         if (v == addcartButton) {
+            String selectedSize = (String) size.getSelectedItem();
+            //add it to the db
+
             Toast.makeText(ProductDetailActivity.this, "Added to your shopping cart", Toast.LENGTH_LONG).show();
 
         } else if (v == addwishlistButton || v == sleekwishButton) {
