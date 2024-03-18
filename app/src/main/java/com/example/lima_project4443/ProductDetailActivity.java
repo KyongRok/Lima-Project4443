@@ -26,6 +26,8 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
     private int productId;
     private String type;
     NavigationHandler handler = new NavigationHandler(this);
+    private ShoppingCart cart = ShoppingCart.getInstance();
+    private Wishlist wl = Wishlist.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //pick up the product info from previous activity (Shoe object)
@@ -35,6 +37,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.productdetailpage);
 
+
         productImage = findViewById(R.id.image_shoe);
         productImage.setImageResource(R.drawable.pandadunks);
         backButton = findViewById(R.id.backButton);
@@ -42,6 +45,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         addwishlistButton = findViewById(R.id.wishlistButton);
         sleekwishButton = findViewById(R.id.wishButtonB);
         addcartButton = findViewById(R.id.buttoncart);
+        cartText = findViewById(R.id.addcarttextView);
         size = findViewById(R.id.spinner);
         homeButton.setOnClickListener(this);
         backButton.setOnClickListener(this);
@@ -52,11 +56,15 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         //DELETE LATER!
         type = "A";
 
-        if(type.equals("B")){
+        //get rid of unnecessary components for design A (Text + Icon)
+        if(type.equals("A")){
             sleekwishButton.setVisibility(View.GONE);
+
         }
+        //... for design B (Icon only)
         else{
             addwishlistButton.setVisibility(View.GONE);
+            cartText.setVisibility(View.GONE);
         }
         //addcartButton.setImageResource(R.drawable.addcart);
 
@@ -69,6 +77,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         if (v == addcartButton) {
             String selectedSize = (String) size.getSelectedItem();
             //add it to the db
+            //cart.cartList.add();
 
             Toast.makeText(ProductDetailActivity.this, "Added to your shopping cart", Toast.LENGTH_LONG).show();
 

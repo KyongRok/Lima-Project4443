@@ -6,10 +6,10 @@ public class ShoppingCart {
 
     private static ShoppingCart cartInstance = null;
 
-    public ArrayList<CartItem> cartArray;
+    public ArrayList<CartItem> cartList;
 
     private ShoppingCart(){
-        cartArray = new ArrayList<CartItem>();
+        cartList = new ArrayList<CartItem>();
 
 
     }

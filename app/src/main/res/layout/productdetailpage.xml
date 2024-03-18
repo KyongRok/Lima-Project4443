@@ -126,7 +126,7 @@
         app:srcCompat="@drawable/addtowishlistfinal" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/addcarttextView"
         android:layout_width="106dp"
         android:layout_height="26dp"
         android:layout_below="@+id/buttoncart"
