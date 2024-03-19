@@ -5,7 +5,7 @@ public class Login_Model {
     private int gender;
 
     private int hours_phone;
-    private double completion_time;
+    private String type;
     private long id;
     public Login_Model(){
 
@@ -26,9 +26,8 @@ public class Login_Model {
     public void setHours_Phone(int hours){
         this.hours_phone = hours;
     }
-
-    public void setCompletion_time(double time){
-        this.completion_time = time;
+    public void setType(String str){
+        this.type = str;
     }
 
     public int getAge(){
@@ -46,9 +45,10 @@ public class Login_Model {
     public long getId(){
         return this.id;
     }
-
-    public double getCompletionTime(){
-        return this.completion_time;
+    public String getType(){
+        return this.type;
     }
+
+
 
 }

@@ -24,9 +24,13 @@ public class DataBaseParticipantsHelper extends SQLiteOpenHelper {
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                 "AGE INTEGER, " +
                 "PHONE_USE INTEGER, " +
-                "GENDER INTEGER, " +
+                "GENDER INTEGER)";
+        String CreateTableStatement_Records = "CREATE TABLE PARTICIPANT_RECORDS (" +
+                "ID INTEGER PRIMARY KEY, " +
+                "TYPE TEXT, " +
                 "COMPLETION_TIME REAL)";
 
+        db.execSQL(CreateTableStatement_Records);
         db.execSQL(CreateTableStatement);
     }
 
@@ -67,13 +71,16 @@ public class DataBaseParticipantsHelper extends SQLiteOpenHelper {
 
     public void setParticipantCompletionTime(double time, Login_Model login_model){
         //used to insert completion time for the participants
-        login_model.setCompletion_time(time);
         SQLiteDatabase db = this.getWritableDatabase();
-        String Query = "UPDATE PARTICIPANT_TABLE" +
-                "SET COMPLETION TIME = '" + time + "'" +
-                "WHERE ID = '" + login_model.getId() + "'";
-        db.execSQL(Query);
+        ContentValues cv = new ContentValues();
+        //inserts into database
+        cv.put("ID",login_model.getId());
+        cv.put("TYPE", login_model.getType());
+        cv.put("COMPLETION_TIME", time);
+        long participantTable = db.insert("PARTICIPANT_RECORDS", null, cv);
+        getParticipantsId(login_model);
         db.close();
+
     }
 
 }

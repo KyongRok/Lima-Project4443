@@ -73,11 +73,12 @@ public class MainActivity extends AppCompatActivity {
                     int gender = (genderId == R.id.radioButtonMale) ? 1 : 2;
                     loginmodel.setGender(gender);
                     loginmodel.setHours_Phone(Integer.parseInt(hoursofUsage.getText().toString()));
-                    if(dontmakedata == false) {
+
                         dbHelper.addParticipants(loginmodel);
-                    }
+
                     Toast.makeText(MainActivity.this, Long.toString(loginmodel.getId()),Toast.LENGTH_LONG).show();
                     Bundle b = new Bundle();
+                    loginmodel.setType(selectedVersion);
                     b.putString("type",selectedVersion);
                     // might need participant name as well... b.putString("participant")
                     Intent i = new Intent(MainActivity.this,LoginActivity.class);
