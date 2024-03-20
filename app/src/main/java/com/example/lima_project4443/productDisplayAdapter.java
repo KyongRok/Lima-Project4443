@@ -172,7 +172,7 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
                     if (position != RecyclerView.NO_POSITION) {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, ProductDetailActivity.class);
-                        intent.putExtra("product_id", shoeList.get(position).getProductId());
+                        intent.putExtra("product_name", shoeList.get(position).getProductName());
                         context.startActivity(intent);
                     }
                 }

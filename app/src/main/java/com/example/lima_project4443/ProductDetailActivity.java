@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.lima_project4443.DAO.DataBaseProductHelper;
+import com.example.lima_project4443.Model.Product_Model;
+
 import java.util.Objects;
 
 public class ProductDetailActivity extends AppCompatActivity implements View.OnClickListener {
@@ -23,11 +26,14 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
     private ImageButton addcartButton, addwishlistButton, backButton,sleekwishButton, homeButton, profileButton;
     private Spinner size;
     private ImageView productImage;
-    private int productId;
+    private String passedProductName;
     private String type;
     NavigationHandler handler = new NavigationHandler(this);
     private ShoppingCart cart = ShoppingCart.getInstance();
     private Wishlist wl = Wishlist.getInstance();
+    private Product_Model currentProduct;
+    DataBaseProductHelper dataBaseProduct = new DataBaseProductHelper(ProductDetailActivity.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //pick up the product info from previous activity (Shoe object)
@@ -36,9 +42,11 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.productdetailpage);
 
         Intent intent = getIntent();
-        if (intent != null && intent.hasExtra("product_id")) {
-            productId = intent.getIntExtra("product_id", -1); // -1 is the default value if the product ID is not found
-        }
+        if (intent != null && intent.hasExtra("product_name")) {
+            passedProductName = intent.getStringExtra("product_name"); // -1 is the default value if the product ID is not found
+
+            currentProduct = dataBaseProduct.searchProduct(passedProductName).get(0);}
+
         else {
             // Handle the case where product ID is not provided
             Toast.makeText(this, "Product ID not provided", Toast.LENGTH_SHORT).show();
@@ -46,10 +54,9 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
             return;
         }
 
-
-
+        productName = findViewById(R.id.textViewProductName);
+        price = findViewById(R.id.price);
         productImage = findViewById(R.id.image_shoe);
-        productImage.setImageResource(R.drawable.pandadunks);
         backButton = findViewById(R.id.backButton);
         homeButton = findViewById(R.id.btn_home_bottom);
         profileButton = findViewById(R.id.btn_profile);
@@ -64,6 +71,12 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         addwishlistButton.setOnClickListener(this);
         sleekwishButton.setOnClickListener(this);
         addcartButton.setOnClickListener(this);
+
+        productName.setText(currentProduct.getProductName());
+        price.setText("$" + String.valueOf(currentProduct.getPrice()));
+        productImage.setImageResource(currentProduct.getImageResourceId());
+        //productImage.setImageResource(R.drawable.oldskool);
+
 
         //DELETE LATER!
         type = "A";
