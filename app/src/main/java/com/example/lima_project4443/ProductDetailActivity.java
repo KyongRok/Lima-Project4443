@@ -20,7 +20,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
 
     private TextView productName, price, desc, cartText;
     private RatingBar rating;
-    private ImageButton addcartButton, addwishlistButton, backButton,sleekwishButton, homeButton;
+    private ImageButton addcartButton, addwishlistButton, backButton,sleekwishButton, homeButton, profileButton;
     private Spinner size;
     private ImageView productImage;
     private int productId;
@@ -31,6 +31,9 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //pick up the product info from previous activity (Shoe object)
+        Intent intent = getIntent();
+        //intent.getextra()
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.productdetailpage);
@@ -52,6 +55,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         productImage.setImageResource(R.drawable.pandadunks);
         backButton = findViewById(R.id.backButton);
         homeButton = findViewById(R.id.btn_home_bottom);
+        profileButton = findViewById(R.id.btn_profile);
         addwishlistButton = findViewById(R.id.wishlistButton);
         sleekwishButton = findViewById(R.id.wishButtonB);
         addcartButton = findViewById(R.id.buttoncart);
@@ -59,6 +63,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         size = findViewById(R.id.spinner);
         homeButton.setOnClickListener(this);
         backButton.setOnClickListener(this);
+        profileButton.setOnClickListener(this);
         addwishlistButton.setOnClickListener(this);
         sleekwishButton.setOnClickListener(this);
         addcartButton.setOnClickListener(this);
@@ -106,6 +111,10 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
             //Toast.makeText(ProductDetailActivity.this, "Going Home", Toast.LENGTH_LONG).show();
 
             handler.navigateToHome();
+        }
+        else if(v == profileButton){
+            handler.navigateToProfile();
+
         }
 
         else {
