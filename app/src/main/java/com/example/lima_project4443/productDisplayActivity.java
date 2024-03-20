@@ -34,8 +34,7 @@ public class productDisplayActivity extends AppCompatActivity {
         if(!dataBaseProduct.databasePopulated()){
             dataBaseProduct.populateInitialDatabase();
         }
-        //productList = dataBaseProduct.searchAll();
-        productList = dataBaseProduct.searchProduct("adidas");
+        productList = dataBaseProduct.searchAll();
         adapter = new productDisplayAdapter(productList);
         recyclerView.setAdapter(adapter);
 
