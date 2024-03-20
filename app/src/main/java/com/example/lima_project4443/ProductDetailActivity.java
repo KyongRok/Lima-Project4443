@@ -31,12 +31,21 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //pick up the product info from previous activity (Shoe object)
-        Intent intent = getIntent();
-        //intent.getextra()
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.productdetailpage);
+
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("product_id")) {
+            productId = intent.getIntExtra("product_id", -1); // -1 is the default value if the product ID is not found
+        }
+        else {
+            // Handle the case where product ID is not provided
+            Toast.makeText(this, "Product ID not provided", Toast.LENGTH_SHORT).show();
+            finish(); // Finish the activity if product ID is not provided
+            return;
+        }
+
 
 
         productImage = findViewById(R.id.image_shoe);

@@ -16,7 +16,7 @@ import com.example.lima_project4443.Model.Product_Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class productDisplayActivity extends AppCompatActivity {
+public class productDisplayActivity extends AppCompatActivity{
 
     private RecyclerView recyclerView;
     private productDisplayAdapter adapter;
@@ -53,14 +53,6 @@ public class productDisplayActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton wishListButton = findViewById(R.id.btn_fav);
-        wishListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("TEST", "Hello");
-                openWishlistActivity();
-            }
-        });
     }
 
     public void openWishlistActivity() {

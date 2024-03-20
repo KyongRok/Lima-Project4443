@@ -1,5 +1,7 @@
 package com.example.lima_project4443;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,6 +69,9 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
         holder.imageView.setImageResource(shoe.getImageResourceId());
         holder.textViewName.setText(shoe.getProductName());
         holder.priceViewName.setText(String.valueOf(shoe.getPrice()));
+
+
+
     }
 
 
@@ -107,6 +112,20 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
                         addToWishList(selectedShoe);
                     }
 
+                }
+            });
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Log.d("TEST", "Image button clicked at position: " + position);
+                    if (position != RecyclerView.NO_POSITION) {
+                        Context context = v.getContext();
+                        Intent intent = new Intent(context, ProductDetailActivity.class);
+                        intent.putExtra("product_id", shoeList.get(position).getProductId());
+                        context.startActivity(intent);
+                    }
                 }
             });
 
