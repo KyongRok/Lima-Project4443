@@ -31,9 +31,6 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //pick up the product info from previous activity (Shoe object)
-        Intent intent = getIntent();
-        //intent.getextra()
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.productdetailpage);
