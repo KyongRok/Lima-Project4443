@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <!-- Shoe Image -->
-    <ImageView
+    <ImageButton
         android:id="@+id/image_shoe"
         android:layout_width="200dp"
         android:layout_height="200dp"
