@@ -155,12 +155,22 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
         ArrayList<Product_Model> result = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         String Query = "SELECT * FROM PRODUCT_TABLE " +
-                "WHERE PRODUCT_NAME LIKE '%" + target +"%' OR " +
+                "WHERE " +
+                "PRODUCT_NAME LIKE '%" + target +"%' OR " +
                 "COLOR LIKE '%" + target + "%' OR " +
                 "BRAND LIKE '%" + target + "%'";
         Cursor cursor = db.rawQuery(Query, null);
         if (cursor != null) {
             cursor.moveToFirst();
+            Product_Model f = new Product_Model();
+            f.setProductId(cursor.getInt(0));
+            f.setProductName(cursor.getString(1));
+            f.setPrice(cursor.getFloat(2));
+            f.setRating(cursor.getFloat(3));
+            f.setColor(cursor.getString(4));
+            f.setBrand(cursor.getString(5));
+            f.setImageResourceId(cursor.getInt(6));
+            result.add(f);
             while (cursor.moveToNext()) {
                 Product_Model p = new Product_Model();
                 p.setProductId(cursor.getInt(0));
@@ -187,6 +197,15 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(Query, null);
         if (cursor != null) {
             cursor.moveToFirst();
+            Product_Model f = new Product_Model();
+            f.setProductId(cursor.getInt(0));
+            f.setProductName(cursor.getString(1));
+            f.setPrice(cursor.getFloat(2));
+            f.setRating(cursor.getFloat(3));
+            f.setColor(cursor.getString(4));
+            f.setBrand(cursor.getString(5));
+            f.setImageResourceId(cursor.getInt(6));
+            result.add(f);
             while (cursor.moveToNext()) {
                 Product_Model p = new Product_Model();
                 p.setProductId(cursor.getInt(0));
