@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                     Bundle b = new Bundle();
                     loginmodel.setType(selectedVersion);
                     b.putString("type",selectedVersion);
-                    // might need participant name as well... b.putString("participant")
                     Intent i = new Intent(MainActivity.this,LoginActivity.class);
                     i.putExtras(b);
                     startActivity(i);
