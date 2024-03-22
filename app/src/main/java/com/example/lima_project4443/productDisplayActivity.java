@@ -23,6 +23,8 @@ public class productDisplayActivity extends AppCompatActivity{
     private List<Product_Model> productList;
     DataBaseProductHelper dataBaseProduct = new DataBaseProductHelper(productDisplayActivity.this);
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,23 +41,30 @@ public class productDisplayActivity extends AppCompatActivity{
         recyclerView.setAdapter(adapter);
 
         SearchView searchView = findViewById(R.id.search_view);
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                adapter.filter(query);
+                adapter.search(query);
+                Log.d("TextSubmit", query);
+                displaySearchResultsAsString();
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                adapter.filter(newText);
+                adapter.search(newText);
+                displaySearchResultsAsString();
                 return false;
             }
         });
 
     }
-
-    public void openWishlistActivity() {
-        // Implement opening WishlistActivity here
+    public String displaySearchResultsAsString() {
+        String searchResults = adapter.getSearchShoeListAsString();
+        Log.d("Display Search Results", searchResults);
+        return searchResults;
     }
+
+
 }
