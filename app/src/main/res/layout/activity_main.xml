@@ -5,6 +5,22 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <Switch
+        android:id="@+id/typeToggle"
+        android:layout_width="69dp"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:textOff="A"
+        android:textOn="B" />
+    <TextView
+        android:id="@+id/selectedOption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Selected Option: "
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
     <EditText
         android:id="@+id/editTextAge"
         android:layout_width="match_parent"

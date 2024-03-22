@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/backarrow" />
+
+        <TextView
+            android:id="@+id/gobacktext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:padding="16dp"
+            android:text="Go Back"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/textViewProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:text="Product Name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="16dp"
+    />
+
+
+
+    <ImageView
+        android:id="@+id/image_shoe"
+        android:layout_width="314dp"
+        android:layout_height="232dp"
+        android:layout_below="@id/textViewProductName"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="40dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/pandadunks"
+        android:scaleType="centerCrop" />
+
+    <ImageButton
+        android:id="@+id/wishButtonB"
+        android:layout_width="80dp"
+        android:layout_height="77dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="45dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/heart" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="177dp"
+        android:layout_height="57dp"
+        android:layout_below="@id/image_shoe"
+        android:layout_marginTop="7dp"
+        android:padding="16dp"
+        android:textStyle="bold"
+        android:text="$"
+        android:textSize="16sp" />
+
+    <ImageButton
+        android:id="@+id/buttoncart"
+        android:layout_width="71dp"
+        android:layout_height="63dp"
+        android:layout_below="@id/image_shoe"
+        android:layout_alignStart="@+id/textViewProductName"
+        android:layout_marginStart="243dp"
+        android:layout_marginTop="9dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/addtocart" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/price"
+        android:layout_marginTop="25dp"
+        android:entries="@array/sizes_array" />
+
+    <TextView
+        android:id="@+id/productDescription"
+        android:layout_width="395dp"
+        android:layout_height="147dp"
+        android:layout_below="@id/image_shoe"
+        android:layout_marginTop="208dp"
+
+        android:padding="16dp"
+        android:text="Product Description"
+        android:textSize="16sp" />
+
+    <ImageButton
+        android:id="@+id/wishlistButton"
+        android:layout_width="152dp"
+        android:layout_height="32dp"
+        android:layout_below="@+id/spinner"
+        android:layout_marginTop="29dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/addtowishlistfinal" />
+
+    <TextView
+        android:id="@+id/addcarttextView"
+        android:layout_width="106dp"
+        android:layout_height="26dp"
+        android:layout_below="@+id/buttoncart"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="57dp"
+        android:textStyle="bold"
+        android:layout_toEndOf="@+id/wishlistButton"
+        android:text="Add to Cart" />
+
+    <!-- Include the navigation bar -->
+    <include layout="@layout/navbar" />
+</RelativeLayout>

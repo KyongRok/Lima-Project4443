@@ -19,11 +19,16 @@ public class DataBaseParticipantsHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CreateTableStatement = "CREATE TABLE PARTICIPANT_TABLE (" +
-                "ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "ID INTEGER PRIMARY KEY, " +
                 "AGE INTEGER, " +
                 "PHONE_USE INTEGER, " +
-                "GENDER)";
+                "GENDER INTEGER)";
+        String CreateTableStatement_Records = "CREATE TABLE PARTICIPANT_RECORDS (" +
+                "ID INTEGER, " +
+                "TYPE TEXT, " +
+                "COMPLETION_TIME REAL)";
 
+        db.execSQL(CreateTableStatement_Records);
         db.execSQL(CreateTableStatement);
     }
 
@@ -37,12 +42,35 @@ public class DataBaseParticipantsHelper extends SQLiteOpenHelper {
     public boolean addParticipants(Login_Model login_model){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+        //inserts into database
+        cv.put("ID" , login_model.getId());
         cv.put("AGE",login_model.getAge());
         cv.put("PHONE_USE", login_model.getHours_phone());
         cv.put("gender", login_model.getGender());
         long participantTable = db.insert("PARTICIPANT_TABLE", null, cv);
-
+        db.close();
         return participantTable == 1;
-
     }
+
+    public void setParticipantCompletionTime(double time, Login_Model login_model){
+        //used to insert completion time for the participants
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        //inserts into database
+        cv.put("ID",login_model.getId());
+        cv.put("TYPE", login_model.getType());
+        cv.put("COMPLETION_TIME", time);
+        long participantRecord = db.insert("PARTICIPANT_RECORDS", null, cv);
+        db.close();
+    }
+
+    public void updateParticipantTestType(Login_Model login_model){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String Query = "UPDATE PARTICIPANT_TABLE" +
+                "SET TYPE = '" + login_model.getType() + "'" +
+                "WHERE ID = '" + login_model.getId() + "'";
+        db.execSQL(Query);
+        db.close();
+    }
+
 }
