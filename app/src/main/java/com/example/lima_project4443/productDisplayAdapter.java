@@ -1,5 +1,7 @@
 package com.example.lima_project4443;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,31 +23,43 @@ import java.util.List;
 public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAdapter.ViewHolder> {
 
     private static List<Product_Model> shoeList;
-    private final ArrayList<Product_Model> filteredShoeList; // Add a filtered list to store filtered items
+    private final ArrayList<Product_Model> searchShoeList; // Add a filtered list to store filtered items
     private final ArrayList<Product_Model> favouriteShoeList;
     public productDisplayAdapter(List<Product_Model> shoeList) {
 
         this.shoeList = shoeList;
-        this.filteredShoeList = new ArrayList<>(shoeList);
+        this.searchShoeList = new ArrayList<>(shoeList);
         this.favouriteShoeList = new ArrayList<>(shoeList);
     }
 
-    public void filter(String q){
+    public void search(String q){
 
-        filteredShoeList.clear();
+        searchShoeList.clear();
         if(q.isEmpty()){
-            filteredShoeList.addAll(shoeList);
+            searchShoeList.addAll(shoeList);
         }
         else{
             q = q.toLowerCase();
             for (Product_Model shoe: shoeList){
                 if (shoe.getProductName().toLowerCase().contains(q)){
-                    filteredShoeList.add(shoe);
+                    searchShoeList.add(shoe);
                 }
             }
         }
         notifyDataSetChanged();
+        // Display search results as a string
+
     }
+
+    public String getSearchShoeListAsString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Product_Model shoe : searchShoeList) {
+            stringBuilder.append(shoe.toString()).append("\n");
+        }
+        return stringBuilder.toString();
+    }
+
+
 
     @NonNull
     @Override
@@ -58,15 +72,18 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
     @Override
     public int getItemCount() {
 
-        return filteredShoeList.size();
+        return searchShoeList.size();
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Product_Model shoe = filteredShoeList.get(position);
+        Product_Model shoe = searchShoeList.get(position);
         holder.imageView.setImageResource(shoe.getImageResourceId());
         holder.textViewName.setText(shoe.getProductName());
         holder.priceViewName.setText(String.valueOf(shoe.getPrice()));
+
+
+
     }
 
 
@@ -107,6 +124,20 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
                         addToWishList(selectedShoe);
                     }
 
+                }
+            });
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Log.d("TEST", "Image button clicked at position: " + position);
+                    if (position != RecyclerView.NO_POSITION) {
+                        Context context = v.getContext();
+                        Intent intent = new Intent(context, ProductDetailActivity.class);
+                        intent.putExtra("product_id", shoeList.get(position).getProductId());
+                        context.startActivity(intent);
+                    }
                 }
             });
 

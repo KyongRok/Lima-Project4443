@@ -60,4 +60,9 @@ public class Product_Model {
         return this.color;
     }
     public String getBrand(){return this.brand;}
+    @Override //Modify this so it gives string in proper format
+    public String toString() {
+        return "<" + brand + "," + productName + "," + color + ">";
+    }
+
 }
