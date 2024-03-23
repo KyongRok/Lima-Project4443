@@ -5,6 +5,12 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="checkout">
+        <State />
+      </entry>
+      <entry key="productDisplay">
+        <State />
+      </entry>
     </value>
   </component>
 </project>
