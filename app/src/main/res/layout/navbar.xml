@@ -12,35 +12,35 @@
     <ImageButton
         android:id="@+id/btn_home_bottom"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/home"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:contentDescription="Home Button" />
+        android:contentDescription="Home Button"
+        android:src="@drawable/home" />
 
     <!-- Favourite Button -->
     <ImageButton
         android:id="@+id/btn_fav"
-        android:src="@drawable/like"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:contentDescription="Cart Button" />
+        android:contentDescription="Cart Button"
+        android:src="@drawable/like" />
 
     <!-- Cart Button -->
     <ImageButton
         android:id="@+id/btn_cart"
-        android:src="@drawable/cart"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="128dp"
         android:layout_weight="1"
-        android:contentDescription="Cart Button" />
+        android:contentDescription="Cart Button"
+        android:src="@drawable/cart" />
 
     <!-- Profile Button -->
     <ImageButton
         android:id="@+id/btn_profile"
-        android:src="@drawable/person"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:contentDescription="Profile Button" />
+        android:contentDescription="Profile Button"
+        android:src="@drawable/person" />
 </LinearLayout>
