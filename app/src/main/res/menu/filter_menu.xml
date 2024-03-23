@@ -1,0 +1,59 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/filter_brand"
+        android:title="Brand">
+        <menu>
+            <item
+                android:id="@+id/filter_nike"
+                android:title="Nike" />
+            <item
+                android:id="@+id/filter_adidas"
+                android:title="Adidas" />
+            <item
+                android:id="@+id/filter_puma"
+                android:title="Puma" />
+            <item
+                android:id="@+id/filter_new_balance"
+                android:title="New Balance" />
+            <item
+                android:id="@+id/filter_reebok"
+                android:title="Reebok" />
+            <item
+                android:id="@+id/filter_under_armour"
+                android:title="Under Armour" />
+            <item
+                android:id="@+id/filter_vans"
+                android:title="Vans" />
+            <item
+                android:id="@+id/filter_converse"
+                android:title="Converse" />
+
+        </menu>
+    </item>
+    <item
+        android:id="@+id/filter_color"
+        android:title="Color">
+        <menu>
+            <item
+                android:id="@+id/filter_red"
+                android:title="Red" />
+            <item
+                android:id="@+id/filter_blue"
+                android:title="Blue" />
+            <item
+                android:id="@+id/filter_black"
+                android:title="Black" />
+            <item
+                android:id="@+id/filter_yellow"
+                android:title="Yellow" />
+            <item
+                android:id="@+id/filter_green"
+                android:title="Green" />
+            <item
+                android:id="@+id/filter_white"
+                android:title="White" />
+
+        </menu>
+    </item>
+
+</menu>
