@@ -54,14 +54,14 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
     }
 
     public void populateInitialDatabase(){
-        Product_Model Nike_air_max = new Product_Model("Nike Air Max", 200, 4.5, "Black" , "Nike" , R.drawable.nike_air_max);
-        Product_Model UltraBoost = new Product_Model("Adidas UltraBoost", 180, 4.2, "White" , "Adidas" , R.drawable.ultraboost);
-        Product_Model Puma_RSX = new Product_Model("Puma RS-X", 160, 4.0, "White" , "Puma" , R.drawable.rsx);
-        Product_Model NewBalance574 = new Product_Model("New Balance 574", 130, 4.8, "Khaki" , "New Balance" , R.drawable.nb574);
-        Product_Model Reebok_classic = new Product_Model("Reebok Classic", 150, 4.2, "White" , "Reebok" , R.drawable.reebokclassic);
-        Product_Model UA_Curry = new Product_Model("Under Armour Curry", 170, 4.6, "Yellow" , "Under Armour" , R.drawable.curry);
-        Product_Model Vans_oldSkool = new Product_Model("Vans Old Skool", 90, 4.9, "Black" , "Vans" , R.drawable.oldskool);
-        Product_Model Converse_Chuck = new Product_Model("Converse Chuck Taylor", 80, 4.8, "Black" , "Converse" , R.drawable.chucktaylor);
+        Product_Model Nike_air_max = new Product_Model("Nike Air Max", 200, 4.5, "black" , "Nike" , R.drawable.nike_air_max);
+        Product_Model UltraBoost = new Product_Model("Adidas UltraBoost", 180, 4.2, "white" , "Adidas" , R.drawable.ultraboost);
+        Product_Model Puma_RSX = new Product_Model("Puma RS-X", 160, 4.0, "white" , "Puma" , R.drawable.rsx);
+        Product_Model NewBalance574 = new Product_Model("New Balance 574", 130, 4.8, "khaki" , "New Balance" , R.drawable.nb574);
+        Product_Model Reebok_classic = new Product_Model("Reebok Classic", 150, 4.2, "white" , "Reebok" , R.drawable.reebokclassic);
+        Product_Model UA_Curry = new Product_Model("Under Armour Curry", 170, 4.6, "yellow" , "Under Armour" , R.drawable.curry);
+        Product_Model Vans_oldSkool = new Product_Model("Vans Old Skool", 90, 4.9, "black" , "Vans" , R.drawable.oldskool);
+        Product_Model Converse_Chuck = new Product_Model("Converse Chuck Taylor", 80, 4.8, "black" , "Converse" , R.drawable.chucktaylor);
 
         insertNewProduct(Nike_air_max);
         insertNewProduct(UltraBoost);
@@ -105,28 +105,53 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
         }
     }
 
-    public ArrayList<Product_Model> filterProduct(ArrayList<String> filter) {
+    public ArrayList<Product_Model> filterProductBrand(String target) {
+        //filter can be multiple, hence takes in as arraylist
+        //returns array list of filtered product model object
+       ArrayList<Product_Model> result = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String Query = "SELECT * FROM PRODUCT_TABLE " +
+                "WHERE BRAND = '" + target + "'";
+        Cursor cursor = db.rawQuery(Query, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            Product_Model f = new Product_Model();
+            f.setProductId(cursor.getInt(0));
+            f.setProductName(cursor.getString(1));
+            f.setPrice(cursor.getFloat(2));
+            f.setRating(cursor.getFloat(3));
+            f.setColor(cursor.getString(4));
+            f.setBrand(cursor.getString(5));
+            f.setImageResourceId(cursor.getInt(6));
+            result.add(f);
+            while (cursor.moveToNext()) {
+                Product_Model p = new Product_Model();
+                p.setProductId(cursor.getInt(0));
+                p.setProductName(cursor.getString(1));
+                p.setPrice(cursor.getFloat(2));
+                p.setRating(cursor.getFloat(3));
+                p.setColor(cursor.getString(4));
+                p.setBrand(cursor.getString(5));
+                p.setImageResourceId(cursor.getInt(6));
+
+                result.add(p);
+            }
+            cursor.close();
+        }
+
+
+
+        db.close();
+        return result;
+    }
+
+    public ArrayList<Product_Model> filterProductColor(String target) {
         //filter can be multiple, hence takes in as arraylist
         //returns array list of filtered product model object
         ArrayList<Product_Model> result = new ArrayList<>();
-        String target = "";
-        for (int i = 0; i < filter.size(); i++) {
-            if (i == filter.size() - 1) {
-                //if last one dont add ,
-                target += "'";
-                target += filter.get(i);
-                target += "'";
-            } else {
-                target += "'";
-                target += filter.get(i);
-                target += "',";
-            }
-        }
         SQLiteDatabase db = this.getWritableDatabase();
         String Query = "SELECT * FROM PRODUCT_TABLE " +
-                "WHERE PRODUCT_NAME IN (" + target + ") OR " +
-                "BRAND IN (" + target + ") OR " +
-                "COLOR IN (" + target + ")";
+                "WHERE COLOR = '" + target + "'";
         Cursor cursor = db.rawQuery(Query, null);
         if (cursor != null) {
             cursor.moveToFirst();
@@ -157,7 +182,6 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
         db.close();
         return result;
     }
-
 
     public ArrayList<Product_Model> searchProduct(String target){
         //shows up anything related to target string, could be name, brand, ect...
