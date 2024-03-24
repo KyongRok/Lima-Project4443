@@ -106,8 +106,7 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<Product_Model> filterProductBrand(String target) {
-        //filter can be multiple, hence takes in as arraylist
-        //returns array list of filtered product model object
+       //filters brand
        ArrayList<Product_Model> result = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         String Query = "SELECT * FROM PRODUCT_TABLE " +
@@ -146,8 +145,7 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<Product_Model> filterProductColor(String target) {
-        //filter can be multiple, hence takes in as arraylist
-        //returns array list of filtered product model object
+        //filters color
         ArrayList<Product_Model> result = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         String Query = "SELECT * FROM PRODUCT_TABLE " +
