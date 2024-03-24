@@ -49,9 +49,13 @@ public class UserInfo {
     public void setlname(String lname){
         this.lname = lname;
     }
-    public void setbdate(int year,int month,int date){
-        bdate=(year +"/"+month+"/"+date);
-    }
+   // public void setbdate(int year,int month,int date){
+    //    bdate=(year +"/"+month+"/"+date);
+   // }
+   public void setbdate(String dob){
+       bdate=dob;
+   }
+
 
 
 

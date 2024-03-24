@@ -20,9 +20,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     TextView fname,lname,dob;
     EditText fnameedit,lnameedit,dobedit;
-    ImageButton editButton, cancelButton;
-
-    UserInfo user = UserInfo.getInstance();
+    ImageButton editButton, cancelButton, homeButton;
+    Button confirmButton;
+    String storedDate;
+    NavigationHandler handler = new NavigationHandler(this);
+    UserInfo user;
     private DatePickerDialog.OnDateSetListener mDateListener;
     boolean edit;
 
@@ -33,11 +35,16 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
         Intent intent = getIntent();
+        user  = UserInfo.getInstance();
+        edit = false;
         fname = findViewById(R.id.fnamecontent);
         lname = findViewById(R.id.lnamecontent);
         dob = findViewById(R.id.dobcontent);
+        confirmButton = findViewById(R.id.confirmbutton);
+        confirmButton.setVisibility(View.GONE);
         editButton = findViewById(R.id.editButton);
         cancelButton = findViewById(R.id.cancelButton);
+        homeButton = findViewById(R.id.btn_home_bottom);
         fnameedit = findViewById(R.id.fnameedit);
         fnameedit.setVisibility(View.GONE);
         lnameedit = findViewById(R.id.lnameedit);
@@ -46,13 +53,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         dobedit.setVisibility(View.GONE);
         fname.setText(user.getfname());
         lname.setText(user.getlname());
-        fnameedit.setText(user.getfname());
-        lnameedit.setText(user.getlname());
-        dobedit.setText(user.getbdate());
+
         dob.setText(user.getbdate());
         editButton.setOnClickListener(this);
         dob.setOnClickListener(this);
         cancelButton.setOnClickListener(this);
+        confirmButton.setOnClickListener(this);
+        homeButton.setOnClickListener(this);
         cancelButton.setVisibility(View.GONE);
 
         //dob.setText(String.valueOf(user.getbdate().YEAR)+"-"+String.valueOf(user.getbdate().MONTH)+"-"+String.valueOf(user.getbdate().DATE));
@@ -82,7 +89,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        if(view == dob){
+        if(view == dob && edit){
             DatePickerDialog dialog = new DatePickerDialog(
                     ProfileActivity.this,
                     android.R.style.Theme_Holo_Light_Dialog_MinWidth,
@@ -94,17 +101,24 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             dialog.show();
         }
         if(view == editButton){
+            edit = true;
+            fnameedit.setText(user.getfname());
+            lnameedit.setText(user.getlname());
+            //dobedit.setText(user.getbdate());
             fnameedit.setVisibility(View.VISIBLE);
             lnameedit.setVisibility(View.VISIBLE);
-            dobedit.setVisibility(View.VISIBLE);
+            //dobedit.setVisibility(View.VISIBLE);
             fname.setVisibility(View.GONE);
             lname.setVisibility(View.GONE);
-            dob.setVisibility(View.GONE);
+           // dob.setVisibility(View.GONE);
             editButton.setVisibility(View.GONE);
             cancelButton.setVisibility(View.VISIBLE);
+            confirmButton.setVisibility(View.VISIBLE);
+
 
         }
         if(view == cancelButton){
+            edit = false;
             fnameedit.setVisibility(View.GONE);
             lnameedit.setVisibility(View.GONE);
             dobedit.setVisibility(View.GONE);
@@ -113,6 +127,37 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             dob.setVisibility(View.VISIBLE);
             cancelButton.setVisibility(View.GONE);
             editButton.setVisibility(View.VISIBLE);
+            confirmButton.setVisibility(View.GONE);
+            dob.setText(user.getbdate());
+
+
+        }
+        if(view == confirmButton){
+            edit = false;
+            //get user input
+            fname.setText(fnameedit.getText());
+            lname.setText(lnameedit.getText());
+
+            //update info
+            user.setfname(fname.getText().toString());
+            user.setlname(lname.getText().toString());
+            user.setbdate(dob.getText().toString());
+
+            fnameedit.setVisibility(View.GONE);
+            lnameedit.setVisibility(View.GONE);
+            dobedit.setVisibility(View.GONE);
+
+            fname.setVisibility(View.VISIBLE);
+            lname.setVisibility(View.VISIBLE);
+            dob.setVisibility(View.VISIBLE);
+            cancelButton.setVisibility(View.GONE);
+            editButton.setVisibility(View.VISIBLE);
+            confirmButton.setVisibility(View.GONE);
+
+
+        }
+        if(view == homeButton){
+            handler.navigateToHome();
 
         }
 
