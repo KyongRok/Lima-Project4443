@@ -1,124 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
 
     <!-- Content Area -->
-    <LinearLayout
-        android:id="@+id/content_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <LinearLayout android:id="@+id/content_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
         <!-- Linear Layout for ImageButton and ImageView -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!-- ImageButton -->
-            <ImageButton
-                android:id="@+id/btn_home"
-                android:layout_width="53dp"
-                android:layout_height="52dp"
-                android:src="@drawable/menu"
-                android:contentDescription="Home Button?"
-                android:padding="12dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:orientation="horizontal">
 
             <!-- ImageView -->
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="82dp"
-                android:src="@drawable/title" />
+            <ImageView android:id="@+id/imageView" android:layout_width="0dp" android:layout_height="82dp" android:layout_weight="@integer/material_motion_duration_short_1" android:adjustViewBounds="true" android:layout_gravity="center" android:src="@drawable/title" />
+
+            <!-- ImageButton -->
+            <ImageButton android:id="@+id/btn_home" android:layout_width="53dp" android:layout_height="52dp" android:contentDescription="Home Button?" android:adjustViewBounds="true" android:padding="12dp" android:src="@drawable/menu" />
         </LinearLayout>
 
         <!-- Welcome Text -->
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Welcome Back, Guest" />
+        <TextView android:id="@+id/textView2" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="16sp" android:text="      Welcome Back, Guest" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <LinearLayout android:id="@+id/searchContainer" android:layout_width="360dp" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_gravity="center" android:clickable="true" android:focusable="true">
 
-            <!-- SearchView -->
-            <SearchView
-                android:id="@+id/search_view"
-                android:layout_width="0dp"
-                android:layout_height="37dp"
-                android:layout_weight="1"
-                android:text="Search for Shoe" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
 
-            <!-- Menu Button -->
-            <ImageButton
-                android:id="@+id/menu_button"
-                android:layout_width="53dp"
-                android:layout_height="52dp"
-                android:src="@drawable/filtermenu"
-                android:contentDescription="Menu Button"
-                android:padding="12dp" />
+                <!-- SearchView -->
+                <SearchView android:id="@+id/search_view" android:layout_width="0dp" android:layout_height="37dp" android:layout_weight="1" android:text="Search for Shoe" />
+
+                <!-- Menu Button -->
+                <ImageButton android:id="@+id/menu_button" android:layout_width="53dp" android:layout_height="52dp" android:src="@drawable/filtermenu" android:contentDescription="Menu Button" android:padding="12dp" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
+        <!-- RecyclerView to display shoes -->
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycler_view" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@id/content_layout" android:layout_marginTop="8dp" android:layout_marginBottom="48dp" />
 
-    </LinearLayout>
+        <!-- Bottom Bar -->
+        <LinearLayout android:id="@+id/bottom_bar" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:orientation="horizontal" android:background="@color/black">
 
-    <!-- RecyclerView to display shoes -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/content_layout"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="48dp" />
+            <!-- Home Button -->
+            <ImageButton android:id="@+id/btn_home_bottom" android:layout_width="0dp" android:layout_height="wrap_content" android:src="@drawable/home" android:layout_weight="1" android:contentDescription="Home Button" />
 
-    <!-- Bottom Bar -->
-    <LinearLayout
-        android:id="@+id/bottom_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:background="@color/black">
+            <!-- Favourite Button -->
+            <ImageButton android:id="@+id/btn_fav" android:src="@drawable/like" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:contentDescription="Cart Button" />
 
-        <!-- Home Button -->
-        <ImageButton
-            android:id="@+id/btn_home_bottom"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/home"
-            android:layout_weight="1"
-            android:contentDescription="Home Button" />
+            <!-- Cart Button -->
+            <ImageButton android:id="@+id/btn_cart" android:src="@drawable/cart" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:contentDescription="Cart Button" />
 
-        <!-- Favourite Button -->
-        <ImageButton
-            android:id="@+id/btn_fav"
-            android:src="@drawable/like"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="Cart Button" />
+            <!-- Profile Button -->
+            <ImageButton android:id="@+id/btn_profile" android:src="@drawable/person" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:contentDescription="Profile Button" />
+        </LinearLayout>
 
-        <!-- Cart Button -->
-        <ImageButton
-            android:id="@+id/btn_cart"
-            android:src="@drawable/cart"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="Cart Button" />
-
-        <!-- Profile Button -->
-        <ImageButton
-            android:id="@+id/btn_profile"
-            android:src="@drawable/person"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="Profile Button" />
-    </LinearLayout>
-
-</RelativeLayout>
+    </RelativeLayout>

@@ -54,7 +54,18 @@ public class productDisplayActivity extends AppCompatActivity{
         });
 
 
-        SearchView searchView = findViewById(R.id.search_view);
+        ImageButton filterButton = findViewById(R.id.menu_button);
+        filterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFilterMenu();
+            }
+        });
+
+
+        searchView = findViewById(R.id.search_view);
+        searchView.setQueryHint("Search your shoes"); // set empty query so the "Search your shoes" text will display
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
