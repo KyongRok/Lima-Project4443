@@ -23,7 +23,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
 
     private TextView productName, price, desc, cartText;
     private RatingBar rating;
-    private ImageButton addcartButton, addwishlistButton, backButton,sleekwishButton, homeButton, profileButton;
+    private ImageButton addcartButton, addwishlistButton, backButton,sleekwishButton, homeButton, profileButton, wishlistButton;
     private Spinner size;
     private ImageView productImage;
     private String passedProductName;
@@ -59,6 +59,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         productImage = findViewById(R.id.image_shoe);
         backButton = findViewById(R.id.backButton);
         homeButton = findViewById(R.id.btn_home_bottom);
+        wishlistButton = findViewById(R.id.btn_fav);
         profileButton = findViewById(R.id.btn_profile);
         addwishlistButton = findViewById(R.id.wishlistButton);
         sleekwishButton = findViewById(R.id.wishButtonB);
@@ -69,6 +70,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         backButton.setOnClickListener(this);
         profileButton.setOnClickListener(this);
         addwishlistButton.setOnClickListener(this);
+        wishlistButton.setOnClickListener(this);
         sleekwishButton.setOnClickListener(this);
         addcartButton.setOnClickListener(this);
 
@@ -108,8 +110,14 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
 
         } else if (v == addwishlistButton || v == sleekwishButton) {
             //Also, check if the product is already in these lists
-            Toast.makeText(ProductDetailActivity.this, "Added to your wishlist", Toast.LENGTH_LONG).show();
+            if(!wl.wList.contains(currentProduct)) {
+                wl.wList.add(currentProduct);
+                Toast.makeText(ProductDetailActivity.this, "Added to your wishlist", Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(ProductDetailActivity.this, "The product is already in your wishlist", Toast.LENGTH_LONG).show();
 
+            }
         }
         else if(v == backButton ){
             //Toast.makeText(ProductDetailActivity.this, "Going back", Toast.LENGTH_LONG).show();
@@ -125,6 +133,9 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         else if(v == profileButton){
             handler.navigateToProfile();
 
+        }
+        else if (v == wishlistButton){
+            handler.navigateToWishlist();
         }
 
         else {
