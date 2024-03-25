@@ -1,6 +1,8 @@
 package com.example.lima_project4443;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,8 +24,7 @@ public class productDisplayActivity extends AppCompatActivity{
     private RecyclerView recyclerView;
     private productDisplayAdapter adapter;
     private List<Shoe> shoeList; //List of shoes added to the Recycler View
-
-
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,9 @@ public class productDisplayActivity extends AppCompatActivity{
         // Set adapter to RecyclerView
         recyclerView.setAdapter(adapter);
 
-        SearchView searchView = findViewById(R.id.search_view);
+        searchView = findViewById(R.id.search_view);
+        searchView.setQueryHint("Search your shoes"); // set empty query so the "Search your shoes" text will display
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -70,11 +73,18 @@ public class productDisplayActivity extends AppCompatActivity{
             }
         });
 
+        LinearLayout searchContainer = findViewById(R.id.searchContainer);
 
-
+        // Set onClickListener to the search container
+        searchContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Request focus on the SearchView to expand it
+                searchView.setIconified(false);
+                searchView.requestFocus();
+            }
+        });
 
     }
-
-
 
 }

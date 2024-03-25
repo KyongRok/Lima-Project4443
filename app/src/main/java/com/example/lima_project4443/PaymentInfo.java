@@ -49,6 +49,7 @@ public class PaymentInfo extends AppCompatActivity {
                     if (fName.trim().isEmpty() || lName.trim().isEmpty() || card.trim().isEmpty() || expirationD.trim().isEmpty() || codeCVV.trim().isEmpty())
                         throw new IllegalArgumentException("Please fill in all the fields");
 
+
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
 

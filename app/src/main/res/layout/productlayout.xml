@@ -14,23 +14,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
+
+            <!-- ImageView -->
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="82dp"
+                android:layout_weight="@integer/material_motion_duration_short_1"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
+                android:src="@drawable/title" />
 
             <!-- ImageButton -->
             <ImageButton
                 android:id="@+id/btn_home"
                 android:layout_width="53dp"
                 android:layout_height="52dp"
-                android:src="@drawable/menu"
                 android:contentDescription="Home Button?"
-                android:padding="12dp" />
-
-            <!-- ImageView -->
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="82dp"
-                android:src="@drawable/title" />
+                android:adjustViewBounds="true"
+                android:padding="12dp"
+                android:src="@drawable/menu" />
         </LinearLayout>
 
         <!-- Welcome Text -->
@@ -38,14 +43,28 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" Welcome Back, Guest" />
+            android:textSize="16sp"
+            android:text="      Welcome Back, Guest" />
 
-        <!-- SearchView -->
-        <SearchView
-            android:id="@+id/search_view"
-            android:layout_width="match_parent"
-            android:layout_height="26dp"
-            android:text="Search for Shoe" />
+        <LinearLayout
+            android:id="@+id/searchContainer"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <!-- SearchView -->
+            <SearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_border"
+                android:layout_gravity="center"
+                android:queryHint="Search for Shoe" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <!-- RecyclerView to display shoes -->
