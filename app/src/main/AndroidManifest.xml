@@ -34,7 +34,16 @@
             android:name=".ProfileActivity"
             android:exported="true">
 
+
         </activity>
+        <activity
+            android:name=".WishlistActivity"
+            android:exported="true">
+
+
+
+        </activity>
+
 
         <activity
             android:name=".productDisplayActivity"
@@ -43,7 +52,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
 

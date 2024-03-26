@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
+import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,7 +16,6 @@ import java.util.ArrayList;
 public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.WishlistViewHolder> {
 
     private ArrayList<Product_Model> wishlistProducts;
-    private ImageButton homeButton,profileButton,deleteButton,cartButton;
 
     public WishlistAdapter(ArrayList<Product_Model> wishlistProducts) {
         this.wishlistProducts = wishlistProducts;
@@ -25,14 +24,17 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
     @NonNull
     @Override
     public WishlistViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.wishlist, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.wishlist_item, parent, false);
         return new WishlistViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull WishlistViewHolder holder, int position) {
         Product_Model product = wishlistProducts.get(position);
-        holder.bind(product);
+        holder.productNameTextView.setText(product.getProductName());
+        holder.productImageView.setImageResource(product.getImageResourceId());
+        // Load product image into ImageView (You need to implement this)
+        // holder.productImageView.setImageResource(product.getImageResourceId());
     }
 
     @Override
@@ -41,16 +43,13 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
     }
 
     public static class WishlistViewHolder extends RecyclerView.ViewHolder {
-        private TextView productName;
+        ImageView productImageView;
+        TextView productNameTextView;
 
         public WishlistViewHolder(@NonNull View itemView) {
             super(itemView);
-            productName = itemView.findViewById(R.id.productNameTextView);
-        }
-
-        public void bind(Product_Model product) {
-            productName.setText(product.getProductName());
-            // Bind other product information here if needed
+            productImageView = itemView.findViewById(R.id.productImageView);
+            productNameTextView = itemView.findViewById(R.id.productNameTextView);
         }
     }
 }
