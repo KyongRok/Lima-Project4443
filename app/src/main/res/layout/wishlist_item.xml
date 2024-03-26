@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!-- wishlist_item.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:padding="8dp">
 
     <!-- Product Image -->
@@ -19,9 +17,37 @@
         android:id="@+id/productNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_toEndOf="@id/productImageView"
         android:layout_marginStart="16dp"
+        android:layout_centerVertical="true"
         android:textSize="16sp"
         android:textColor="@android:color/black" />
 
-</LinearLayout>
+    <!-- Remove Button -->
+
+    <!-- Text below the Remove Button -->
+
+    <ImageButton
+        android:id="@+id/removeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/productNameTextView"
+        android:layout_alignStart="@id/productNameTextView"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="Remove from Wishlist"
+        android:src="@drawable/trash" />
+
+    <TextView
+        android:id="@+id/removeButtonTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/removeButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:text="Remove"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
+</RelativeLayout>

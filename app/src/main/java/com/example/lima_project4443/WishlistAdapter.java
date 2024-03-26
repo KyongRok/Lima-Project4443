@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.WishlistViewHolder> {
 
     private ArrayList<Product_Model> wishlistProducts;
+    private Wishlist wl = Wishlist.getInstance();
 
     public WishlistAdapter(ArrayList<Product_Model> wishlistProducts) {
         this.wishlistProducts = wishlistProducts;
@@ -33,8 +34,17 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
         Product_Model product = wishlistProducts.get(position);
         holder.productNameTextView.setText(product.getProductName());
         holder.productImageView.setImageResource(product.getImageResourceId());
-        // Load product image into ImageView (You need to implement this)
-        // holder.productImageView.setImageResource(product.getImageResourceId());
+
+        holder.removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Remove the item from the wishlist
+                wl.wList.remove(position);
+                wishlistProducts.remove(position);
+                // Notify adapter about the item removal
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
@@ -45,11 +55,13 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
     public static class WishlistViewHolder extends RecyclerView.ViewHolder {
         ImageView productImageView;
         TextView productNameTextView;
+        ImageButton removeButton;
 
         public WishlistViewHolder(@NonNull View itemView) {
             super(itemView);
             productImageView = itemView.findViewById(R.id.productImageView);
             productNameTextView = itemView.findViewById(R.id.productNameTextView);
+            removeButton = itemView.findViewById(R.id.removeButton);
         }
     }
 }
