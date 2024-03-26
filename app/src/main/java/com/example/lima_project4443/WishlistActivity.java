@@ -7,21 +7,48 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lima_project4443.Model.Product_Model;
+
+import java.util.ArrayList;
+
 public class WishlistActivity extends AppCompatActivity {
 
-    private Wishlist wishlistInstance;
+    private RecyclerView recyclerView;
+    private WishlistAdapter wishlistAdapter;
+    private ArrayList<Product_Model> wishlistProducts;
+    private Wishlist wl = Wishlist.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wishlist);
 
-        wishlistInstance = Wishlist.getInstance();
-        //wishlistInstance.wList.add()
-        RecyclerView recyclerView = findViewById(R.id.wishlistRecyclerView);
+        // Initialize RecyclerView
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        WishlistAdapter adapter = new WishlistAdapter(wishlistInstance.wList);
-        recyclerView.setAdapter(adapter);
+
+        // Initialize WishlistAdapter with empty list
+        wishlistProducts = new ArrayList<>();
+        wishlistAdapter = new WishlistAdapter(wishlistProducts);
+        recyclerView.setAdapter(wishlistAdapter);
+
+        // Load wishlist products (replace with your actual logic)
+        loadWishlistProducts();
+    }
+
+    // Method to load wishlist products (replace with your actual logic)
+    private void loadWishlistProducts() {
+        // Example: Adding dummy products to the wishlist
+        if(wl.wList.size()>0){
+            for(int i=0;i < wl.wList.size();i++){
+                wishlistProducts.add(wl.wList.get(i));
+            }
+
+        }
+
+
+        // Notify adapter about data changes
+        wishlistAdapter.notifyDataSetChanged();
     }
 }
 
