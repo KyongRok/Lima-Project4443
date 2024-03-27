@@ -54,14 +54,14 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
     }
 
     public void populateInitialDatabase(){
-        Product_Model Nike_air_max = new Product_Model("Nike Air Max", 200, 4.5, "black" , "Nike" , R.drawable.nike_air_max);
-        Product_Model UltraBoost = new Product_Model("Adidas UltraBoost", 180, 4.2, "white" , "Adidas" , R.drawable.ultraboost);
-        Product_Model Puma_RSX = new Product_Model("Puma RS-X", 160, 4.0, "white" , "Puma" , R.drawable.rsx);
-        Product_Model NewBalance574 = new Product_Model("New Balance 574", 130, 4.8, "khaki" , "New Balance" , R.drawable.nb574);
-        Product_Model Reebok_classic = new Product_Model("Reebok Classic", 150, 4.2, "white" , "Reebok" , R.drawable.reebokclassic);
-        Product_Model UA_Curry = new Product_Model("Under Armour Curry", 170, 4.6, "yellow" , "Under Armour" , R.drawable.curry);
-        Product_Model Vans_oldSkool = new Product_Model("Vans Old Skool", 90, 4.9, "black" , "Vans" , R.drawable.oldskool);
-        Product_Model Converse_Chuck = new Product_Model("Converse Chuck Taylor", 80, 4.8, "black" , "Converse" , R.drawable.chucktaylor);
+        Product_Model Nike_air_max = new Product_Model("Nike Air Max", 200, 4.5, "Black" , "Nike" , R.drawable.nike_air_max);
+        Product_Model UltraBoost = new Product_Model("Adidas UltraBoost", 180, 4.2, "White" , "Adidas" , R.drawable.ultraboost);
+        Product_Model Puma_RSX = new Product_Model("Puma RS-X", 160, 4.0, "White" , "Puma" , R.drawable.rsx);
+        Product_Model NewBalance574 = new Product_Model("New Balance 574", 130, 4.8, "Khaki" , "New Balance" , R.drawable.nb574);
+        Product_Model Reebok_classic = new Product_Model("Reebok Classic", 150, 4.2, "White" , "Reebok" , R.drawable.reebokclassic);
+        Product_Model UA_Curry = new Product_Model("Under Armour Curry", 170, 4.6, "Yellow" , "Under Armour" , R.drawable.curry);
+        Product_Model Vans_oldSkool = new Product_Model("Vans Old Skool", 90, 4.9, "Black" , "Vans" , R.drawable.oldskool);
+        Product_Model Converse_Chuck = new Product_Model("Converse Chuck Taylor", 80, 4.8, "Black" , "Converse" , R.drawable.chucktaylor);
 
         insertNewProduct(Nike_air_max);
         insertNewProduct(UltraBoost);

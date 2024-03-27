@@ -23,12 +23,22 @@ import java.util.List;
 public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAdapter.ViewHolder> {
 
     private static List<Product_Model> shoeList;
+
     private final ArrayList<Product_Model> searchShoeList; // Add a filtered list to store filtered items
     private final ArrayList<Product_Model> favouriteShoeList;
+    private List<String> brands;
+    private List<String> colors;
     public productDisplayAdapter(List<Product_Model> shoeList) {
+        brands = new ArrayList<String>();
+        colors = new ArrayList<String>();
+        brands.add("Nike"); brands.add("Adidas"); brands.add("Puma"); brands.add("New Balance");
+        brands.add("Reebok"); brands.add("Under Armour"); brands.add("Vans"); brands.add("Converse");
 
+        colors.add("Red");  colors.add("Blue");  colors.add("Black");
+        colors.add("Yellow");  colors.add("Green");  colors.add("White");
         this.shoeList = shoeList;
         this.searchShoeList = new ArrayList<>(shoeList);
+
         this.favouriteShoeList = new ArrayList<>(shoeList);
     }
 
@@ -51,6 +61,35 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
 
     }
 
+    public void searchFilter(List<String> arr){
+        searchShoeList.clear();
+        if(arr.isEmpty()){
+            searchShoeList.addAll(shoeList);
+        }
+        else{
+            for(String str : arr){
+                if(brands.contains(str)){
+
+                    for(Product_Model p : shoeList){
+                        if(p.getBrand().equals(str)){
+                            searchShoeList.add(p);
+                        }
+                    }
+                }else if(colors.contains(str)){
+
+                    for(Product_Model p : shoeList){
+                        if(p.getColor().equals(str)){
+                            searchShoeList.add(p);
+                        }
+                    }
+                }
+
+
+            }
+        }
+        notifyDataSetChanged();
+    }
+
     public String getSearchShoeListAsString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Product_Model shoe : searchShoeList) {
@@ -58,8 +97,6 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
         }
         return stringBuilder.toString();
     }
-
-
 
     @NonNull
     @Override
