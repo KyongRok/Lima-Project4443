@@ -1,5 +1,7 @@
 package com.example.lima_project4443;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
 
     private ArrayList<Product_Model> wishlistProducts;
     private Wishlist wl = Wishlist.getInstance();
+    private ShoppingCart cart = ShoppingCart.getInstance();
 
     public WishlistAdapter(ArrayList<Product_Model> wishlistProducts) {
         this.wishlistProducts = wishlistProducts;
@@ -34,7 +37,6 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
         Product_Model product = wishlistProducts.get(position);
         holder.productNameTextView.setText(product.getProductName());
         holder.productImageView.setImageResource(product.getImageResourceId());
-
         holder.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +47,26 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
                 notifyDataSetChanged();
             }
         });
+        holder.productImageView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Context context = v.getContext();
+                String productName = wl.wList.get(position).getProductName();
+                Intent i = new Intent(context,ProductDetailActivity.class);
+                i.putExtra("product_name",productName);
+                context.startActivity(i);
+            }
+        });
+
+        /**
+          //Turn the product into cartItem, and
+        holder.addCartButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+               CartItem ci = new CartItem() wl.wList.get(position);
+            }
+        });
+**/
     }
 
     @Override
@@ -55,7 +77,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
     public static class WishlistViewHolder extends RecyclerView.ViewHolder {
         ImageView productImageView;
         TextView productNameTextView;
-        ImageButton removeButton;
+        ImageButton removeButton,addCartButton;
 
         public WishlistViewHolder(@NonNull View itemView) {
             super(itemView);
