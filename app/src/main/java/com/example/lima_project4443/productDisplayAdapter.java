@@ -24,7 +24,7 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
 
     private static List<Product_Model> shoeList;
 
-    private final ArrayList<Product_Model> searchShoeList; // Add a filtered list to store filtered items
+    private static ArrayList<Product_Model> searchShoeList; // Add a filtered list to store filtered items
     private final ArrayList<Product_Model> favouriteShoeList;
     private List<String> brands;
     private List<String> colors;
@@ -172,7 +172,7 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
                     if (position != RecyclerView.NO_POSITION) {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, ProductDetailActivity.class);
-                        intent.putExtra("product_name", shoeList.get(position).getProductName());
+                        intent.putExtra("product_name", searchShoeList.get(position).getProductName());
                         context.startActivity(intent);
                     }
                 }
