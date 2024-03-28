@@ -1,5 +1,6 @@
 package com.example.lima_project4443;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,7 +36,9 @@ public class LoginActivity extends AppCompatActivity {
                     // Correct username and password
                     // Here you can start the next activity or perform other actions
                     Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
-
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, MainActivity.class);
+                    context.startActivity(intent);
                     // should be other way around, main -> login
                     //startActivity(new Intent(LoginActivity.this,MainActivity.class));
                 } else {
