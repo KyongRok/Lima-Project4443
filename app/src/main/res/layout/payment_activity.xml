@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:id="@+id/gobackLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="left">
+
+        <ImageButton
+            android:id="@+id/backbtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/backarrow"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/checkOut"
+        android:layout_below="@id/gobackLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="Checkout"/>
+    <TextView
+        android:id="@+id/contactName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkOut"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Payment Information"/>
+    <EditText
+        android:id="@+id/editfirstName"
+        android:layout_width="380dp"
+        android:layout_height="30sp"
+        android:layout_below="@id/contactName"
+        android:layout_marginTop="5dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/login_border"
+        android:hint="First name"/>
+    <EditText
+        android:id="@+id/editLastName"
+        android:layout_width="380dp"
+        android:layout_height="30sp"
+        android:layout_below="@id/editfirstName"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/login_border"
+        android:hint="Last name"/>
+    <TextView
+        android:id="@+id/cardNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editLastName"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:text="Card number"/>
+    <EditText
+        android:id="@+id/editCardNum"
+        android:layout_width="380dp"
+        android:layout_height="30sp"
+        android:layout_below="@id/cardNum"
+        android:layout_marginTop="5dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/login_border"
+        android:textSize="18sp"
+        android:inputType="number"
+        android:hint="1234 **** ****"/>
+    <TextView
+        android:id="@+id/expDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editCardNum"
+        android:layout_marginTop="10sp"
+        android:textSize="18sp"
+        android:text="Expiration date"/>
+
+    <TextView
+        android:id="@+id/cvv"
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editCardNum"
+        android:layout_marginStart="183dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/expDate"
+        android:text="CVV"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/editExpDate"
+        android:layout_width="120dp"
+        android:layout_height="30sp"
+        android:layout_below="@id/expDate"
+        android:textSize="18sp"
+        android:layout_marginTop="5dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/login_border"
+        android:inputType="number"
+        android:hint="MM/YY"/>
+
+    <EditText
+        android:id="@+id/editCVV"
+        android:layout_width="150dp"
+        android:layout_height="30sp"
+        android:layout_below="@id/expDate"
+        android:layout_marginStart="181dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/editExpDate"
+        android:background="@drawable/login_border"
+        android:hint="***"
+        android:inputType="number"
+        android:paddingStart="10dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/billingAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editExpDate"
+        android:layout_marginTop="30sp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Billing Address"/>
+    <CheckBox
+        android:id="@+id/sameAddressCB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/billingAdd"
+        android:text="Same as my shipping address" />
+    <Button
+        android:id="@+id/buttonPay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50sp"
+        android:layout_below="@id/sameAddressCB"
+        android:text="Pay"/>
+</RelativeLayout>

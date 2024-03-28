@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.SearchView;
 
@@ -57,6 +58,7 @@ public class productDisplayActivity extends AppCompatActivity{
 
 
         SearchView searchView = findViewById(R.id.search_view);
+        searchView.setQueryHint("Search your shoes"); // set empty query so the "Search your shoes" text will display
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -73,7 +75,20 @@ public class productDisplayActivity extends AppCompatActivity{
             }
         });
 
+        LinearLayout searchContainer = findViewById(R.id.searchContainer);
+
+        // Set onClickListener to the search container
+        searchContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Request focus on the SearchView to expand it
+                searchView.setIconified(false);
+                searchView.requestFocus();
+            }
+        });
+
     }
+
 
     private void showFilterMenu() {
         PopupMenu popupMenu = new PopupMenu(this, findViewById(R.id.menu_button));

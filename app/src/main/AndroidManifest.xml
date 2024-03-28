@@ -17,7 +17,6 @@
         <activity
             android:name=".ProductDetailActivity"
             android:exported="true">
-
         </activity>
 
         <activity
@@ -52,6 +51,17 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Checkout"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".PaymentInfo"
+            android:exported="true">
+
         </activity>
 
 
