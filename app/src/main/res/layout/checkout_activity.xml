@@ -1,139 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="16dp">
+
+    <LinearLayout android:id="@+id/gobackLayout" android:layout_width="match_parent" android:layout_height="50dp" android:gravity="left">
+
+        <ImageButton android:id="@+id/backbtn" android:layout_width="48dp" android:layout_height="48dp" android:background="?android:attr/selectableItemBackground" android:padding="4dp" android:scaleType="centerCrop" android:src=""/>
+    </LinearLayout>
 
     <!-- Checkout title -->
-    <TextView
-        android:id="@+id/checkOut"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:text="Checkout"/>
+    <TextView android:id="@+id/checkOut" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:textAlignment="center" android:textSize="25sp" android:textStyle="bold" android:text="Checkout"/>
 
     <!-- Contact details -->
-    <TextView
-        android:id="@+id/contactDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/checkOut"
-        android:layout_marginTop="15dp"
-        android:textSize="19sp"
-        android:textStyle="bold"
-        android:text="Contact details"/>
-    <TextView
-        android:id="@+id/contactName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/contactDetails"
-        android:layout_marginTop="10dp"
-        android:textSize="18sp"
-        android:text="Contact name"/>
+    <TextView android:id="@+id/contactDetails" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/checkOut" android:layout_marginTop="15dp" android:textSize="19sp" android:textStyle="bold" android:text="Contact details"/>
+    <TextView android:id="@+id/contactName" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/contactDetails" android:layout_marginTop="10dp" android:textSize="18sp" android:text="Contact name"/>
 
     <!-- First name -->
-    <EditText
-        android:id="@+id/editfirstName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/contactName"
-        android:hint="First name"/>
+    <EditText android:id="@+id/editfirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/contactName" android:hint="First name"/>
 
     <!-- Last name -->
-    <EditText
-        android:id="@+id/editLastName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editfirstName"
-        android:hint="Last name"/>
-    <TextView
-        android:id="@+id/contactPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editLastName"
-        android:layout_marginTop="10dp"
-        android:textSize="18sp"
-        android:text="Contact phone"/>
+    <EditText android:id="@+id/editLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/editfirstName" android:hint="Last name"/>
+    <TextView android:id="@+id/contactPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/editLastName" android:layout_marginTop="10dp" android:textSize="18sp" android:text="Contact phone"/>
 
     <!-- Contact phone -->
-    <EditText
-        android:id="@+id/editContactPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/contactPhone"
-        android:textSize="18sp"
-        android:inputType="number"
-        android:hint="Mobile no."/>
-    <TextView
-        android:id="@+id/shipAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editContactPhone"
-        android:layout_marginTop="30sp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:text="Shipping Address"/>
+    <EditText android:id="@+id/editContactPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/contactPhone" android:textSize="18sp" android:inputType="number" android:hint="Mobile no."/>
+    <TextView android:id="@+id/shipAdd" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/editContactPhone" android:layout_marginTop="30sp" android:textSize="18sp" android:textStyle="bold" android:text="Shipping Address"/>
 
     <!-- Street address -->
-    <EditText
-        android:id="@+id/editStreetAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/shipAdd"
-        android:textSize="18sp"
-        android:hint="Street address"/>
+    <EditText android:id="@+id/editStreetAdd" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/shipAdd" android:textSize="18sp" android:hint="Street address"/>
 
     <!-- Apt. / Suite / Floor -->
-    <EditText
-        android:id="@+id/editOptional"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editStreetAdd"
-        android:textSize="18sp"
-        android:hint="Apt. / Suite / Floor (Optional)"/>
+    <EditText android:id="@+id/editOptional" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/editStreetAdd" android:textSize="18sp" android:hint="Apt. / Suite / Floor (Optional)"/>
 
     <!-- City -->
-    <EditText
-        android:id="@+id/editCity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editOptional"
-        android:textSize="18sp"
-        android:hint="City"/>
+    <EditText android:id="@+id/editCity" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/editOptional" android:textSize="18sp" android:hint="City"/>
 
     <!-- Postal Code-->
-    <EditText
-        android:id="@+id/editPostalCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editCity"
-        android:layout_marginStart="-7dp"
-        android:layout_marginTop="4dp"
-        android:layout_toEndOf="@id/editProvince"
-        android:hint="Postal Code"
-        android:inputType="text"
-        android:textSize="16sp" />
+    <EditText android:id="@+id/editPostalCode" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/editCity" android:layout_marginStart="-7dp" android:layout_marginTop="4dp" android:layout_toEndOf="@id/editProvince" android:hint="Postal Code" android:inputType="text" android:textSize="16sp" />
 
     <!-- Provinces -->
-    <Spinner
-        android:id="@+id/editProvince"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editCity"
-        android:layout_marginTop="15dp"
-        android:textSize="18sp"/>
+    <Spinner android:id="@+id/editProvince" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/editCity" android:layout_marginTop="15dp" android:textSize="18sp"/>
     <!--android:prompt="Province"-->
 
     <!-- Proceed to pay -->
-    <Button
-        android:id="@+id/buttonPay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editProvince"
-        android:layout_marginTop="65dp"
-        android:text="Proceed to Pay" />
+    <Button android:id="@+id/buttonPay" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/editProvince" android:layout_marginTop="65dp" android:text="Proceed to Pay" />
 </RelativeLayout>
 
