@@ -21,6 +21,9 @@
       <entry key="checkout_activ">
         <State />
       </entry>
+      <entry key="login_Activity">
+        <State />
+      </entry>
       <entry key="productDisplay">
         <State />
       </entry>
