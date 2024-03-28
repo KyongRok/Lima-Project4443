@@ -46,6 +46,7 @@ public class productDisplayActivity extends AppCompatActivity{
         recyclerView.setAdapter(adapter);
 
         ImageButton filterButton = findViewById(R.id.menu_button);
+
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,13 +107,15 @@ public class productDisplayActivity extends AppCompatActivity{
             selectedFilters.add(filter);
         }
         String selectedFiltersString = displaySelectedFiltersAsString(selectedFilters);
+
         Log.d("Filter", selectedFiltersString);
+        adapter.searchFilter(selectedFilters);
     }
 
 
     public String displaySearchResultsAsString() {
         String searchResults = adapter.getSearchShoeListAsString();
-        Log.d("Display Search Results", searchResults);
+
         return searchResults;
     }
 
@@ -130,9 +133,9 @@ public class productDisplayActivity extends AppCompatActivity{
             }
             stringBuilder.append(filter);
         }
+
         return stringBuilder.toString();
     }
-
 
 
 }

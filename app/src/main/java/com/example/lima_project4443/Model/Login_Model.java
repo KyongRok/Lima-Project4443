@@ -1,5 +1,7 @@
 package com.example.lima_project4443.Model;
 
+import java.io.Serializable;
+
 public class Login_Model {
     private int user_age;
     private int gender;

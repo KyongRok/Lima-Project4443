@@ -105,28 +105,51 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
         }
     }
 
-    public ArrayList<Product_Model> filterProduct(ArrayList<String> filter) {
-        //filter can be multiple, hence takes in as arraylist
-        //returns array list of filtered product model object
-        ArrayList<Product_Model> result = new ArrayList<>();
-        String target = "";
-        for (int i = 0; i < filter.size(); i++) {
-            if (i == filter.size() - 1) {
-                //if last one dont add ,
-                target += "'";
-                target += filter.get(i);
-                target += "'";
-            } else {
-                target += "'";
-                target += filter.get(i);
-                target += "',";
-            }
-        }
+    public ArrayList<Product_Model> filterProductBrand(String target) {
+       //filters brand
+       ArrayList<Product_Model> result = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         String Query = "SELECT * FROM PRODUCT_TABLE " +
-                "WHERE PRODUCT_NAME IN (" + target + ") OR " +
-                "BRAND IN (" + target + ") OR " +
-                "COLOR IN (" + target + ")";
+                "WHERE BRAND = '" + target + "'";
+        Cursor cursor = db.rawQuery(Query, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            Product_Model f = new Product_Model();
+            f.setProductId(cursor.getInt(0));
+            f.setProductName(cursor.getString(1));
+            f.setPrice(cursor.getFloat(2));
+            f.setRating(cursor.getFloat(3));
+            f.setColor(cursor.getString(4));
+            f.setBrand(cursor.getString(5));
+            f.setImageResourceId(cursor.getInt(6));
+            result.add(f);
+            while (cursor.moveToNext()) {
+                Product_Model p = new Product_Model();
+                p.setProductId(cursor.getInt(0));
+                p.setProductName(cursor.getString(1));
+                p.setPrice(cursor.getFloat(2));
+                p.setRating(cursor.getFloat(3));
+                p.setColor(cursor.getString(4));
+                p.setBrand(cursor.getString(5));
+                p.setImageResourceId(cursor.getInt(6));
+
+                result.add(p);
+            }
+            cursor.close();
+        }
+
+
+
+        db.close();
+        return result;
+    }
+
+    public ArrayList<Product_Model> filterProductColor(String target) {
+        //filters color
+        ArrayList<Product_Model> result = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String Query = "SELECT * FROM PRODUCT_TABLE " +
+                "WHERE COLOR = '" + target + "'";
         Cursor cursor = db.rawQuery(Query, null);
         if (cursor != null) {
             cursor.moveToFirst();
@@ -157,7 +180,6 @@ public class DataBaseProductHelper extends SQLiteOpenHelper {
         db.close();
         return result;
     }
-
 
     public ArrayList<Product_Model> searchProduct(String target){
         //shows up anything related to target string, could be name, brand, ect...
