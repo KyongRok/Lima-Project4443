@@ -4,12 +4,28 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <LinearLayout
+        android:id="@+id/gobackLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="left">
+
+        <ImageButton
+            android:id="@+id/backbtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/backarrow"/>
+    </LinearLayout>
+
     <!-- Checkout title -->
     <TextView
         android:id="@+id/checkOut"
+        android:layout_below="@id/gobackLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -37,17 +53,22 @@
     <!-- First name -->
     <EditText
         android:id="@+id/editfirstName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="30sp"
         android:layout_below="@id/contactName"
+        android:background="@drawable/login_border"
+        android:paddingStart="12dp"
         android:hint="First name"/>
 
     <!-- Last name -->
     <EditText
         android:id="@+id/editLastName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="30sp"
         android:layout_below="@id/editfirstName"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/login_border"
+        android:paddingStart="12dp"
         android:hint="Last name"/>
     <TextView
         android:id="@+id/contactPhone"
@@ -61,10 +82,12 @@
     <!-- Contact phone -->
     <EditText
         android:id="@+id/editContactPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="30sp"
         android:layout_below="@id/contactPhone"
         android:textSize="18sp"
+        android:paddingStart="10dp"
+        android:background="@drawable/login_border"
         android:inputType="number"
         android:hint="Mobile no."/>
     <TextView
@@ -80,27 +103,36 @@
     <!-- Street address -->
     <EditText
         android:id="@+id/editStreetAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="30sp"
         android:layout_below="@id/shipAdd"
+        android:layout_marginTop="10dp"
         android:textSize="18sp"
+        android:paddingStart="10dp"
+        android:background="@drawable/login_border"
         android:hint="Street address"/>
 
     <!-- Apt. / Suite / Floor -->
     <EditText
         android:id="@+id/editOptional"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="30sp"
         android:layout_below="@id/editStreetAdd"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/login_border"
+        android:paddingStart="12dp"
         android:textSize="18sp"
         android:hint="Apt. / Suite / Floor (Optional)"/>
 
     <!-- City -->
     <EditText
         android:id="@+id/editCity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="30sp"
         android:layout_below="@id/editOptional"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/login_border"
+        android:paddingStart="12dp"
         android:textSize="18sp"
         android:hint="City"/>
 
