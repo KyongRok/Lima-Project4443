@@ -37,6 +37,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
         Product_Model product = wishlistProducts.get(position);
         holder.productNameTextView.setText(product.getProductName());
         holder.productImageView.setImageResource(product.getImageResourceId());
+        holder.removeText.setVisibility(View.GONE);
         holder.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +77,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
 
     public static class WishlistViewHolder extends RecyclerView.ViewHolder {
         ImageView productImageView;
-        TextView productNameTextView;
+        TextView productNameTextView, removeText;
         ImageButton removeButton,addCartButton;
 
         public WishlistViewHolder(@NonNull View itemView) {
@@ -84,6 +85,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
             productImageView = itemView.findViewById(R.id.productImageView);
             productNameTextView = itemView.findViewById(R.id.productNameTextView);
             removeButton = itemView.findViewById(R.id.removeButton);
+            removeText = itemView.findViewById(R.id.removeButtonTextView);
         }
     }
 }

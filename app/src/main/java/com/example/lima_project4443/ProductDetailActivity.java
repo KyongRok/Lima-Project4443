@@ -81,7 +81,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
 
 
         //DELETE LATER!
-        type = "A";
+        type = "B";
 
         //get rid of unnecessary components for design A (Text + Icon)
         if(type.equals("A")){
