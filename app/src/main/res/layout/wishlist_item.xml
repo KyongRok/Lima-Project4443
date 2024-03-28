@@ -35,6 +35,7 @@
         android:layout_alignStart="@id/productNameTextView"
         android:layout_marginStart="190dp"
         android:layout_marginTop="4dp"
+        android:background="@android:color/transparent"
         android:contentDescription="Remove from Wishlist"
         android:src="@drawable/trash" />
 
@@ -45,7 +46,7 @@
         android:layout_below="@+id/removeButton"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="54dp"
         android:text="Remove"
         android:textColor="@android:color/black"
         android:textSize="14sp" />

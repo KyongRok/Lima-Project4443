@@ -18,11 +18,11 @@ import java.util.Calendar;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener  {
 
-    TextView fname,lname,dob;
+    TextView fname,lname,dob,textA;
     EditText fnameedit,lnameedit,dobedit;
     ImageButton editButton, cancelButton, homeButton;
     Button confirmButton;
-    String storedDate;
+    String storedDate, type;
     NavigationHandler handler = new NavigationHandler(this);
     UserInfo user;
     private DatePickerDialog.OnDateSetListener mDateListener;
@@ -35,10 +35,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
         Intent intent = getIntent();
+        type = intent.getStringExtra("type");
         user  = UserInfo.getInstance();
         edit = false;
         fname = findViewById(R.id.fnamecontent);
         lname = findViewById(R.id.lnamecontent);
+        textA = findViewById(R.id.textforA);
         dob = findViewById(R.id.dobcontent);
         confirmButton = findViewById(R.id.confirmbutton);
         confirmButton.setVisibility(View.GONE);
@@ -61,6 +63,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         confirmButton.setOnClickListener(this);
         homeButton.setOnClickListener(this);
         cancelButton.setVisibility(View.GONE);
+        if(type != "A"){
+            textA.setVisibility(View.GONE);
+        }
 
         //dob.setText(String.valueOf(user.getbdate().YEAR)+"-"+String.valueOf(user.getbdate().MONTH)+"-"+String.valueOf(user.getbdate().DATE));
 
@@ -114,6 +119,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             editButton.setVisibility(View.GONE);
             cancelButton.setVisibility(View.VISIBLE);
             confirmButton.setVisibility(View.VISIBLE);
+            textA.setText("Cancel");
 
 
         }
@@ -129,6 +135,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             editButton.setVisibility(View.VISIBLE);
             confirmButton.setVisibility(View.GONE);
             dob.setText(user.getbdate());
+            textA.setText("Edit Profile");
 
 
         }
@@ -153,6 +160,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             cancelButton.setVisibility(View.GONE);
             editButton.setVisibility(View.VISIBLE);
             confirmButton.setVisibility(View.GONE);
+            textA.setText("Edit Profile");
 
 
         }
