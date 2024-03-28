@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/bottom_bar"
@@ -9,38 +8,91 @@
     android:background="@color/black">
 
     <!-- Home Button -->
-    <ImageButton
-        android:id="@+id/btn_home_bottom"
+    <FrameLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/home"
-        android:layout_weight="1"
-        android:contentDescription="Home Button" />
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/btn_home_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Home Button"
+            android:src="@drawable/home" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="8dp"/>
+    </FrameLayout>
 
     <!-- Favourite Button -->
-    <ImageButton
-        android:id="@+id/btn_fav"
-        android:src="@drawable/like"
+    <FrameLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:contentDescription="Cart Button" />
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/btn_fav"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Favourite Button"
+            android:src="@drawable/like" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favourite"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="8dp"/>
+    </FrameLayout>
 
     <!-- Cart Button -->
-    <ImageButton
-        android:id="@+id/btn_cart"
-        android:src="@drawable/cart"
+    <FrameLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:contentDescription="Cart Button" />
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/btn_cart"
+            android:layout_width="match_parent"
+            android:layout_height="103dp"
+            android:contentDescription="Cart Button"
+            android:src="@drawable/cart" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cart"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="8dp"/>
+    </FrameLayout>
 
     <!-- Profile Button -->
-    <ImageButton
-        android:id="@+id/btn_profile"
-        android:src="@drawable/person"
+    <FrameLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:contentDescription="Profile Button" />
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/btn_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Profile Button"
+            android:src="@drawable/person" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="8dp"/>
+    </FrameLayout>
+
 </LinearLayout>

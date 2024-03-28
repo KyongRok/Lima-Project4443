@@ -58,7 +58,6 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="40dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/pandadunks"
         android:scaleType="centerCrop" />
 
     <ImageButton
@@ -93,7 +92,7 @@
         android:layout_marginStart="243dp"
         android:layout_marginTop="9dp"
         android:background="@android:color/transparent"
-        android:scaleType="centerCrop"
+        android:scaleType="fitStart"
         android:src="@drawable/addtocart" />
 
     <Spinner

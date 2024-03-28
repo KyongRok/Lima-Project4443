@@ -1,6 +1,8 @@
 package com.example.lima_project4443.Model;
 
-public class Product_Model {
+import java.io.Serializable;
+
+public class Product_Model implements Serializable {
     private String productName;
     private float price;
     private double rating;

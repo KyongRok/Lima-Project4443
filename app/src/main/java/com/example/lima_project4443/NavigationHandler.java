@@ -11,8 +11,20 @@ public class NavigationHandler {
     public NavigationHandler(Context context){
         this.context = context;
     }
+
+    //add type?
     public void navigateToHome() {
         context.startActivity(new Intent(context, productDisplayActivity.class));
+    }
+    public void navigateToProfile(){
+        context.startActivity(new Intent(context,ProfileActivity.class));
+    }
+    public void navigateToCart(){
+        //navigate to Cart
+    }
+    public void navigateToWishlist(){
+        //navigate to Wishlist
+        context.startActivity(new Intent(context,WishlistActivity.class));
     }
 
     ///more to come
