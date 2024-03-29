@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lima_project4443.Model.Product_Model;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 
 public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapter.ShoppingCartViewHolder> {
@@ -37,6 +38,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         Product_Model product = ShoppingCartProducts.get(position);
         holder.productNameTextView.setText(product.getProductName());
         holder.productImageView.setImageResource(product.getImageResourceId());
+        holder.productPrice.setText("$"+Double.toString( product.getPrice()));
         holder.removeText.setVisibility(View.GONE);
         holder.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,15 +61,6 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
             }
         });
 
-        /**
-         //Turn the product into cartItem, and
-         holder.addCartButton.setOnClickListener(new View.OnClickListener(){
-        @Override
-        public void onClick(View v){
-        CartItem ci = new CartItem() wl.wList.get(position);
-        }
-        });
-         **/
     }
 
     @Override
@@ -76,6 +69,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     }
 
     public static class ShoppingCartViewHolder extends RecyclerView.ViewHolder {
+        TextView productPrice;
         ImageView productImageView;
         TextView productNameTextView, removeText;
         ImageButton removeButton,addCartButton;
@@ -84,6 +78,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
             super(itemView);
             productImageView = itemView.findViewById(R.id.productImageView);
             productNameTextView = itemView.findViewById(R.id.productNameTextView);
+            productPrice = itemView.findViewById(R.id.productPriceTextView);
             removeButton = itemView.findViewById(R.id.removeButton);
             removeText = itemView.findViewById(R.id.removeButtonTextView);
         }

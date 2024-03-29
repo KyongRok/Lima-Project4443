@@ -23,9 +23,22 @@
         android:textSize="16sp"
         android:textColor="@android:color/black" />
 
+    <!-- price of each product -->
+
     <!-- Remove Button -->
 
     <!-- Text below the Remove Button -->
+
+    <TextView
+        android:id="@+id/productPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/productNameTextView"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="-23dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
 
     <ImageButton
         android:id="@+id/removeButton"

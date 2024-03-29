@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     private ArrayList<Product_Model> shoppingcartProducts;
     private ShoppingCart sc = ShoppingCart.getInstance();
     private ImageButton homebutton;
+    private TextView  total_price;
     NavigationHandler handler = new NavigationHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.shoppingcart);
         homebutton = findViewById(R.id.btn_home_bottom);
         homebutton.setOnClickListener(this);
+        total_price = (TextView) findViewById(R.id.TotalPrice);
          //Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -37,7 +40,9 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         recyclerView.setAdapter(shoppingcartAdapter);
 
         // Load wishlist products
-        //loadShoppingCartProducts();
+        loadShoppingCartProducts();
+        String price = "Your Total: " + Double.toString(loadTotalPrice());
+        //total_price.setText(price);
     }
 
     // Method to load wishlist products
@@ -53,6 +58,14 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
         // Notify adapter about data changes
         shoppingcartAdapter.notifyDataSetChanged();
+    }
+
+    private double loadTotalPrice(){
+        double total = 0;
+        for(int i = 0; i < sc.cartList.size(); i++){
+            total += sc.cartList.get(i).getProduct().getPrice();
+        }
+        return total;
     }
     @Override
     public void onClick (View v){
