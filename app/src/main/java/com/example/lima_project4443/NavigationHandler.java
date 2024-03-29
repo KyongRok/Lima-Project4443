@@ -21,6 +21,7 @@ public class NavigationHandler {
     }
     public void navigateToCart(){
         //navigate to Cart
+        context.startActivity(new Intent(context,ShoppingCartActivity.class));
     }
     public void navigateToWishlist(){
         //navigate to Wishlist

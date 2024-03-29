@@ -18,6 +18,10 @@ public class CartItem {
     public int getQuantity(){
         return this.quantity;
     }
+
+    public String getProductName(){
+        return this.product.getProductName();
+    }
     public int getSize(){
         return this.size;
     }

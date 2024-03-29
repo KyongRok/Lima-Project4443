@@ -23,7 +23,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
 
     private TextView productName, price, desc, cartText;
     private RatingBar rating;
-    private ImageButton addcartButton, addwishlistButton, backButton,sleekwishButton, homeButton, profileButton, wishlistButton;
+    private ImageButton addcartButton, addwishlistButton, backButton,sleekwishButton, homeButton, profileButton, wishlistButton, cartButton;
     private Spinner size;
     private ImageView productImage;
     private String passedProductName;
@@ -59,6 +59,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         productImage = findViewById(R.id.image_shoe);
         backButton = findViewById(R.id.backButton);
         homeButton = findViewById(R.id.btn_home_bottom);
+        cartButton = findViewById(R.id.btn_cart);
         wishlistButton = findViewById(R.id.btn_fav);
         profileButton = findViewById(R.id.btn_profile);
         addwishlistButton = findViewById(R.id.wishlistButton);
@@ -104,8 +105,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         if (v == addcartButton) {
             String selectedSize = (String) size.getSelectedItem();
             //add it to the db
-            //cart.cartList.add();
-
+            cart.cartList.add(new CartItem(currentProduct,1,5));
             Toast.makeText(ProductDetailActivity.this, "Added to your shopping cart", Toast.LENGTH_LONG).show();
 
         } else if (v == addwishlistButton || v == sleekwishButton) {
@@ -136,6 +136,12 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         }
         else if (v == wishlistButton){
             handler.navigateToWishlist();
+
+        }else if (v == cartButton){
+            //Toast.makeText(ProductDetailActivity.this, "hi", Toast.LENGTH_LONG).show();
+
+            handler.navigateToCart();
+
         }
 
         else {
