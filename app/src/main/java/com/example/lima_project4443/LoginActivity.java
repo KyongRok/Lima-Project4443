@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                     // Here you can start the next activity or perform other actions
                     Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, MainActivity.class);
+                    Intent intent = new Intent(context, productDisplayActivity.class);
                     Bundle b = new Bundle();
                     b.putString("type",type);
                     context.startActivity(intent);
