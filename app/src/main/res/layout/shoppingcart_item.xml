@@ -16,16 +16,31 @@
     <TextView
         android:id="@+id/productNameTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/productImageView"
-        android:layout_marginStart="16dp"
+        android:layout_height="69dp"
         android:layout_centerVertical="true"
-        android:textSize="16sp"
-        android:textColor="@android:color/black" />
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@id/productImageView"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <!-- price of each product -->
 
     <!-- Remove Button -->
 
     <!-- Text below the Remove Button -->
+
+    <TextView
+        android:id="@+id/productPriceTextView"
+        android:layout_width="92dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/productNameTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="189dp"
+        android:layout_toEndOf="@+id/productImageView"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
 
     <ImageButton
         android:id="@+id/removeButton"

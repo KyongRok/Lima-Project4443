@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -16,14 +18,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            android:padding="16dp"
             android:gravity="center"
-            android:text="Your Shopping Car list"
+            android:padding="16dp"
+            android:text="Your Shopping Cart list"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
+
+
     </androidx.appcompat.widget.Toolbar>
 
+    <TextView
+        android:id="@+id/TotalPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gobacktext"
+        android:layout_marginTop="543dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Your Shopping Cart Total"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
@@ -31,6 +46,8 @@
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
         />
+
+
 
 
     <include layout="@layout/navbar" />
