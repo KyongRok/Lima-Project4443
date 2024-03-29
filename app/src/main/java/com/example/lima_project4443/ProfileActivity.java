@@ -165,7 +165,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         }
         if(view == homeButton){
-            handler.navigateToHome();
+            handler.navigateToHome(type);
 
         }
 

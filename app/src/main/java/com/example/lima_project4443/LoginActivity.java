@@ -17,10 +17,13 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextUsername;
     private EditText editTextPassword;
     private Button buttonLogin;
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        type = intent.getStringExtra("type");
         setContentView(R.layout.loginpage);
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextPassword = findViewById(R.id.editTextPassword);
@@ -38,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
                     Context context = v.getContext();
                     Intent intent = new Intent(context, MainActivity.class);
+                    Bundle b = new Bundle();
+                    b.putString("type",type);
                     context.startActivity(intent);
                     // should be other way around, main -> login
                     //startActivity(new Intent(LoginActivity.this,MainActivity.class));

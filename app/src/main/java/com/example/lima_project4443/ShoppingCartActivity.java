@@ -20,11 +20,15 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     private ArrayList<Product_Model> shoppingcartProducts;
     private ShoppingCart sc = ShoppingCart.getInstance();
     private ImageButton homebutton;
+    private String type;
+
     NavigationHandler handler = new NavigationHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shoppingcart);
+        Intent intent = getIntent();
+        type = intent.getStringExtra("type");
         homebutton = findViewById(R.id.btn_home_bottom);
         homebutton.setOnClickListener(this);
          //Initialize RecyclerView
@@ -59,7 +63,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         if (v == homebutton){
             //Toast.makeText(ProductDetailActivity.this, "Going Home", Toast.LENGTH_LONG).show();
 
-            handler.navigateToHome();
+            handler.navigateToHome(type);
         }
 
 
