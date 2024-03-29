@@ -74,6 +74,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         wishlistButton.setOnClickListener(this);
         sleekwishButton.setOnClickListener(this);
         addcartButton.setOnClickListener(this);
+        cartButton.setOnClickListener(this);
 
         productName.setText(currentProduct.getProductName());
         price.setText("$" + String.valueOf(currentProduct.getPrice()));
