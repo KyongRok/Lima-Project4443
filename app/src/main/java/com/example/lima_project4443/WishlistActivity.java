@@ -20,11 +20,14 @@ public class WishlistActivity extends AppCompatActivity implements View.OnClickL
     private ArrayList<Product_Model> wishlistProducts;
     private Wishlist wl = Wishlist.getInstance();
     private ImageButton homebutton;
+    private String type;
     NavigationHandler handler = new NavigationHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wishlist);
+        Intent intent = getIntent();
+        type = intent.getStringExtra("type");
         homebutton = findViewById(R.id.btn_home_bottom);
         homebutton.setOnClickListener(this);
         // Initialize RecyclerView
@@ -33,7 +36,7 @@ public class WishlistActivity extends AppCompatActivity implements View.OnClickL
 
         // Initialize WishlistAdapter with empty list
         wishlistProducts = new ArrayList<>();
-        wishlistAdapter = new WishlistAdapter(wishlistProducts);
+        wishlistAdapter = new WishlistAdapter(wishlistProducts,type);
         recyclerView.setAdapter(wishlistAdapter);
 
         // Load wishlist products
@@ -59,7 +62,7 @@ public class WishlistActivity extends AppCompatActivity implements View.OnClickL
         if (v == homebutton){
             //Toast.makeText(ProductDetailActivity.this, "Going Home", Toast.LENGTH_LONG).show();
 
-            handler.navigateToHome();
+            handler.navigateToHome(type);
         }
 
 

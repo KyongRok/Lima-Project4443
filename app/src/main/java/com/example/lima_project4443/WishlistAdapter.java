@@ -20,9 +20,11 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
     private ArrayList<Product_Model> wishlistProducts;
     private Wishlist wl = Wishlist.getInstance();
     private ShoppingCart cart = ShoppingCart.getInstance();
+    private String type;
 
-    public WishlistAdapter(ArrayList<Product_Model> wishlistProducts) {
+    public WishlistAdapter(ArrayList<Product_Model> wishlistProducts,String type) {
         this.wishlistProducts = wishlistProducts;
+        this.type = type;
     }
 
     @NonNull

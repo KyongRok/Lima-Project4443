@@ -129,19 +129,19 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         else if (v == homeButton){
             //Toast.makeText(ProductDetailActivity.this, "Going Home", Toast.LENGTH_LONG).show();
 
-            handler.navigateToHome();
+            handler.navigateToHome(type);
         }
         else if(v == profileButton){
-            handler.navigateToProfile();
+            handler.navigateToProfile(type);
 
         }
         else if (v == wishlistButton){
-            handler.navigateToWishlist();
+            handler.navigateToWishlist(type);
 
         }else if (v == cartButton){
             //Toast.makeText(ProductDetailActivity.this, "hi", Toast.LENGTH_LONG).show();
 
-            handler.navigateToCart();
+            handler.navigateToCart(type);
 
         }
 

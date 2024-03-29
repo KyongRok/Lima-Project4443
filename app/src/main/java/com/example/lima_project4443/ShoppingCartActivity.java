@@ -22,11 +22,15 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     private ShoppingCart sc = ShoppingCart.getInstance();
     private ImageButton homebutton;
     private TextView  total_price;
+    private String type;
+
     NavigationHandler handler = new NavigationHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shoppingcart);
+        Intent intent = getIntent();
+        type = intent.getStringExtra("type");
         homebutton = findViewById(R.id.btn_home_bottom);
         homebutton.setOnClickListener(this);
         total_price = (TextView) findViewById(R.id.TotalPrice);
@@ -42,7 +46,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         // Load wishlist products
         loadShoppingCartProducts();
         String price = "Your Total: " + Double.toString(loadTotalPrice());
-        //total_price.setText(price);
+        total_price.setText(price);
     }
 
     // Method to load wishlist products
@@ -72,7 +76,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         if (v == homebutton){
             //Toast.makeText(ProductDetailActivity.this, "Going Home", Toast.LENGTH_LONG).show();
 
-            handler.navigateToHome();
+            handler.navigateToHome(type);
         }
 
 

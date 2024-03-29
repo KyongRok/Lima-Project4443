@@ -2,6 +2,7 @@ package com.example.lima_project4443;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 public class NavigationHandler {
 
@@ -13,19 +14,33 @@ public class NavigationHandler {
     }
 
     //add type?
-    public void navigateToHome() {
-        context.startActivity(new Intent(context, productDisplayActivity.class));
+    public void navigateToHome(String type) {
+        Intent i = new Intent(context, productDisplayActivity.class);
+        Bundle b = new Bundle();
+        b.putString("type",type);
+        i.putExtras(b);
+        context.startActivity(i);
     }
-    public void navigateToProfile(){
-        context.startActivity(new Intent(context,ProfileActivity.class));
+    public void navigateToProfile(String type){
+        Intent i = new Intent(context, ProfileActivity.class);
+        Bundle b = new Bundle();
+        b.putString("type",type);
+        i.putExtras(b);
+        context.startActivity(i);
     }
-    public void navigateToCart(){
-        //navigate to Cart
-        context.startActivity(new Intent(context,ShoppingCartActivity.class));
+    public void navigateToCart(String type){
+        Intent i = new Intent(context, ShoppingCartActivity.class);
+        Bundle b = new Bundle();
+        b.putString("type",type);
+        i.putExtras(b);
+        context.startActivity(i);
     }
-    public void navigateToWishlist(){
-        //navigate to Wishlist
-        context.startActivity(new Intent(context,WishlistActivity.class));
+    public void navigateToWishlist(String type){
+        Intent i = new Intent(context, WishlistActivity.class);
+        Bundle b = new Bundle();
+        b.putString("type",type);
+        i.putExtras(b);
+        context.startActivity(i);
     }
 
     ///more to come
