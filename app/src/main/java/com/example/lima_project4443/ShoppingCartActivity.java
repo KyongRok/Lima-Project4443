@@ -23,7 +23,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     private ImageButton homebutton;
     private TextView  total_price;
     private String type;
-
     NavigationHandler handler = new NavigationHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,32 +44,30 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
         // Load wishlist products
         loadShoppingCartProducts();
-        String price = "Your Total: " + Double.toString(loadTotalPrice());
-        total_price.setText(price);
+        setTextPrice();
     }
 
     // Method to load wishlist products
     private void loadShoppingCartProducts() {
         // Example: Adding dummy products to the wishlist
+
         if(sc.cartList.size()>0){
             for(int i=0;i < sc.cartList.size();i++){
                 shoppingcartProducts.add(sc.cartList.get(i).getProduct());
             }
-
+            sc.updateTotal();
         }
 
 
         // Notify adapter about data changes
+        setTextPrice();
         shoppingcartAdapter.notifyDataSetChanged();
     }
-
-    private double loadTotalPrice(){
-        double total = 0;
-        for(int i = 0; i < sc.cartList.size(); i++){
-            total += sc.cartList.get(i).getProduct().getPrice();
-        }
-        return total;
+    public void setTextPrice(){
+        String price = "Your Total: " + sc.getTotal();
+        total_price.setText(price);
     }
+
     @Override
     public void onClick (View v){
         if (v == homebutton){

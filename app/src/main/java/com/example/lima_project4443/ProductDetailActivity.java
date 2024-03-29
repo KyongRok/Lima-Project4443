@@ -106,7 +106,21 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         if (v == addcartButton) {
             String selectedSize = (String) size.getSelectedItem();
             //add it to the db
-            cart.cartList.add(new CartItem(currentProduct,1,5));
+            int flag_found = 0;
+            int index = 0;
+            for(int i =0; i < cart.cartList.size(); i++){
+                if(currentProduct.getProductId() == cart.cartList.get(i).getProduct().getProductId()){
+                    flag_found = 1;
+                    index = i;
+                }
+            }
+            if(flag_found == 1){
+                int current_qty = cart.cartList.get(index).getQuantity();
+                cart.cartList.get(index).setQuantity(current_qty + 1);
+            }else{
+                cart.cartList.add(new CartItem(currentProduct,1,5));
+            }
+
             Toast.makeText(ProductDetailActivity.this, "Added to your shopping cart", Toast.LENGTH_LONG).show();
 
         } else if (v == addwishlistButton || v == sleekwishButton) {

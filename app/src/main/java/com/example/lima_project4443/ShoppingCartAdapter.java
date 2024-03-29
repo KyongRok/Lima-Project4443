@@ -47,7 +47,11 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                 cart.cartList.remove(position);
                 ShoppingCartProducts.remove(position);
                 // Notify adapter about the item removal
+                cart.updateTotal();
                 notifyDataSetChanged();
+                Context context = v.getContext();
+                Intent i = new Intent(context,ShoppingCartActivity.class);
+                context.startActivity(i);
             }
         });
         holder.productImageView.setOnClickListener(new View.OnClickListener(){
