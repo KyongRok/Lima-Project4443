@@ -20,11 +20,14 @@ public class OrderConfirmActivity extends AppCompatActivity {
         //get Intent
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirmpage);
+        returnButton = findViewById(R.id.returnbutton);
         Intent intent = getIntent();
         type = intent.getStringExtra("type");
+        if(type == null){
+            type = "A";
+        }
         confirmText = findViewById(R.id.orderdetailtext);
         confirmText.setText("Your order is placed Successfully\n Order #123456");
-
 
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override

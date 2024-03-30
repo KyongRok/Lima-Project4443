@@ -1,5 +1,6 @@
 <!-- wishlist_item.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp">
@@ -48,8 +49,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/productNameTextView"
         android:layout_alignStart="@id/productNameTextView"
-        android:layout_marginStart="190dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="215dp"
+        android:layout_marginTop="-50dp"
         android:background="@android:color/transparent"
         android:contentDescription="Remove from Wishlist"
         android:src="@drawable/trash" />
@@ -60,12 +61,94 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/removeButton"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="54dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="32dp"
         android:text="Remove"
         android:textColor="@android:color/black"
         android:textSize="14sp" />
 
+    <TextView
+        android:id="@+id/qtytext"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_below="@+id/removeButtonTextView"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="146dp"
+        android:layout_toEndOf="@+id/qtyMinus"
+        android:gravity="center"
+        android:text="1" />
+
+    <ImageButton
+        android:id="@+id/qtyPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="148dp"
+        android:layout_toEndOf="@+id/productImageView"
+        app:srcCompat="@drawable/plus" />
+
+    <ImageButton
+        android:id="@+id/qtyMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="146dp"
+        android:layout_toEndOf="@+id/productImageView"
+        app:srcCompat="@drawable/minus" />
+
+    <TextView
+        android:id="@+id/sizetext"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_below="@+id/productImageView"
+        android:layout_marginStart="-248dp"
+        android:layout_marginTop="41dp"
+        android:layout_toEndOf="@+id/qtyMinus"
+        android:gravity="center"
+        android:text="4" />
+
+    <ImageButton
+        android:id="@+id/sizePlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productImageView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="39dp"
+        app:srcCompat="@drawable/plus" />
+
+    <ImageButton
+        android:id="@+id/sizeMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productImageView"
+        android:layout_marginStart="-105dp"
+        android:layout_marginTop="36dp"
+        android:layout_toEndOf="@+id/productImageView"
+        app:srcCompat="@drawable/minus" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="93dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productImageView"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="Size" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="93dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="38dp"
+        android:gravity="center"
+        android:text="Quantity" />
 
 
 </RelativeLayout>

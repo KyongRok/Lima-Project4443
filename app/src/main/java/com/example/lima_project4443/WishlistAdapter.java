@@ -90,6 +90,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
             productNameTextView = itemView.findViewById(R.id.productNameTextView);
             removeButton = itemView.findViewById(R.id.removeButton);
             removeText = itemView.findViewById(R.id.removeButtonTextView);
+            addCartButton = itemView.findViewById(R.id.addcartButton);
         }
     }
 }

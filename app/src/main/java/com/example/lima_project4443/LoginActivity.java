@@ -38,11 +38,12 @@ public class LoginActivity extends AppCompatActivity {
                 if (username.equals(CORRECT_USERNAME) && password.equals(CORRECT_PASSWORD)) {
                     // Correct username and password
                     // Here you can start the next activity or perform other actions
-                    Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
                     Context context = v.getContext();
                     Intent intent = new Intent(context, productDisplayActivity.class);
                     Bundle b = new Bundle();
                     b.putString("type",type);
+                    intent.putExtras(b);
                     context.startActivity(intent);
                     // should be other way around, main -> login
                     //startActivity(new Intent(LoginActivity.this,MainActivity.class));
