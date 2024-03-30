@@ -21,7 +21,7 @@ import java.util.Objects;
 
 public class ProductDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView productName, price, gobacktext, cartText;
+    private TextView productName, price, gobacktext, cartText,hometext,carttext,profiletext,favtext;
     private RatingBar rating;
     private ImageButton addcartButton, addwishlistButton, backButton,sleekwishButton, homeButton, profileButton, wishlistButton, cartButton;
     private Spinner size;
@@ -42,6 +42,10 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.productdetailpage);
 
         Intent intent = getIntent();
+        type = intent.getStringExtra("type");
+        if (type == null){
+            type = "A";
+        }
         if (intent != null && intent.hasExtra("product_name")) {
             passedProductName = intent.getStringExtra("product_name"); // -1 is the default value if the product ID is not found
 
@@ -76,6 +80,10 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         sleekwishButton.setOnClickListener(this);
         addcartButton.setOnClickListener(this);
         cartButton.setOnClickListener(this);
+        hometext=findViewById(R.id.hometext);
+        carttext=findViewById(R.id.carttext);
+        profiletext=findViewById(R.id.profiletext);
+        favtext = findViewById(R.id.favtext);
 
         productName.setText(currentProduct.getProductName());
         price.setText("$" + String.valueOf(currentProduct.getPrice()));
@@ -84,7 +92,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
 
 
         //DELETE LATER!
-        type = "B";
+
 
         //get rid of unnecessary components for design A (Text + Icon)
         if(type.equals("A")){
@@ -96,6 +104,10 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
             addwishlistButton.setVisibility(View.GONE);
             gobacktext.setVisibility(View.GONE);
             cartText.setVisibility(View.GONE);
+            hometext.setVisibility(View.GONE);
+            carttext.setVisibility(View.GONE);
+            profiletext.setVisibility(View.GONE);
+            favtext.setVisibility(View.GONE);
         }
         //addcartButton.setImageResource(R.drawable.addcart);
 

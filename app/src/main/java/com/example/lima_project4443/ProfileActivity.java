@@ -18,7 +18,7 @@ import java.util.Calendar;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener  {
 
-    TextView fname,lname,dob,textA;
+    TextView fname,lname,dob,textA,hometext,carttext,profiletext,favtext;
     EditText fnameedit,lnameedit,dobedit;
     ImageButton editButton, cancelButton, homeButton,wlButton,cartButton;
     Button confirmButton;
@@ -41,6 +41,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         fname = findViewById(R.id.fnamecontent);
         lname = findViewById(R.id.lnamecontent);
         textA = findViewById(R.id.textforA);
+        hometext=findViewById(R.id.hometext);
+        carttext=findViewById(R.id.carttext);
+        profiletext=findViewById(R.id.profiletext);
+        favtext = findViewById(R.id.favtext);
         dob = findViewById(R.id.dobcontent);
         confirmButton = findViewById(R.id.confirmbutton);
         confirmButton.setVisibility(View.GONE);
@@ -67,8 +71,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         wlButton.setOnClickListener(this);
         cartButton.setOnClickListener(this);
         cancelButton.setVisibility(View.GONE);
-        if(type != "A"){
+        if(!type.equals("A")){
             textA.setVisibility(View.GONE);
+            hometext.setVisibility(View.GONE);
+            carttext.setVisibility(View.GONE);
+            profiletext.setVisibility(View.GONE);
+            favtext.setVisibility(View.GONE);
         }
 
         //dob.setText(String.valueOf(user.getbdate().YEAR)+"-"+String.valueOf(user.getbdate().MONTH)+"-"+String.valueOf(user.getbdate().DATE));
