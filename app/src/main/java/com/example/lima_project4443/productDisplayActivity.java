@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -30,6 +31,7 @@ public class productDisplayActivity extends AppCompatActivity implements View.On
     private NavigationHandler handler ;
     private ImageButton homebutton,wlbutton,cartbutton,profilebutton;
     private String type;
+    private TextView welcome;
     DataBaseProductHelper dataBaseProduct = new DataBaseProductHelper(productDisplayActivity.this);
 
 
@@ -48,6 +50,8 @@ public class productDisplayActivity extends AppCompatActivity implements View.On
         cartbutton.setOnClickListener(this);
         profilebutton = findViewById(R.id.btn_profile);
         profilebutton.setOnClickListener(this);
+        welcome = findViewById(R.id.textView2);
+        welcome.setText("Welcome Back, "+ UserInfo.getInstance().getfname());
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         productList = new ArrayList<>();
