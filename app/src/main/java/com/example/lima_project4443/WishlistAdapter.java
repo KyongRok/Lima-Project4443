@@ -39,7 +39,9 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
         Product_Model product = wishlistProducts.get(position);
         holder.productNameTextView.setText(product.getProductName());
         holder.productImageView.setImageResource(product.getImageResourceId());
-        holder.removeText.setVisibility(View.GONE);
+        if(type.equals("B")) {
+            holder.removeText.setVisibility(View.GONE);
+        }
         holder.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

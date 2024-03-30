@@ -67,6 +67,11 @@
             android:exported="true">
 
         </activity>
+        <activity
+            android:name=".OrderConfirmActivity"
+            android:exported="true">
+        </activity>
+
 
 
 

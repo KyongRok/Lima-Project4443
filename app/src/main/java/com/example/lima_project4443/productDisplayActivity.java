@@ -1,5 +1,6 @@
 package com.example.lima_project4443;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,13 +21,15 @@ import com.example.lima_project4443.Model.Product_Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class productDisplayActivity extends AppCompatActivity{
+public class productDisplayActivity extends AppCompatActivity implements View.OnClickListener{
 
     private RecyclerView recyclerView;
     private productDisplayAdapter adapter;
     private List<Product_Model> productList;
     private List<String> selectedFilters = new ArrayList<>();
-
+    private NavigationHandler handler ;
+    private ImageButton homebutton,wlbutton,cartbutton,profilebutton;
+    private String type;
     DataBaseProductHelper dataBaseProduct = new DataBaseProductHelper(productDisplayActivity.this);
 
 
@@ -34,11 +37,21 @@ public class productDisplayActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        type = intent.getStringExtra("type");
         setContentView(R.layout.productlayout);
-
+        homebutton = findViewById(R.id.btn_home_bottom);
+        homebutton.setOnClickListener(this);
+        wlbutton = findViewById(R.id.btn_fav);
+        wlbutton.setOnClickListener(this);
+        cartbutton = findViewById(R.id.btn_cart);
+        cartbutton.setOnClickListener(this);
+        profilebutton = findViewById(R.id.btn_profile);
+        profilebutton.setOnClickListener(this);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         productList = new ArrayList<>();
+        handler = new NavigationHandler(this);
         if(!dataBaseProduct.databasePopulated()){
             dataBaseProduct.populateInitialDatabase();
         }
@@ -89,7 +102,22 @@ public class productDisplayActivity extends AppCompatActivity{
 
     }
 
+    @Override
+    public void onClick (View v){
+        if(v== homebutton){
+            handler.navigateToHome(type);
+        }
+        if(v==wlbutton){
+            handler.navigateToWishlist(type);
+        }
+        if(v==cartbutton){
+            handler.navigateToCart(type);
+        }
+        if(v==profilebutton){
+            handler.navigateToProfile(type);
+        }
 
+    }
     private void showFilterMenu() {
         PopupMenu popupMenu = new PopupMenu(this, findViewById(R.id.menu_button));
         popupMenu.getMenuInflater().inflate(R.menu.filter_menu, popupMenu.getMenu());

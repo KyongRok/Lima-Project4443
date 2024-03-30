@@ -13,19 +13,19 @@
         android:scaleType="centerCrop" />
 
     <!-- Product Name -->
-    <TextView
-        android:id="@+id/productNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/productImageView"
-        android:layout_marginStart="16dp"
-        android:layout_centerVertical="true"
-        android:textSize="16sp"
-        android:textColor="@android:color/black" />
 
     <!-- Remove Button -->
 
     <!-- Text below the Remove Button -->
+
+    <TextView
+        android:id="@+id/productNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@id/productImageView"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
 
     <ImageButton
         android:id="@+id/removeButton"
@@ -39,6 +39,19 @@
         android:contentDescription="Remove from Wishlist"
         android:src="@drawable/trash" />
 
+    <ImageButton
+        android:id="@+id/addcartButton"
+        android:layout_width="47dp"
+        android:layout_height="42dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="67dp"
+        android:layout_toEndOf="@+id/productImageView"
+        android:background="@android:color/transparent"
+        android:contentDescription="Remove from Wishlist"
+        android:scaleType="fitStart"
+        android:src="@drawable/addtocart" />
+
     <TextView
         android:id="@+id/removeButtonTextView"
         android:layout_width="wrap_content"
@@ -50,5 +63,15 @@
         android:text="Remove"
         android:textColor="@android:color/black"
         android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="89dp"
+        android:layout_toEndOf="@+id/addcartButton"
+        android:text="Add to Cart" />
 
 </RelativeLayout>
