@@ -130,6 +130,7 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
         public Button buttonAddToCart;
 
         public ImageButton buttonAddToWishList;
+        private ShoppingCart cart = ShoppingCart.getInstance();
 
         public ViewHolder(View view) {
             super(view);
@@ -182,6 +183,20 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
 
 
         private void addToCart(Product_Model selectedShoe) {
+            int flag_found = 0;
+            int index = 0;
+            for(int i =0; i < cart.cartList.size(); i++){
+                if(selectedShoe.getProductId() == cart.cartList.get(i).getProduct().getProductId()){
+                    flag_found = 1;
+                    index = i;
+                }
+            }
+            if(flag_found == 1){
+                int current_qty = cart.cartList.get(index).getQuantity();
+                cart.cartList.get(index).setQuantity(current_qty + 1);
+            }else{
+                cart.cartList.add(new CartItem(selectedShoe,1,5));
+            }
         }
         private void addToWishList(Product_Model selectedShoe) {
         }
