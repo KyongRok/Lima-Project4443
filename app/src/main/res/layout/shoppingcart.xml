@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -28,12 +29,13 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
     <TextView
         android:id="@+id/TotalPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/gobacktext"
-        android:layout_marginTop="543dp"
+        android:layout_below="@+id/recyclerView2"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:padding="16dp"
         android:text="Your Shopping Cart Total"
@@ -43,12 +45,39 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="390dp"
         android:layout_below="@id/toolbar"
-        />
+        android:layout_marginTop="64dp" />
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/navbar" />
 
+    <TextView
+        android:id="@+id/checkoutText"
+        android:layout_width="138dp"
+        android:layout_height="55dp"
+        android:layout_below="@+id/TotalPrice"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="134dp"
+        android:gravity="center"
+        android:text="Checkout"
+        android:textSize="25sp" />
 
-
-    <include layout="@layout/navbar" />
+    <ImageButton
+        android:id="@+id/checkoutbtn"
+        android:layout_width="93dp"
+        android:layout_height="86dp"
+        android:layout_below="@+id/TotalPrice"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="283dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitStart"
+        app:srcCompat="@drawable/addcart" />
 </RelativeLayout>
