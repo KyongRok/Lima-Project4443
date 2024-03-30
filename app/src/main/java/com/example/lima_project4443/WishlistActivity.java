@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ public class WishlistActivity extends AppCompatActivity implements View.OnClickL
     private Wishlist wl = Wishlist.getInstance();
     private ImageButton homebutton,cartbutton,profilebutton;
     private String type;
+    private TextView hometext,carttext,profiletext,favtext;
     NavigationHandler handler = new NavigationHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,16 @@ public class WishlistActivity extends AppCompatActivity implements View.OnClickL
         cartbutton.setOnClickListener(this);
         profilebutton = findViewById(R.id.btn_profile);
         profilebutton.setOnClickListener(this);
+        hometext=findViewById(R.id.hometext);
+        carttext=findViewById(R.id.carttext);
+        profiletext=findViewById(R.id.profiletext);
+        favtext = findViewById(R.id.favtext);
+        if(type.equals("B")){
+            hometext.setVisibility(View.GONE);
+            carttext.setVisibility(View.GONE);
+            profiletext.setVisibility(View.GONE);
+            favtext.setVisibility(View.GONE);
+        }
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

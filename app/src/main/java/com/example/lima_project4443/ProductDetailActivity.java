@@ -21,7 +21,7 @@ import java.util.Objects;
 
 public class ProductDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView productName, price, desc, cartText;
+    private TextView productName, price, gobacktext, cartText;
     private RatingBar rating;
     private ImageButton addcartButton, addwishlistButton, backButton,sleekwishButton, homeButton, profileButton, wishlistButton, cartButton;
     private Spinner size;
@@ -66,6 +66,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         sleekwishButton = findViewById(R.id.wishButtonB);
         addcartButton = findViewById(R.id.buttoncart);
         cartText = findViewById(R.id.addcarttextView);
+        gobacktext = findViewById(R.id.gobacktext);
         size = findViewById(R.id.spinner);
         homeButton.setOnClickListener(this);
         backButton.setOnClickListener(this);
@@ -93,7 +94,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         //... for design B (Icon only)
         else{
             addwishlistButton.setVisibility(View.GONE);
-            backButton.setVisibility(View.GONE);
+            gobacktext.setVisibility(View.GONE);
             cartText.setVisibility(View.GONE);
         }
         //addcartButton.setImageResource(R.drawable.addcart);
