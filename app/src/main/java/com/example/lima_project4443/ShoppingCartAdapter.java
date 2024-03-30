@@ -2,6 +2,7 @@ package com.example.lima_project4443;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,9 +22,11 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     private ArrayList<Product_Model> ShoppingCartProducts;
     private Wishlist wl = Wishlist.getInstance();
     private ShoppingCart cart = ShoppingCart.getInstance();
+    private String type;
 
-    public ShoppingCartAdapter(ArrayList<Product_Model> ShoppingCartProducts) {
+    public ShoppingCartAdapter(ArrayList<Product_Model> ShoppingCartProducts,String type) {
         this.ShoppingCartProducts = ShoppingCartProducts;
+        this.type = type;
     }
 
     @NonNull
@@ -51,6 +54,9 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                 notifyDataSetChanged();
                 Context context = v.getContext();
                 Intent i = new Intent(context,ShoppingCartActivity.class);
+                Bundle b = new Bundle();
+                b.putString("type",type);
+                i.putExtras(b);
                 context.startActivity(i);
             }
         });

@@ -60,7 +60,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // Initialize WishlistAdapter with empty list
         shoppingcartProducts = new ArrayList<>();
-        shoppingcartAdapter = new ShoppingCartAdapter(shoppingcartProducts);
+        shoppingcartAdapter = new ShoppingCartAdapter(shoppingcartProducts,type);
         recyclerView.setAdapter(shoppingcartAdapter);
 
         // Load wishlist products
