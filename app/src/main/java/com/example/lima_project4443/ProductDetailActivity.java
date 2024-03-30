@@ -93,6 +93,7 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         //... for design B (Icon only)
         else{
             addwishlistButton.setVisibility(View.GONE);
+            backButton.setVisibility(View.GONE);
             cartText.setVisibility(View.GONE);
         }
         //addcartButton.setImageResource(R.drawable.addcart);

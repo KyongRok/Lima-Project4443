@@ -20,7 +20,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     TextView fname,lname,dob,textA;
     EditText fnameedit,lnameedit,dobedit;
-    ImageButton editButton, cancelButton, homeButton;
+    ImageButton editButton, cancelButton, homeButton,wlButton,cartButton;
     Button confirmButton;
     String storedDate, type;
     NavigationHandler handler = new NavigationHandler(this);
@@ -47,6 +47,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         editButton = findViewById(R.id.editButton);
         cancelButton = findViewById(R.id.cancelButton);
         homeButton = findViewById(R.id.btn_home_bottom);
+        wlButton = findViewById(R.id.btn_fav);
+        cartButton = findViewById(R.id.btn_cart);
         fnameedit = findViewById(R.id.fnameedit);
         fnameedit.setVisibility(View.GONE);
         lnameedit = findViewById(R.id.lnameedit);
@@ -62,6 +64,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         cancelButton.setOnClickListener(this);
         confirmButton.setOnClickListener(this);
         homeButton.setOnClickListener(this);
+        wlButton.setOnClickListener(this);
+        cartButton.setOnClickListener(this);
         cancelButton.setVisibility(View.GONE);
         if(type != "A"){
             textA.setVisibility(View.GONE);
@@ -167,6 +171,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         if(view == homeButton){
             handler.navigateToHome(type);
 
+        }
+        if(view == wlButton){
+            handler.navigateToWishlist(type);
+        }
+        if(view == cartButton){
+            handler.navigateToCart(type);
         }
 
     }

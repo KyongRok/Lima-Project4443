@@ -19,7 +19,7 @@ public class WishlistActivity extends AppCompatActivity implements View.OnClickL
     private WishlistAdapter wishlistAdapter;
     private ArrayList<Product_Model> wishlistProducts;
     private Wishlist wl = Wishlist.getInstance();
-    private ImageButton homebutton;
+    private ImageButton homebutton,cartbutton,profilebutton;
     private String type;
     NavigationHandler handler = new NavigationHandler(this);
     @Override
@@ -30,6 +30,10 @@ public class WishlistActivity extends AppCompatActivity implements View.OnClickL
         type = intent.getStringExtra("type");
         homebutton = findViewById(R.id.btn_home_bottom);
         homebutton.setOnClickListener(this);
+        cartbutton = findViewById(R.id.btn_cart);
+        cartbutton.setOnClickListener(this);
+        profilebutton = findViewById(R.id.btn_profile);
+        profilebutton.setOnClickListener(this);
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -63,6 +67,12 @@ public class WishlistActivity extends AppCompatActivity implements View.OnClickL
             //Toast.makeText(ProductDetailActivity.this, "Going Home", Toast.LENGTH_LONG).show();
 
             handler.navigateToHome(type);
+        }
+        if(v== cartbutton){
+            handler.navigateToCart(type);
+        }
+        if(v==profilebutton){
+            handler.navigateToProfile(type);
         }
 
 
