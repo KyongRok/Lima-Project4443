@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -63,15 +65,31 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
             }
         });
 
-        /**
+
           //Turn the product into cartItem, and
         holder.addCartButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-               CartItem ci = new CartItem() wl.wList.get(position);
+               Product_Model selectedShoe = wl.wList.get(position);
+                int flag_found = 0;
+                int index = 0;
+                for(int i =0; i < cart.cartList.size(); i++){
+                    if(selectedShoe.getProductId() == cart.cartList.get(i).getProduct().getProductId()){
+                        flag_found = 1;
+                        index = i;
+                    }
+                }
+                if(flag_found == 1){
+                    int current_qty = cart.cartList.get(index).getQuantity();
+                    cart.cartList.get(index).setQuantity(current_qty + 1);
+                    Toast.makeText(v.getContext(), "You have "+current_qty+" of this item in your cart", Toast.LENGTH_SHORT).show();
+                }else{
+                    cart.cartList.add(new CartItem(selectedShoe,1,5));
+                    Toast.makeText(v.getContext(), "Item has been added to your cart", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-**/
+
     }
 
     @Override
