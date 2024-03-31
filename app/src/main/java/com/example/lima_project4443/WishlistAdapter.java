@@ -81,7 +81,8 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
                 }
                 if(flag_found == 1){
                     int current_qty = cart.cartList.get(index).getQuantity();
-                    cart.cartList.get(index).setQuantity(current_qty + 1);
+                    current_qty++;
+                    cart.cartList.get(index).setQuantity(current_qty);
                     Toast.makeText(v.getContext(), "You have "+current_qty+" of this item in your cart", Toast.LENGTH_SHORT).show();
                 }else{
                     cart.cartList.add(new CartItem(selectedShoe,1,5));
