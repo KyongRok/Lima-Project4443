@@ -49,7 +49,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
         confirmText = findViewById(R.id.orderdetailtext);
         String displaythis = "Your order is placed Successfully\n Order #123456\n\nTime took:\n"+formattedTime;
         if(MainActivity.trial>3){
-            displaythis.concat("\nyour trial is complete! Please return the device to us!");
+            displaythis = "Your trial is complete!\n\nTime took:\n"+formattedTime+"\nplease return the device!";
             returnButton.setVisibility(View.GONE);
         }
         confirmText.setText(displaythis);
@@ -69,8 +69,8 @@ public class OrderConfirmActivity extends AppCompatActivity {
                     b.putString("type",type);
                     Intent i = new Intent(context, LoginActivity.class);
                     i.putExtras(b);
-                Toast.makeText(OrderConfirmActivity.this, "trial num:"+MainActivity.trial, Toast.LENGTH_SHORT).show();
                 MainActivity.trial++;
+                Toast.makeText(OrderConfirmActivity.this, "trial num:"+MainActivity.trial, Toast.LENGTH_SHORT).show();
                 context.startActivity(i);
             }
 

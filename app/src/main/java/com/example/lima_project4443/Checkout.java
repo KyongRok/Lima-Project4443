@@ -18,12 +18,15 @@ public class Checkout extends AppCompatActivity {
     private Button buttonPay;
     private EditText editTextFirstName, editTextLastName, editTextContactPhone, editTextStreetAdd, editTextOptional, editTextCity, editTextPostalCode;
     private Spinner spinnerProvince;
+    private String type;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checkout_activity);
+        Intent intent = getIntent();
+        type = intent.getStringExtra("type");
 
         //UI elements initialize
         buttonPay = findViewById(R.id.buttonPay);
@@ -75,6 +78,8 @@ public class Checkout extends AppCompatActivity {
                     System.out.println(checkoutInfo);
 
                     Intent intent = new Intent(Checkout.this, PaymentInfo.class);
+                    Bundle b = new Bundle();
+                    b.putString("type",type);
                     startActivity(intent);
 
                 } catch (IllegalArgumentException e) {
