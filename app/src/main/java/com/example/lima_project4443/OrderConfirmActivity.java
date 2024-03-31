@@ -31,7 +31,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
         wl.wList = new ArrayList<Product_Model>();
         sc = ShoppingCart.getInstance();
         sc.cartList = new ArrayList<CartItem>();
-        MainActivity.trial++;
+
 
         // Record the current time when the activity is created
         long currentTime = System.currentTimeMillis();
@@ -48,6 +48,10 @@ public class OrderConfirmActivity extends AppCompatActivity {
         }
         confirmText = findViewById(R.id.orderdetailtext);
         String displaythis = "Your order is placed Successfully\n Order #123456\n\nTime took:\n"+formattedTime;
+        if(MainActivity.trial>3){
+            displaythis.concat("\nyour trial is complete! Please return the device to us!");
+            returnButton.setVisibility(View.GONE);
+        }
         confirmText.setText(displaythis);
 
         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +70,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
                     Intent i = new Intent(context, LoginActivity.class);
                     i.putExtras(b);
                 Toast.makeText(OrderConfirmActivity.this, "trial num:"+MainActivity.trial, Toast.LENGTH_SHORT).show();
-
+                MainActivity.trial++;
                 context.startActivity(i);
             }
 
