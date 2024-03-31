@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -129,10 +130,10 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
-        public TextView textViewName, priceViewName;
+        public TextView textViewName, priceViewName,wishlistText;
         public Button buttonAddToCart;
 
-        public ImageButton buttonAddToWishList;
+        public ImageButton buttonAddToWishList,addCartButtonSleek;
         private ShoppingCart cart = ShoppingCart.getInstance();
 
         public ViewHolder(View view,String type) {
@@ -142,13 +143,27 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
             priceViewName = view.findViewById(R.id.price);
             buttonAddToCart = view.findViewById(R.id.addToCart);
             buttonAddToWishList = view.findViewById(R.id.addToWishList);
+            wishlistText=view.findViewById(R.id.WishlistText);
+            addCartButtonSleek=view.findViewById(R.id.addToCartSleek);
+            addCartButtonSleek.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition(); //Based off of which shoe we are interacting with (Shoe 1 = Position 0)
+                    Log.d("TEST","AddToCartButton");
+                    Toast.makeText(v.getContext(), "Added to your cart", Toast.LENGTH_LONG).show();
+                    Product_Model selectedShoe = shoeList.get(position);
+                    addToCart(selectedShoe);
+                }
+
+            });
 
             // Set OnClickListener for the button
             buttonAddToCart.setOnClickListener(new View.OnClickListener() {
                                                    @Override
                                                    public void onClick(View v) {
                                                        int position = getAdapterPosition(); //Based off of which shoe we are interacting with (Shoe 1 = Position 0)
-                                                       Log.d("TEST","AddToCartButton");
+                                                       //Log.d("TEST","AddToCartButton");
+                                                       Toast.makeText(v.getContext(), "Added to your cart", Toast.LENGTH_LONG).show();
                                                        Product_Model selectedShoe = shoeList.get(position);
                                                        addToCart(selectedShoe);
                                                    }
@@ -162,11 +177,20 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
                     Log.d("TEST","AddToWishListButton");
                     if(position != RecyclerView.NO_POSITION){
                         Product_Model selectedShoe = shoeList.get(position);
-                        addToWishList(selectedShoe);
-                    }
+                        //Wishlist.getInstance().wList.add(selectedShoe);
+                        Wishlist wl = Wishlist.getInstance();
+                        //Toast.makeText(v.getContext(), "Added to your wishlist", Toast.LENGTH_SHORT).show();
+                        // addToWishList(selectedShoe);
+                        if(!wl.wList.contains(selectedShoe)) {
+                            wl.wList.add(selectedShoe);
+                            Toast.makeText(v.getContext(), "Added to your wishlist", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Toast.makeText(v.getContext(), "The product is already in your wishlist", Toast.LENGTH_LONG).show();
+                        }
 
                 }
-            });
+            }});
 
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -184,6 +208,13 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
                     }
                 }
             });
+            if(type.equals("A")){
+                addCartButtonSleek.setVisibility(View.GONE);
+            }
+            else{
+                buttonAddToCart.setVisibility(View.GONE);
+                wishlistText.setVisibility(View.GONE);
+            }
 
         }
 
