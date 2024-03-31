@@ -26,7 +26,7 @@ public class DataBaseParticipantsHelper extends SQLiteOpenHelper {
         String CreateTableStatement_Records = "CREATE TABLE PARTICIPANT_RECORDS (" +
                 "ID INTEGER, " +
                 "TYPE TEXT, " +
-                "COMPLETION_TIME REAL)";
+                "COMPLETION_TIME TEXT)";
 
         db.execSQL(CreateTableStatement_Records);
         db.execSQL(CreateTableStatement);
@@ -52,7 +52,7 @@ public class DataBaseParticipantsHelper extends SQLiteOpenHelper {
         return participantTable == 1;
     }
 
-    public void setParticipantCompletionTime(double time, Login_Model login_model){
+    public long setParticipantCompletionTime(String time, Login_Model login_model){
         //used to insert completion time for the participants
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -62,6 +62,7 @@ public class DataBaseParticipantsHelper extends SQLiteOpenHelper {
         cv.put("COMPLETION_TIME", time);
         long participantRecord = db.insert("PARTICIPANT_RECORDS", null, cv);
         db.close();
+        return participantRecord;
     }
 
     public void updateParticipantTestType(Login_Model login_model){

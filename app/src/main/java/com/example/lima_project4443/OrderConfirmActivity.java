@@ -1,5 +1,7 @@
 package com.example.lima_project4443;
 
+import static com.example.lima_project4443.MainActivity.loginmodel;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.lima_project4443.DAO.DataBaseParticipantsHelper;
 import com.example.lima_project4443.Model.Product_Model;
 
 import java.util.ArrayList;
@@ -35,11 +38,17 @@ public class OrderConfirmActivity extends AppCompatActivity {
 
         // Record the current time when the activity is created
         long currentTime = System.currentTimeMillis();
+        DataBaseParticipantsHelper dbHelper = new DataBaseParticipantsHelper(OrderConfirmActivity.this);
 
         // Calculate the elapsed time since the start of MainActivity
         double elapsedTime = (currentTime - LoginActivity.startTime)/ 1000.0;
         String formattedTime = String.format("%.2f", elapsedTime);
         Toast.makeText(OrderConfirmActivity.this, "Elapsed Time: " + formattedTime + " seconds", Toast.LENGTH_SHORT).show();
+        if(dbHelper.setParticipantCompletionTime(formattedTime,loginmodel) == 1){
+            Toast.makeText(OrderConfirmActivity.this,"works",Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(OrderConfirmActivity.this,"not",Toast.LENGTH_LONG).show();
+        }
         returnButton = findViewById(R.id.returnbutton);
         Intent intent = getIntent();
         type = intent.getStringExtra("type");
@@ -49,6 +58,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
         confirmText = findViewById(R.id.orderdetailtext);
         String displaythis = "Your order is placed Successfully\n Order #123456\n\nTime took:\n"+formattedTime;
         if(MainActivity.trial>3){
+
             displaythis = "Your trial is complete!\n\nTime took:\n"+formattedTime+"\nplease return the device!";
             returnButton.setVisibility(View.GONE);
         }

@@ -29,7 +29,7 @@ Alexis Estropia, 217146473
  */
 public class MainActivity extends AppCompatActivity {
 
-    private EditText editTextAge, hoursofUsage;
+    private EditText editTextAge, hoursofUsage,PartIDInput;
     private RadioGroup radioGroupGender;
     private RadioButton radioButtonMale, radioButtonFemale;
     private Button submitButton;
@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.buttonSubmit);
         Switch switchToggle = findViewById(R.id.typeToggle);
         selectedOption = findViewById(R.id.selectedOption);
+        PartIDInput = findViewById(R.id.editPartID);
+
         switchToggle.setChecked(false);
         selectedOption.setText("Selected Option: A");
         selectedVersion = "A";
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     int genderId = radioGroupGender.getCheckedRadioButtonId();
                     int gender = (genderId == R.id.radioButtonMale) ? 1 : 2;
                     loginmodel.setGender(gender);
+                    loginmodel.setId(Long.valueOf(PartIDInput.getText().toString()));
                     loginmodel.setHours_Phone(Integer.parseInt(hoursofUsage.getText().toString()));
                     loginmodel.setType(selectedVersion);
                     dbHelper.addParticipants(loginmodel);
