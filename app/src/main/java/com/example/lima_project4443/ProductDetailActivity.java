@@ -1,5 +1,6 @@
 package com.example.lima_project4443;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -42,10 +43,11 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.productdetailpage);
 
         Intent intent = getIntent();
+
         type = intent.getStringExtra("type");
-        if (type == null){
-            type = "A";
-        }
+       // if (type == null){
+       //     type = "A";
+      //  }
         if (intent != null && intent.hasExtra("product_name")) {
             passedProductName = intent.getStringExtra("product_name"); // -1 is the default value if the product ID is not found
 
@@ -149,9 +151,14 @@ public class ProductDetailActivity extends AppCompatActivity implements View.OnC
             }
         }
         else if(v == backButton ){
-            //Toast.makeText(ProductDetailActivity.this, "Going back", Toast.LENGTH_LONG).show();
+            Context context = v.getContext();
+            Intent intent = new Intent(context, productDisplayActivity.class);
+            Bundle b = new Bundle();
+            b.putString("type",type);
+            intent.putExtras(b);
+            context.startActivity(intent);
 
-            startActivity(new Intent(ProductDetailActivity.this,productDisplayActivity.class));
+            //startActivity(new Intent(ProductDetailActivity.this,productDisplayActivity.class));
 
         }
         else if (v == homeButton){

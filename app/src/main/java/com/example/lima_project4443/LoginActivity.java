@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
-
+//add trial counter?
     private static final String CORRECT_USERNAME = "admin";
     private static final String CORRECT_PASSWORD = "password";
 
@@ -18,13 +18,19 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextPassword;
     private Button buttonLogin;
     private String type;
+    public static long startTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.loginpage);
+        startTime = System.currentTimeMillis();
         Intent intent = getIntent();
         type = intent.getStringExtra("type");
-        setContentView(R.layout.loginpage);
+        if(type == null){
+            type = "A";
+        }
+
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonLogin = findViewById(R.id.buttonLogin);

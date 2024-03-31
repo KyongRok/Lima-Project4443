@@ -74,7 +74,7 @@ public class productDisplayActivity extends AppCompatActivity implements View.On
         }
         productList = dataBaseProduct.searchAll();
         //productList = dataBaseProduct.searchProduct("adidas");
-        adapter = new productDisplayAdapter(productList);
+        adapter = new productDisplayAdapter(productList,type);
         recyclerView.setAdapter(adapter);
 
         ImageButton filterButton = findViewById(R.id.menu_button);

@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private Switch switchToggle;
     private TextView selectedOption;
     private String selectedVersion;
-
+    public static Login_Model loginmodel;
+    public static int trial;
 
     //public DataBaseHelper(@Nullable Context context){
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        trial = 1;
         editTextAge = findViewById(R.id.editTextAge);
         radioGroupGender = findViewById(R.id.radioGroupGender);
         radioButtonMale = findViewById(R.id.radioButtonMale);
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //if(!editTextAge.getText().equals("")){
                 try{
-                    Login_Model loginmodel = new Login_Model();
+                     loginmodel = new Login_Model();
                     loginmodel.setAge(Integer.parseInt(editTextAge.getText().toString()));
                     //we need to set ID for the participant mannually.
                     int genderId = radioGroupGender.getCheckedRadioButtonId();
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     loginmodel.setHours_Phone(Integer.parseInt(hoursofUsage.getText().toString()));
                     loginmodel.setType(selectedVersion);
                     dbHelper.addParticipants(loginmodel);
-                    Toast.makeText(MainActivity.this, Long.toString(loginmodel.getId()),Toast.LENGTH_LONG).show();
+                    //Toast.makeText(MainActivity.this, Long.toString(loginmodel.getId()),Toast.LENGTH_LONG).show();
                     Bundle b = new Bundle();
 
                     b.putString("type",selectedVersion);
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 catch(Exception e){
-                    Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
 
 
                 }

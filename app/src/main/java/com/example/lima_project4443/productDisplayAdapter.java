@@ -2,6 +2,7 @@ package com.example.lima_project4443;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,8 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
     private final ArrayList<Product_Model> favouriteShoeList;
     private List<String> brands;
     private List<String> colors;
-    public productDisplayAdapter(List<Product_Model> shoeList) {
+    private String type;
+    public productDisplayAdapter(List<Product_Model> shoeList,String type) {
         brands = new ArrayList<String>();
         colors = new ArrayList<String>();
         brands.add("Nike"); brands.add("Adidas"); brands.add("Puma"); brands.add("New Balance");
@@ -40,6 +42,7 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
         this.searchShoeList = new ArrayList<>(shoeList);
 
         this.favouriteShoeList = new ArrayList<>(shoeList);
+        this.type = type;
     }
 
     public void search(String q){
@@ -102,7 +105,7 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shoe, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view,type);
     }
 
 
@@ -132,7 +135,7 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
         public ImageButton buttonAddToWishList;
         private ShoppingCart cart = ShoppingCart.getInstance();
 
-        public ViewHolder(View view) {
+        public ViewHolder(View view,String type) {
             super(view);
             imageView = view.findViewById(R.id.image_shoe);
             textViewName = view.findViewById(R.id.text_shoe_name);
@@ -173,6 +176,9 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
                     if (position != RecyclerView.NO_POSITION) {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, ProductDetailActivity.class);
+                        Bundle b = new Bundle();
+                        b.putString("type",type);
+                        intent.putExtras(b);
                         intent.putExtra("product_name", searchShoeList.get(position).getProductName());
                         context.startActivity(intent);
                     }

@@ -4,6 +4,7 @@ package com.example.lima_project4443;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,12 +21,17 @@ public class PaymentInfo extends AppCompatActivity {
     private EditText firstName, lastName, cardNum, expDate, cvv;
 
     private CheckBox sameAddressCB;
-
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_activity);
+        Intent intent = getIntent();
+        type = intent.getStringExtra("type");
+        if(type == null){
+            type = "A";
+        }
 
         pay = findViewById(R.id.buttonPay);
         firstName = findViewById(R.id.editfirstName);
@@ -47,6 +53,12 @@ public class PaymentInfo extends AppCompatActivity {
                     String card = cardNum.getText().toString();
                     String expirationD = expDate.getText().toString();
                     String codeCVV = cvv.getText().toString();
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, OrderConfirmActivity.class);
+                    Bundle b = new Bundle();
+                    b.putString("type", type);
+                    intent.putExtras(b);
+                    context.startActivity(intent);
 
                     if (fName.trim().isEmpty() || lName.trim().isEmpty() || card.trim().isEmpty() || expirationD.trim().isEmpty() || codeCVV.trim().isEmpty())
                         throw new IllegalArgumentException("Please fill in all the fields");
