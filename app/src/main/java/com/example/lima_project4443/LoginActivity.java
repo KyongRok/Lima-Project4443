@@ -27,9 +27,6 @@ public class LoginActivity extends AppCompatActivity {
         startTime = System.currentTimeMillis();
         Intent intent = getIntent();
         type = intent.getStringExtra("type");
-        if(type == null){
-            type = "A";
-        }
 
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextPassword = findViewById(R.id.editTextPassword);
