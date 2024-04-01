@@ -47,7 +47,7 @@
             android:id="@+id/favtext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Favourite"
+            android:text="Wishlist"
             android:textColor="@android:color/black"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="8dp"/>

@@ -31,7 +31,7 @@ public class productDisplayActivity extends AppCompatActivity implements View.On
     private NavigationHandler handler ;
     private ImageButton homebutton,wlbutton,cartbutton,profilebutton;
     private String type;
-    private TextView welcome,hometext,carttext,profiletext,favtext;
+    private TextView welcome,hometext,carttext,profiletext,favtext,filter_text;
     DataBaseProductHelper dataBaseProduct = new DataBaseProductHelper(productDisplayActivity.this);
 
 
@@ -59,11 +59,13 @@ public class productDisplayActivity extends AppCompatActivity implements View.On
         carttext=findViewById(R.id.carttext);
         profiletext=findViewById(R.id.profiletext);
         favtext = findViewById(R.id.favtext);
+        filter_text = findViewById(R.id.filter_text);
         if(!type.equals("A")){
             hometext.setVisibility(View.GONE);
             carttext.setVisibility(View.GONE);
             profiletext.setVisibility(View.GONE);
             favtext.setVisibility(View.GONE);
+            filter_text.setVisibility(View.GONE);
         }
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
