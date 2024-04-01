@@ -52,13 +52,13 @@ public class DataBaseParticipantsHelper extends SQLiteOpenHelper {
         return participantTable == 1;
     }
 
-    public long setParticipantCompletionTime(String time, Login_Model login_model){
+    public long setParticipantCompletionTime(String time, Login_Model login_model,String type){
         //used to insert completion time for the participants
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         //inserts into database
         cv.put("ID",login_model.getId());
-        cv.put("TYPE", login_model.getType());
+        cv.put("TYPE", type);
         cv.put("COMPLETION_TIME", time);
         long participantRecord = db.insert("PARTICIPANT_RECORDS", null, cv);
         db.close();

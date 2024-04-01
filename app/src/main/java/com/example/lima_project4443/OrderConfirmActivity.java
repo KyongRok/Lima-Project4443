@@ -46,7 +46,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
         double elapsedTime = (currentTime - LoginActivity.startTime)/ 1000.0;
         String formattedTime = String.format("%.2f", elapsedTime);
         Toast.makeText(OrderConfirmActivity.this, "Elapsed Time: " + formattedTime + " seconds", Toast.LENGTH_SHORT).show();
-        if(dbHelper.setParticipantCompletionTime(formattedTime,loginmodel) == 1){
+        if(dbHelper.setParticipantCompletionTime(formattedTime,loginmodel,type) == 1){
             Toast.makeText(OrderConfirmActivity.this,"works",Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(OrderConfirmActivity.this,"not",Toast.LENGTH_LONG).show();
