@@ -30,6 +30,8 @@ public class OrderConfirmActivity extends AppCompatActivity {
         //get Intent
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirmpage);
+        Intent intent = getIntent();
+        type = intent.getStringExtra("type");
         wl = Wishlist.getInstance();
         wl.wList = new ArrayList<Product_Model>();
         sc = ShoppingCart.getInstance();
@@ -50,11 +52,10 @@ public class OrderConfirmActivity extends AppCompatActivity {
             Toast.makeText(OrderConfirmActivity.this,"not",Toast.LENGTH_LONG).show();
         }
         returnButton = findViewById(R.id.returnbutton);
-        Intent intent = getIntent();
-        type = intent.getStringExtra("type");
-        if(type == null){
-            type = "A";
-        }
+
+        //if(type == null){
+       //     type = "A";
+        //}
         confirmText = findViewById(R.id.orderdetailtext);
         String displaythis = "Your order is placed Successfully\n Order #123456\n\nTime took:\n"+formattedTime;
         if(MainActivity.trial>3){
@@ -79,9 +80,9 @@ public class OrderConfirmActivity extends AppCompatActivity {
                     b.putString("type",type);
                     Intent i = new Intent(context, LoginActivity.class);
                     i.putExtras(b);
-                MainActivity.trial++;
-                Toast.makeText(OrderConfirmActivity.this, "trial num:"+MainActivity.trial, Toast.LENGTH_SHORT).show();
-                context.startActivity(i);
+                    MainActivity.trial++;
+                    Toast.makeText(OrderConfirmActivity.this, "trial num:"+MainActivity.trial, Toast.LENGTH_SHORT).show();
+                    context.startActivity(i);
             }
 
         });

@@ -29,9 +29,6 @@ public class PaymentInfo extends AppCompatActivity {
         setContentView(R.layout.payment_activity);
         Intent intent = getIntent();
         type = intent.getStringExtra("type");
-        if(type == null){
-            type = "A";
-        }
 
         pay = findViewById(R.id.buttonPay);
         firstName = findViewById(R.id.editfirstName);

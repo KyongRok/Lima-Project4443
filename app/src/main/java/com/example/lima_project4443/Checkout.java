@@ -80,6 +80,7 @@ public class Checkout extends AppCompatActivity {
                     Intent intent = new Intent(Checkout.this, PaymentInfo.class);
                     Bundle b = new Bundle();
                     b.putString("type",type);
+                    intent.putExtras(b);
                     startActivity(intent);
 
                 } catch (IllegalArgumentException e) {
