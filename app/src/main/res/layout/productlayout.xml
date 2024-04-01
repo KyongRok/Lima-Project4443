@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <!-- Content Area -->
     <LinearLayout
         android:id="@+id/content_layout"
@@ -65,16 +64,31 @@
                 android:text="Search for Shoe" />
 
             <!-- Menu Button -->
-            <ImageButton
-                android:id="@+id/menu_button"
-                android:layout_width="53dp"
-                android:layout_height="52dp"
-                android:src="@drawable/filtermenu"
-                android:contentDescription="Menu Button"
-                android:padding="12dp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/menu_button"
+                    android:layout_width="53dp"
+                    android:layout_height="52dp"
+                    android:src="@drawable/filtermenu"
+                    android:contentDescription="Menu Button"
+                    android:padding="12dp" />
+
+                <TextView
+                    android:id="@+id/filter_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Filter"
+                    android:textColor="@android:color/black"
+                    android:textSize="12sp"
+
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
         </LinearLayout>
-
-
     </LinearLayout>
 
     <!-- RecyclerView to display shoes -->
@@ -84,7 +98,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/content_layout"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="48dp" />
+        android:layout_marginBottom="105dp" />
 
     <!-- Include the navigation bar -->
     <include layout="@layout/navbar" />

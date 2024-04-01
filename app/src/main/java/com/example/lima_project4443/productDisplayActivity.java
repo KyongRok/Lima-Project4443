@@ -31,7 +31,7 @@ public class productDisplayActivity extends AppCompatActivity implements View.On
     private NavigationHandler handler ;
     private ImageButton homebutton,wlbutton,cartbutton,profilebutton;
     private String type;
-    private TextView welcome,hometext,carttext,profiletext,favtext;
+    private TextView welcome,hometext,carttext,profiletext,favtext,hearttext,filter_text;
     DataBaseProductHelper dataBaseProduct = new DataBaseProductHelper(productDisplayActivity.this);
 
 
@@ -44,6 +44,7 @@ public class productDisplayActivity extends AppCompatActivity implements View.On
         if(type == null){
             type = "A";
         }
+
         setContentView(R.layout.productlayout);
         homebutton = findViewById(R.id.btn_home_bottom);
         homebutton.setOnClickListener(this);
@@ -58,13 +59,19 @@ public class productDisplayActivity extends AppCompatActivity implements View.On
         hometext=findViewById(R.id.hometext);
         carttext=findViewById(R.id.carttext);
         profiletext=findViewById(R.id.profiletext);
+        hearttext = findViewById(R.id.heart_text);
         favtext = findViewById(R.id.favtext);
+        filter_text = findViewById(R.id.filter_text);
+
         if(!type.equals("A")){
             hometext.setVisibility(View.GONE);
+            favtext.setVisibility(View.GONE);
             carttext.setVisibility(View.GONE);
             profiletext.setVisibility(View.GONE);
-            favtext.setVisibility(View.GONE);
+            hearttext.setVisibility(View.GONE);
+            filter_text.setVisibility(View.GONE);
         }
+
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         productList = new ArrayList<>();

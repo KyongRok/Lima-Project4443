@@ -62,13 +62,23 @@
 
     <ImageButton
         android:id="@+id/addToWishList"
-        android:layout_width="49dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/like"
+        android:layout_width="26dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="28dp"
         android:background="@color/white"
+        android:src="@drawable/like"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_shoe_name" />
+
+    <TextView
+        android:id="@+id/heart_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="88dp"
+        android:text="Favourite"
+        app:layout_constraintStart_toEndOf="@+id/addToCart"
+        app:layout_constraintTop_toBottomOf="@+id/image_shoe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
