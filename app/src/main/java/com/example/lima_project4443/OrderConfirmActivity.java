@@ -47,9 +47,9 @@ public class OrderConfirmActivity extends AppCompatActivity {
         String formattedTime = String.format("%.2f", elapsedTime);
         Toast.makeText(OrderConfirmActivity.this, "Elapsed Time: " + formattedTime + " seconds", Toast.LENGTH_SHORT).show();
         if(dbHelper.setParticipantCompletionTime(formattedTime,loginmodel,type) == 1){
-            Toast.makeText(OrderConfirmActivity.this,"works",Toast.LENGTH_LONG).show();
+            //Toast.makeText(OrderConfirmActivity.this,"works",Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(OrderConfirmActivity.this,"not",Toast.LENGTH_LONG).show();
+           // Toast.makeText(OrderConfirmActivity.this,"not",Toast.LENGTH_LONG).show();
         }
         returnButton = findViewById(R.id.returnbutton);
 
@@ -71,12 +71,14 @@ public class OrderConfirmActivity extends AppCompatActivity {
 
                     Context context = v.getContext();
                     Bundle b = new Bundle();
+                    if(MainActivity.trial==2){
                     if(type.equals("A")){
                         type = "B";
                     }
                     else{
                         type = "A";
                     }
+                }
                     b.putString("type",type);
                     Intent i = new Intent(context, LoginActivity.class);
                     i.putExtras(b);
