@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,14 +30,25 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
     private List<String> brands;
     private List<String> colors;
     private String type;
-    public productDisplayAdapter(List<Product_Model> shoeList,String type) {
+
+    public productDisplayAdapter(List<Product_Model> shoeList, String type) {
         brands = new ArrayList<String>();
         colors = new ArrayList<String>();
-        brands.add("Nike"); brands.add("Adidas"); brands.add("Puma"); brands.add("New Balance");
-        brands.add("Reebok"); brands.add("Under Armour"); brands.add("Vans"); brands.add("Converse");
+        brands.add("Nike");
+        brands.add("Adidas");
+        brands.add("Puma");
+        brands.add("New Balance");
+        brands.add("Reebok");
+        brands.add("Under Armour");
+        brands.add("Vans");
+        brands.add("Converse");
 
-        colors.add("Red");  colors.add("Blue");  colors.add("Black");
-        colors.add("Yellow");  colors.add("Green");  colors.add("White");
+        colors.add("Red");
+        colors.add("Blue");
+        colors.add("Black");
+        colors.add("Yellow");
+        colors.add("Green");
+        colors.add("White");
         this.shoeList = shoeList;
         this.searchShoeList = new ArrayList<>(shoeList);
 
@@ -46,16 +56,15 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
         this.type = type;
     }
 
-    public void search(String q){
+    public void search(String q) {
 
         searchShoeList.clear();
-        if(q.isEmpty()){
+        if (q.isEmpty()) {
             searchShoeList.addAll(shoeList);
-        }
-        else{
+        } else {
             q = q.toLowerCase();
-            for (Product_Model shoe: shoeList){
-                if (shoe.getProductName().toLowerCase().contains(q)){
+            for (Product_Model shoe : shoeList) {
+                if (shoe.getProductName().toLowerCase().contains(q)) {
                     searchShoeList.add(shoe);
                 }
             }
@@ -65,29 +74,27 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
 
     }
 
-    public void searchFilter(List<String> arr){
+    public void searchFilter(List<String> arr) {
         searchShoeList.clear();
-        if(arr.isEmpty()){
+        if (arr.isEmpty()) {
             searchShoeList.addAll(shoeList);
-        }
-        else{
-            for(String str : arr){
-                if(brands.contains(str)){
+        } else {
+            for (String str : arr) {
+                if (brands.contains(str)) {
 
-                    for(Product_Model p : shoeList){
-                        if(p.getBrand().equals(str)){
+                    for (Product_Model p : shoeList) {
+                        if (p.getBrand().equals(str)) {
                             searchShoeList.add(p);
                         }
                     }
-                }else if(colors.contains(str)){
+                } else if (colors.contains(str)) {
 
-                    for(Product_Model p : shoeList){
-                        if(p.getColor().equals(str)){
+                    for (Product_Model p : shoeList) {
+                        if (p.getColor().equals(str)) {
                             searchShoeList.add(p);
                         }
                     }
                 }
-
 
             }
         }
@@ -106,9 +113,8 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shoe, parent, false);
-        return new ViewHolder(view,type);
+        return new ViewHolder(view, type);
     }
-
 
     @Override
     public int getItemCount() {
@@ -123,35 +129,33 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
         holder.textViewName.setText(shoe.getProductName());
         holder.priceViewName.setText(String.valueOf(shoe.getPrice()));
 
-
-
     }
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
-        public TextView textViewName, priceViewName,wishlistText;
+        public TextView textViewName, priceViewName, wishlistText;
         public Button buttonAddToCart;
 
-        public ImageButton buttonAddToWishList,addCartButtonSleek;
+        public ImageButton buttonAddToWishList, addCartButtonSleek;
         private ShoppingCart cart = ShoppingCart.getInstance();
 
-        public ViewHolder(View view,String type) {
+        public ViewHolder(View view, String type) {
             super(view);
             imageView = view.findViewById(R.id.image_shoe);
             textViewName = view.findViewById(R.id.text_shoe_name);
             priceViewName = view.findViewById(R.id.price);
             buttonAddToCart = view.findViewById(R.id.addToCart);
             buttonAddToWishList = view.findViewById(R.id.addToWishList);
-            wishlistText=view.findViewById(R.id.WishlistText);
-            addCartButtonSleek=view.findViewById(R.id.addToCartSleek);
-            addCartButtonSleek.setOnClickListener(new View.OnClickListener(){
+            wishlistText = view.findViewById(R.id.WishlistText);
+            addCartButtonSleek = view.findViewById(R.id.addToCartSleek);
+            addCartButtonSleek.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int position = getAdapterPosition(); //Based off of which shoe we are interacting with (Shoe 1 = Position 0)
-                    Log.d("TEST","AddToCartButton");
+                    int position = getAdapterPosition(); // Based off of which shoe we are interacting with (Shoe 1 =
+                                                         // Position 0)
+                    Log.d("TEST", "AddToCartButton");
                     Toast.makeText(v.getContext(), "Added to your cart", Toast.LENGTH_LONG).show();
-                    Product_Model selectedShoe = shoeList.get(position);
+                    Product_Model selectedShoe = searchShoeList.get(position);
                     addToCart(selectedShoe);
                 }
 
@@ -159,38 +163,40 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
 
             // Set OnClickListener for the button
             buttonAddToCart.setOnClickListener(new View.OnClickListener() {
-                                                   @Override
-                                                   public void onClick(View v) {
-                                                       int position = getAdapterPosition(); //Based off of which shoe we are interacting with (Shoe 1 = Position 0)
-                                                       //Log.d("TEST","AddToCartButton");
-                                                       Toast.makeText(v.getContext(), "Added to your cart", Toast.LENGTH_LONG).show();
-                                                       Product_Model selectedShoe = shoeList.get(position);
-                                                       addToCart(selectedShoe);
-                                                   }
-                                               }
-            );
-
-            buttonAddToWishList.setOnClickListener(new View.OnClickListener(){
                 @Override
-                public void onClick(View v){
+                public void onClick(View v) {
+                    int position = getAdapterPosition(); // Based off of which shoe we are interacting with (Shoe 1 =
+                                                         // Position 0)
+                    // Log.d("TEST","AddToCartButton");
+                    Toast.makeText(v.getContext(), "Added to your cart", Toast.LENGTH_LONG).show();
+                    Product_Model selectedShoe = searchShoeList.get(position);
+                    addToCart(selectedShoe);
+                }
+            });
+
+            buttonAddToWishList.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
                     int position = getAdapterPosition();
-                    Log.d("TEST","AddToWishListButton");
-                    if(position != RecyclerView.NO_POSITION){
-                        Product_Model selectedShoe = shoeList.get(position);
-                        //Wishlist.getInstance().wList.add(selectedShoe);
+                    Log.d("TEST", "AddToWishListButton");
+                    if (position != RecyclerView.NO_POSITION) {
+                        Product_Model selectedShoe = searchShoeList.get(position);
+                        // Wishlist.getInstance().wList.add(selectedShoe);
                         Wishlist wl = Wishlist.getInstance();
-                        //Toast.makeText(v.getContext(), "Added to your wishlist", Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(v.getContext(), "Added to your wishlist",
+                        // Toast.LENGTH_SHORT).show();
                         // addToWishList(selectedShoe);
-                        if(!wl.wList.contains(selectedShoe)) {
+                        if (!wl.wList.contains(selectedShoe)) {
                             wl.wList.add(selectedShoe);
                             Toast.makeText(v.getContext(), "Added to your wishlist", Toast.LENGTH_LONG).show();
-                        }
-                        else {
-                            Toast.makeText(v.getContext(), "The product is already in your wishlist", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(v.getContext(), "The product is already in your wishlist", Toast.LENGTH_LONG)
+                                    .show();
                         }
 
+                    }
                 }
-            }});
+            });
 
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -201,43 +207,41 @@ public class productDisplayAdapter extends RecyclerView.Adapter<productDisplayAd
                         Context context = v.getContext();
                         Intent intent = new Intent(context, ProductDetailActivity.class);
                         Bundle b = new Bundle();
-                        b.putString("type",type);
+                        b.putString("type", type);
                         intent.putExtras(b);
                         intent.putExtra("product_name", searchShoeList.get(position).getProductName());
                         context.startActivity(intent);
                     }
                 }
             });
-            if(type.equals("A")){
+            if (type.equals("A")) {
                 addCartButtonSleek.setVisibility(View.GONE);
-            }
-            else{
+            } else {
                 buttonAddToCart.setVisibility(View.GONE);
                 wishlistText.setVisibility(View.GONE);
             }
 
         }
 
-
         private void addToCart(Product_Model selectedShoe) {
             int flag_found = 0;
             int index = 0;
-            for(int i =0; i < cart.cartList.size(); i++){
-                if(selectedShoe.getProductId() == cart.cartList.get(i).getProduct().getProductId()){
+            for (int i = 0; i < cart.cartList.size(); i++) {
+                if (selectedShoe.getProductId() == cart.cartList.get(i).getProduct().getProductId()) {
                     flag_found = 1;
                     index = i;
                 }
             }
-            if(flag_found == 1){
+            if (flag_found == 1) {
                 int current_qty = cart.cartList.get(index).getQuantity();
                 cart.cartList.get(index).setQuantity(current_qty + 1);
-            }else{
-                cart.cartList.add(new CartItem(selectedShoe,1,5));
+            } else {
+                cart.cartList.add(new CartItem(selectedShoe, 1, 5));
             }
         }
+
         private void addToWishList(Product_Model selectedShoe) {
         }
-
 
     }
 }
