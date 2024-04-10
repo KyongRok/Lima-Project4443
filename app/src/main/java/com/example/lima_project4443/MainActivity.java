@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     loginmodel.setId(Long.valueOf(PartIDInput.getText().toString()));
                     loginmodel.setHours_Phone(Integer.parseInt(hoursofUsage.getText().toString()));
                     loginmodel.setType(selectedVersion);
-                    dbHelper.addParticipants(loginmodel);
+                    //dbHelper.addParticipants(loginmodel);
                     //Toast.makeText(MainActivity.this, Long.toString(loginmodel.getId()),Toast.LENGTH_LONG).show();
                     Bundle b = new Bundle();
 
