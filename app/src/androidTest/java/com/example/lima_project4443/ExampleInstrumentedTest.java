@@ -25,6 +25,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
 
+import com.example.lima_project4443.Model.Cart_Model;
+
 /**
  * Instrumented test, which will execute on an Android device.
  *
@@ -63,30 +65,56 @@ public class ExampleInstrumentedTest {
         Espresso.onView(ViewMatchers.withId(R.id.recycler_view))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         //ProductDetail
-        Espresso.onView(ViewMatchers.withId(R.id.wishlistButton)).perform(click());
+        Espresso.onView(ViewMatchers.withId(R.id.wishButtonB)).perform(click());
+        Espresso.onView(ViewMatchers.withId(R.id.btn_fav)).perform(click());
+        //wishlist
+        Espresso.onView(ViewMatchers.withId(R.id.recyclerView))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, MyViewAction.clickChildViewWithId(R.id.addcartButton)));
+        Espresso.onView(ViewMatchers.withId(R.id.btn_home_bottom)).perform(click());
+        //productDisplayActivity
+        Espresso.onView(ViewMatchers.withId(R.id.search_view)).perform(ViewActions.typeText("Reebok"));
+        Espresso.onView(ViewMatchers.withId(R.id.recycler_view))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, MyViewAction.clickChildViewWithId(R.id.addToCartSleek)));
+        Espresso.onView(ViewMatchers.withId(R.id.btn_cart)).perform(click());
+        //cart
+        Espresso.onView(ViewMatchers.withId(R.id.recyclerView2))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, MyViewAction.clickChildViewWithId(R.id.removeButton)));
+        Espresso.onView(ViewMatchers.withId(R.id.recyclerView2))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, MyViewAction.clickChildViewWithId(R.id.qtyPlus)));
+        assertEquals(2,ShoppingCart.getInstance().cartList.get(0).getQuantity());
+        Espresso.onView(ViewMatchers.withId(R.id.checkoutbtn)).perform(click());
+        //checkout
+        Espresso.onView(ViewMatchers.withId(R.id.editfirstName)).perform(ViewActions.typeText("Foo"));
+        Espresso.onView(ViewMatchers.withId(R.id.editLastName)).perform(ViewActions.typeText("Voo"));
+        Espresso.onView(ViewMatchers.withId(R.id.editContactPhone)).perform(ViewActions.typeText("123123123"));
+        Espresso.onView(ViewMatchers.withId(R.id.editStreetAdd)).perform(ViewActions.typeText("123 York University"));
+        Espresso.onView(ViewMatchers.withId(R.id.editCity)).perform(ViewActions.typeText("Toronto"));
+        Espresso.onView(ViewMatchers.withId(R.id.editPostalCode)).perform(ViewActions.typeText("A1B2C3"));
+        Espresso.closeSoftKeyboard();
+        Espresso.onView(ViewMatchers.withId(R.id.buttonPay)).perform(click());
+        //Espresso.onView(ViewMatchers.withId(R.id.buttonPay)).perform(click());
+        //paymentinfo
+        Espresso.onView(ViewMatchers.withId(R.id.editfirstName)).perform(ViewActions.typeText("Foo"));
+        Espresso.onView(ViewMatchers.withId(R.id.editLastName)).perform(ViewActions.typeText("Voo"));
+        Espresso.onView(ViewMatchers.withId(R.id.editCardNum)).perform(ViewActions.typeText("123456789"));
+        //Espresso.onView(ViewMatchers.withId(R.id.expDate)).perform(ViewActions.typeText("1025"));
+       // Espresso.onView(ViewMatchers.withId(R.id.editCVV)).perform(ViewActions.typeText("123"));
+        Espresso.closeSoftKeyboard();
+        Espresso.onView(ViewMatchers.withId(R.id.buttonPay)).perform(click());
+
+
+
+
+
+
+
+
+
+
+
 
     }
 
-    private static ViewAction clickChildViewWithId(final int id) {
-        return new ViewAction() {
-            @Override
-            public Matcher<View> getConstraints() {
-                return hasDescendant(withId(id));
-            }
 
-            @Override
-            public String getDescription() {
-                return "Click on a child view with specified ID.";
-            }
-
-            @Override
-            public void perform(UiController uiController, View view) {
-                View childView = view.findViewById(id);
-                if (childView != null) {
-                    childView.performClick();
-                }
-            }
-        };
-    }
 }
 
