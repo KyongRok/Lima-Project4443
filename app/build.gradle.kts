@@ -69,6 +69,10 @@ dependencies {
     androidTestImplementation ("androidx.test:rules:1.4.0")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.2.0")
+
+
+
 
 
 }
