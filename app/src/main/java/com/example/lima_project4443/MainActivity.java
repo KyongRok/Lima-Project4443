@@ -35,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private Button submitButton;
     private Switch switchToggle;
     private TextView selectedOption;
-    private String selectedVersion;
+    public static String selectedVersion;
     public static Login_Model loginmodel;
     public static int trial;
+
 
     //public DataBaseHelper(@Nullable Context context){
 
