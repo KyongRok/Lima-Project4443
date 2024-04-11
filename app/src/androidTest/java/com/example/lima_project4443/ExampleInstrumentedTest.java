@@ -103,8 +103,8 @@ public class ExampleInstrumentedTest {
         Espresso.onView(ViewMatchers.withId(R.id.buttonPay)).perform(click());
         //ProfileActivity
         Espresso.onView(ViewMatchers.withId(R.id.fnameedit)).perform(ViewActions.typeText("Jane"));
-        Espresso.onView(ViewMatchers.withId(R.id.lnameedit)).perform(ViewActions.typeText("Smith"));
-        Espresso.onView(ViewMatchers.withId(R.id.dobedit)).perform(ViewActions.typeText("1995/05/05"));
+        Espresso.onView(ViewMatchers.withId(R.id.lnameedit)).perform(ViewActions.typeText("Doe"));
+        Espresso.onView(ViewMatchers.withId(R.id.dobedit)).perform(ViewActions.typeText("1989/2/18"));
         //Testing for screen navigations
         Espresso.onView(ViewMatchers.withId(R.id.btn_home_bottom)).perform(ViewActions.click());
         Espresso.onView(ViewMatchers.withId(R.id.btn_fav)).perform(ViewActions.click());
